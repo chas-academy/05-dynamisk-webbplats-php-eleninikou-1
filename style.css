@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    background-image: url("./images/chas.png");
+}
+
+#logo {
+    font-size: 70px;
+    text-transform: uppercase;
+    text-align: center;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.205);
+    color:  rgb(218, 213, 213);
+
+}
+
+.inheader {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+.inheader > h1 {
+    text-align: center;
+    font-size: 35px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: rgb(182, 176, 176);
+}
+
+.logout {
+    text-transform: uppercase;
+    padding: 10px;
+    font-size: 20px;
+    box-shadow: 3px 3px 1px #3f3e3e;
+    margin-left: 5px;
+    background-color: rgb(226, 226, 220);
+    color: #3f3e3e;
+}
+
+.create {
+    display: flex;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.205);
+    width: 70%;
+    height: 60%;
+    box-shadow: 3px 3px 1px #3f3e3e;
+    padding: 15px;
+}
+
+.select-tags {
+    font-size: 17px;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.13);
+    margin: 26px 15px 43px 20px;
+    color: rgb(218, 213, 213);
+    border: 1px solid rgb(196, 193, 193);
+}
+
+.create > h2 {
+    text-align: center;
+    color: rgb(61, 59, 59);
+    font-size: 20px;
+    position: absolute;
+    margin-left: 19px;
+}
+
+.create-post {
+    width: 96%;
+    color: rgb(61, 59, 59);
+    font-size: 20px;
+}
+
+.category-button {
+    width: 96%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.select-category {
+    font-size: 20px;
+}
+
+.save {
+    padding: 6px;
+    margin-left: 3px;
+    font-size: 17px;
+    text-transform: uppercase;
+    box-shadow: 3px 3px 1px #3f3e3e;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 3px 0;
+    font-size: 20px;
+    box-sizing: border-box;
+    border: 1px solid rgb(196, 193, 193);
+}
+
+input[id=text]{
+    height: 250px;
+}

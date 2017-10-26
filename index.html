@@ -1,0 +1,70 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <title>Teorihandboken</title>
+
+</head>
+
+<body>
+
+<header>
+    <h1 id = "logo"> Teorihandboken</h1>
+</header>
+
+    <div class = "inheader">
+        <h1> Skapa nytt inlägg</h1><button class = 'logout'>Logga ut</button>
+    </div> 
+
+    <section class = "create">
+
+        <h2>Taggar:</h2>
+        
+        <div class = "select-tags" name ="tags">
+            <div>
+                <input class="check-tags" type="checkbox">
+                <label>HTML</label>
+            </div>
+            <div>    
+                <input class="check-tags" type="checkbox">
+                <label>CSS</label>
+            </div>
+            <div>        
+                <input class="check-tags" type="checkbox">
+                <label>JavaScript</label>
+            </div>
+            <div>
+                <input class="check-tags" type="checkbox">
+                <label>PHP</label>
+            </div>        
+        </div>
+
+        <div>    
+            <form class = "create-post">
+                <label for = "title"> Titel: </label>
+                <input type = "text" id="title" name="title">
+                <label for = "text"> Text: </label>
+                <input type = "text" id = "text" name = "text">
+            </form> 
+
+            <div class = "category-button">    
+                <select class ="select-category" name = "category">
+                    <option value = "" disabled selected> Välj kategori </option>
+                    <option value = "1"> Frontend </option>
+                    <option value = "2"> Backend </option>
+                    <option value = "3"> Övrigt </option>
+                </select>
+                <button class = "save">Spara</button>
+            </div>
+
+        </div>    
+   
+    </section>
+
+
+</body>
+</html>
