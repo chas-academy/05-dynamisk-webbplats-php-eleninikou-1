@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Lato', sans-serif;
+    text-decoration: none;
 }
 
 body {
@@ -29,20 +30,22 @@ header {
     text-transform: uppercase;
     text-align: center;
     height: 150px;
-    color:  rgb(218, 213, 213);
+    color:  rgb(192, 187, 187);
     width: 70%;
 }
 
 .logout {
     font-size: 20px;
     text-transform: uppercase;
+    cursor: pointer;
+    color:  rgb(218, 213, 213);
 }
 
 .create-post-h1 {
     font-size: 30px;
     text-transform: uppercase;
     margin-bottom: 10px;
-    color: rgb(182, 176, 176);
+    color: rgb(192, 187, 187);
     margin-left: 195px;
 }
 
@@ -51,19 +54,18 @@ header {
     margin: auto;
     background-color: rgba(255, 255, 255, 0.096);
     width: 70%;
-    height: 60%;
-    padding-top: 10px;
+    height: 59%;
 }
 
 .select-tags {
     font-size: 17px;
-    width: 25%;
+    width: 33%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     padding: 15px;
-    background-color: rgba(255, 255, 255, 0.13);
-    margin: 10px 15px 18px 20px;
+    background-color: rgba(26, 25, 25, 0.281);
+    margin: 10px;
     color: rgb(218, 213, 213);   
 }
 
@@ -75,6 +77,12 @@ header {
 .check-tags {
     margin-right: 5px;
 }
+
+label:hover {
+    cursor: pointer;
+    color: rgba(26, 25, 25, 0.479);
+}
+
 
 .create > h2 {
     text-align: center;
@@ -101,8 +109,8 @@ select#soflow {
     background-position: 97% center;
     background-repeat: no-repeat;
     border: 1px solid #AAA;
-    color: #555;
-    font-size: inherit;
+    color: rgb(139, 137, 137);
+    font-size: 20px;
     overflow: hidden;
     padding: 5px 10px;
     text-overflow: ellipsis;
@@ -114,24 +122,28 @@ select#soflow {
 .category-save {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .save {
     font-size: 30px;
     text-transform: uppercase;
     color: rgb(218, 213, 213); 
-    margin-right: 25px;
+    margin-right: 11px;
+    background-color: rgba(26, 25, 25, 0.281);
+    padding-left: 225px;
+    padding-right: 10px;
 }
 
 .save:hover {
     cursor: pointer;
+    color: rgba(26, 25, 25, 0.479);
 }
 
 input[type=text] {
-    width: 100%;
+    width: 632px;
     padding: 10px;
-    margin: 10px 0;
+    margin: 10px 0px 5px 0px;
     font-size: 20px;
     box-sizing: border-box;
     border: 1px solid rgb(196, 193, 193);
@@ -139,12 +151,11 @@ input[type=text] {
 
 input[id=text]{
     height: 250px;
-    margin-bottom: 10px;
 }
 
 .textfield {
-    width: 603px; 
-    height: 305px;
-    font-size: 15px;
+    width: 632px; 
+    height: 317px;
+    font-size: 20px;
     padding: 10px;
 }

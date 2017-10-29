@@ -13,7 +13,7 @@
 <body>
 
 <header>
-    <h1 id = "logo"> Teorihandboken</h1> <a class ="logout">Logga ut</a>
+    <h1 id="logo">Teorihandboken</h1> <a href ="#" class ="logout">Logga ut</a>
 </header>
 
 
@@ -26,7 +26,7 @@
         <div class = "select-tags" name ="tags">
             <div class = "tag">
                 <input class="check-tags" type="checkbox" id="HTML">
-                <label> HTML</label>
+                <label for "check-tags" > HTML</label>
             </div>
             <div class = "tag">    
                 <input class="check-tags" type="checkbox" id="CSS">
@@ -37,20 +37,20 @@
                 <label> JavaScript</label>
             </div>
             <div class = "tag">
+                <input class="check-tags" type="checkbox" id="AvanaceradJS">
+                <label> Avancerad JavaScript</label>
+            </div> 
+            <div class = "tag">
+                 <input class="check-tags" type="checkbox" id="UX">
+                 <label> UX och design</label>
+             </div> 
+            <div class = "tag">
                 <input class="check-tags" type="checkbox" id="PHP"> 
                 <label>PHP</label>
             </div>        
             <div class = "tag">
               <input class="check-tags" type="checkbox" id="Projektmetodik">
               <label> Projektmetodik</label>
-            </div> 
-            <div class = "tag">
-                <input class="check-tags" type="checkbox" id="UX">
-                <label> UX och design</label>
-            </div> 
-            <div class = "tag">
-                <input class="check-tags" type="checkbox" id="AvanaceradJS">
-                <label> Avancerad JavaScript</label>
             </div> 
             <div class = "tag">
                 <input class="check-tags" type="checkbox" id="Program-metodik">
@@ -62,8 +62,8 @@
         <div>  
             <!-- Insert title and body -->  
             <form class = "create-post">
-                <input type ="text" placeholder ="Din titel" id="title" name="title" method= "POST">
-                <textarea type ="text" placeholder ="Din text" name="textfield" class="textfield" method="POST"></textarea>
+                <input type ="text" placeholder =" < Din titel >" id="title" name="title" method= "POST">
+                <textarea type ="text" placeholder =" < Din text >" name="textfield" class="textfield" method="POST"></textarea>
             </form> 
 
             <!-- Select category -->
@@ -74,7 +74,7 @@
                     <option value = "back"> Backend </option>
                     <option value = "other"> Övrigt </option>
                 </select>
-                <a class="save">Spara</a>
+                <a href ="#" class="save">Spara</a>
             </div>
 
         </div>    
