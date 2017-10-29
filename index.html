@@ -13,58 +13,77 @@
 <body>
 
 <header>
-    <h1 id = "logo"> Teorihandboken</h1>
+    <h1 id = "logo"> Teorihandboken</h1> <a class ="logout">Logga ut</a>
 </header>
 
-    <div class = "inheader">
-        <h1> Skapa nytt inlägg</h1><button class = 'logout'>Logga ut</button>
-    </div> 
 
+        <h1 class ="create-post-h1"> Skapa nytt inlägg</h1>
+   
+    <!-- Create new post -->
     <section class = "create">
 
-        <h2>Taggar:</h2>
-        
+        <!-- Select tags --> 
         <div class = "select-tags" name ="tags">
-            <div>
-                <input class="check-tags" type="checkbox">
-                <label>HTML</label>
+            <div class = "tag">
+                <input class="check-tags" type="checkbox" id="HTML">
+                <label> HTML</label>
             </div>
-            <div>    
-                <input class="check-tags" type="checkbox">
-                <label>CSS</label>
+            <div class = "tag">    
+                <input class="check-tags" type="checkbox" id="CSS">
+                <label> CSS</label>
             </div>
-            <div>        
-                <input class="check-tags" type="checkbox">
-                <label>JavaScript</label>
+            <div class = "tag">        
+                <input class="check-tags" type="checkbox" id="JavaScript">
+                <label> JavaScript</label>
             </div>
-            <div>
-                <input class="check-tags" type="checkbox">
+            <div class = "tag">
+                <input class="check-tags" type="checkbox" id="PHP"> 
                 <label>PHP</label>
             </div>        
+            <div class = "tag">
+              <input class="check-tags" type="checkbox" id="Projektmetodik">
+              <label> Projektmetodik</label>
+            </div> 
+            <div class = "tag">
+                <input class="check-tags" type="checkbox" id="UX">
+                <label> UX och design</label>
+            </div> 
+            <div class = "tag">
+                <input class="check-tags" type="checkbox" id="AvanaceradJS">
+                <label> Avancerad JavaScript</label>
+            </div> 
+            <div class = "tag">
+                <input class="check-tags" type="checkbox" id="Program-metodik">
+                <label> Programmeringsmetodik</label>
+            </div>
+
         </div>
 
-        <div>    
+        <div>  
+            <!-- Insert title and body -->  
             <form class = "create-post">
-                <label for = "title"> Titel: </label>
-                <input type = "text" id="title" name="title">
-                <label for = "text"> Text: </label>
-                <input type = "text" id = "text" name = "text">
+                <input type ="text" placeholder ="Din titel" id="title" name="title" method= "POST">
+                <textarea type ="text" placeholder ="Din text" name="textfield" class="textfield" method="POST"></textarea>
             </form> 
 
-            <div class = "category-button">    
-                <select class ="select-category" name = "category">
+            <!-- Select category -->
+            <div class = "category-save">    
+                <select class ="select-category" name = "category" id="soflow">
                     <option value = "" disabled selected> Välj kategori </option>
-                    <option value = "1"> Frontend </option>
-                    <option value = "2"> Backend </option>
-                    <option value = "3"> Övrigt </option>
+                    <option value = "front"> Frontend </option>
+                    <option value = "back"> Backend </option>
+                    <option value = "other"> Övrigt </option>
                 </select>
-                <button class = "save">Spara</button>
+                <a class="save">Spara</a>
             </div>
 
         </div>    
    
     </section>
 
-
+    <script src="./index.js"></script>
 </body>
+<footer>
+    
+</footer>
 </html>

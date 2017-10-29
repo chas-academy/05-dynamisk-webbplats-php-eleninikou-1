@@ -8,65 +8,72 @@ body {
     background-image: url("./images/chas.png");
 }
 
-#logo {
-    font-size: 70px;
-    text-transform: uppercase;
-    text-align: center;
-    height: 100px;
-    background-color: rgba(255, 255, 255, 0.205);
-    color:  rgb(218, 213, 213);
 
-}
+body:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, transparent 0%, black 100%);
+  }
 
-.inheader {
-    width: 70%;
+header {
     display: flex;
-    align-items: center;
-    margin: auto;
+    align-items: baseline;
     justify-content: space-between;
-    margin-top: 25px;
-}
-
-.inheader > h1 {
-    text-align: center;
-    font-size: 35px;
+    margin: auto;
+    font-size: 40px;
     text-transform: uppercase;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    color: rgb(182, 176, 176);
+    text-align: center;
+    height: 150px;
+    color:  rgb(218, 213, 213);
+    width: 70%;
 }
 
 .logout {
-    text-transform: uppercase;
-    padding: 10px;
     font-size: 20px;
-    box-shadow: 3px 3px 1px #3f3e3e;
-    margin-left: 5px;
-    background-color: rgb(226, 226, 220);
-    color: #3f3e3e;
+    text-transform: uppercase;
+}
+
+.create-post-h1 {
+    font-size: 30px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: rgb(182, 176, 176);
+    margin-left: 195px;
 }
 
 .create {
     display: flex;
     margin: auto;
-    background-color: rgba(255, 255, 255, 0.205);
+    background-color: rgba(255, 255, 255, 0.096);
     width: 70%;
     height: 60%;
-    box-shadow: 3px 3px 1px #3f3e3e;
-    padding: 15px;
+    padding-top: 10px;
 }
 
 .select-tags {
     font-size: 17px;
-    width: 35%;
+    width: 25%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     padding: 15px;
     background-color: rgba(255, 255, 255, 0.13);
-    margin: 26px 15px 43px 20px;
-    color: rgb(218, 213, 213);
-    border: 1px solid rgb(196, 193, 193);
+    margin: 10px 15px 18px 20px;
+    color: rgb(218, 213, 213);   
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+}
+
+.check-tags {
+    margin-right: 5px;
 }
 
 .create > h2 {
@@ -83,29 +90,48 @@ body {
     font-size: 20px;
 }
 
-.category-button {
-    width: 96%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+select#soflow {
+    -webkit-appearance: button;
+    -webkit-border-radius: 2px;
+    -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    -webkit-padding-end: 20px;
+    -webkit-padding-start: 2px;
+    -webkit-user-select: none;
+    background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+    background-position: 97% center;
+    background-repeat: no-repeat;
+    border: 1px solid #AAA;
+    color: #555;
+    font-size: inherit;
+    overflow: hidden;
+    padding: 5px 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 300px;
+    cursor: pointer;
+ }
 
-.select-category {
-    font-size: 20px;
+.category-save {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
 }
 
 .save {
-    padding: 6px;
-    margin-left: 3px;
-    font-size: 17px;
+    font-size: 30px;
     text-transform: uppercase;
-    box-shadow: 3px 3px 1px #3f3e3e;
+    color: rgb(218, 213, 213); 
+    margin-right: 25px;
+}
+
+.save:hover {
+    cursor: pointer;
 }
 
 input[type=text] {
     width: 100%;
-    padding: 10px 20px;
-    margin: 3px 0;
+    padding: 10px;
+    margin: 10px 0;
     font-size: 20px;
     box-sizing: border-box;
     border: 1px solid rgb(196, 193, 193);
@@ -113,4 +139,12 @@ input[type=text] {
 
 input[id=text]{
     height: 250px;
+    margin-bottom: 10px;
+}
+
+.textfield {
+    width: 603px; 
+    height: 305px;
+    font-size: 15px;
+    padding: 10px;
 }
