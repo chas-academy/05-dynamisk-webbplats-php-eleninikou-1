@@ -1,21 +1,4 @@
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="./style.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <title>Teorihandboken</title>
-
-</head>
-
-<body>
-
-<header>
-    <h1 id="logo">Teorihandboken</h1> <a href ="#" class ="logout">Logga ut</a>
-</header>
-
+<?php include "./templates/header.php"; ?>
 
         <h1 class ="create-post-h1"> Skapa nytt inlägg</h1>
    
@@ -63,7 +46,7 @@
             <!-- Insert title and body -->  
             <form class = "create-post">
                 <input type ="text" placeholder =" < Din titel >" id="title" name="title" method= "POST">
-                <textarea type ="text" placeholder =" < Din text >" name="textfield" class="textfield" method="POST"></textarea>
+                <textarea type ="text" placeholder =" < Din text >" id ="body" name="body" class="textfield" method="POST"></textarea>
             </form> 
 
             <!-- Select category -->
@@ -81,9 +64,5 @@
    
     </section>
 
-    <script src="./index.js"></script>
-</body>
-<footer>
-    
-</footer>
-</html>
+
+<?php include "./templates/footer.php"; ?>

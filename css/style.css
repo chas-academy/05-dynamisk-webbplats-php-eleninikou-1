@@ -18,7 +18,7 @@ body:after {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to top, transparent 0%, black 100%);
+    background: linear-gradient(to top, transparent 0%, rgba(138, 198, 199, 0.473) 100%);
   }
 
 header {
@@ -30,8 +30,9 @@ header {
     text-transform: uppercase;
     text-align: center;
     height: 150px;
-    color:  rgb(192, 187, 187);
+    color:  rgb(245, 238, 238);
     width: 70%;
+    opacity: 0.7;
 }
 
 .logout {
@@ -123,6 +124,7 @@ select#soflow {
     display: flex;
     justify-content: space-between;
     margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 .save {
@@ -130,7 +132,6 @@ select#soflow {
     text-transform: uppercase;
     color: rgb(218, 213, 213); 
     margin-right: 11px;
-    background-color: rgba(26, 25, 25, 0.281);
     padding-left: 225px;
     padding-right: 10px;
 }
@@ -154,8 +155,50 @@ input[id=text]{
 }
 
 .textfield {
-    width: 632px; 
-    height: 317px;
+    width: 610px; 
+    height: 300px;
     font-size: 20px;
     padding: 10px;
 }
+
+
+/* INDEX */
+
+.box {
+    width: 70%;
+    height: 60%;
+    margin: auto;
+}
+
+.create-link {
+    color: rgb(245, 238, 238);
+    width: 200px;
+}
+
+
+/* NY ANVÄNDARE */
+.new-user-info {
+    display: flex;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.096);
+    width: 53%;
+    height: 65%;
+}
+
+.create-user {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: space-around;
+    font-size: 12px;
+}
+
+input[type="submit"] {
+    font-size: 50px;
+    width: 50%;
+}
+
+.submit-buttons {
+    display: flex;
+}
+
