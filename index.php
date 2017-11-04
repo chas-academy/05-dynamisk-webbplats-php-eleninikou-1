@@ -1,53 +1,67 @@
 <?php 
+
+Namespace Teorihandbok;
+
+include './templates/footer.php'; 
 include './templates/header.php'; 
-require_once ('databse.php'); //Include the databse connection
-
-// Run the code only if form is submitted
-if (isset($_POST['create_user'])) 
-{   
-        // The inserted values from input below are stored in $_POST array
-        $new_user = array(
-            'firstname' => $_POST['firstname'],
-            'lastname'  => $_POST['lastname'],
-            'email'     => $_POST['email'],
-            'password'  => $_POST['password']
-        );
-            
-        try {
-            // Adding new user into users table
-            $add_user = $connection->query('INSERT INTO users (firstname, lastname, email, password) 
-            values (:firstname, :lastname, :email, :password)');
-
-            //The query returns a PDO statement as a string
-            $statement = $connection->prepare($add_user);
-            $statement->execute($new_user);
-
-        } catch (Exception $e) 
-        {       
-            //getMessage method from exception model
-            echo $e->getMessage();
-            die();
-        }
+include './src/core/connection.php'; //Include the databse connection
+session_start();
 
 
-} //else { (isset($_POST['login']))-- Logga in till create_post.php }
+/*// Kollar vart filer till klasserna finns. Laddar in de
+function autoloader($classname)
+{
+    $lastSlash = strpos($classname, '\\') + 1;
+    $classname = substr($classname, $lastSlash);
+    $directory = str_replace('\\', '/', $classname);
+    $filename = __DIR__ . '/src/' . $directory . '.php';
+    require_once($filename);
+}
+
+spl_autoload_register('autoloader');*/
 
 ?>
+    <section class="index">
+    <nav class ="search">
+        <h2>Sök inlägg</h2>
+        <ul class="Searchposts">
+            <li class="navmenu">Efter Kategori</li>
+                <ul class="categories">
+                    <li><a href="./views/Frontend.php">Frontend</a></li>
+                    <li><a href="./views/Backend.php">Backend</a></li>
+                    <li><a href="./views/Other.php">Övrigt</a></li>
+                </ul>
+            <li class="navmenu">Efter taggar</li>
+                <ul class="tags">
+                    <li><a href="./views/HTML.php">HTML</a></li>
+                    <li><a href="./views/CSS.php">CSS</a></li>
+                    <li><a href="./views/JavaScript.php">JavaScript</a></li>
+                    <li><a href="./views/AvanceradJavaScript.php">Avancerad Javascript</a></li>
+                    <li><a href="./views/UXDesign.php">UX och Design</a></li>
+                    <li><a href="./views/PHP.php">PHP</a></li>
+                    <li><a href="./views/Projektmetodik.php">Projektmetodik</a></li>
+                    <li><a href="./views/programmeringsmetodik.php">Programmeringsmetodik</a></li>
+                </ul>
+        </ul>
+    </nav>
 
-<section class ="new-user-info">
+    <section class="loginsection">
+        <h2 class="create-h2">Skapa inlägg</h2>
+        
+        <section class ="user-login">
 
-    <form class = "create-user" method="POST">
-    	<input type="text" name="firstname" id="firstname" placeholder =" < Ditt förnamn > ">
-    	<input type="text" name="lastname" id="lastname" placeholder = " < Ditt efternamn > ">
-        <input type="text" name="email" id="email" placeholder =" < Email > ">
-        <input type="text" name="password" id="password" placeholder =" < Lösenord > ">
-        <div class ="submit-buttons">
-            <input type="submit" name="create_user" value="SKAPA ANVÄNDARE">
-            <input type="submit" name="login" value="LOGGA IN">
-        </div>
-    </form>
+            <form class="login" action="./src/Controllers/UserLoginController.php" method="POST">
+                <div class="logintext">
+                    <input type="text" name="username" id="username">
+                    <h5>Namn</h5>
+                </div>
+                <div class="logintext">    
+                    <input type="text" name="password" id="password"> 
+                    <h5>Lösenord</h5>
+                </div>
 
-</section>
+                <button type="submit" name="login" id="loginbutton" value="LOGGA IN"> Logga in </button>
+            </form> 
+        </section>
+    </section>    
 
-
-<?php include "./templates/footer.php"; ?>

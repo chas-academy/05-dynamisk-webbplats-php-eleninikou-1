@@ -1,8 +1,7 @@
 <?php 
 
-include "./templates/header.php"; 
-include "./templates/footer.php"; 
-
+include "../templates/header.php"; 
+include "../templates/footer.php"; 
 
 ?>
 
@@ -17,37 +16,37 @@ include "./templates/footer.php";
             
             <div class="post-tags">
                 <section class="post-input">
-                    <input type="text"  id="title" name="title">
-                    <textarea type="text" id ="body" name="body" class="textfield"></textarea>
+                    <input type="text" placeholder=" < titel >" id="title" name="title">
+                    <textarea type="text" placeholder =" < text >" id ="body" name="body" class="textfield"></textarea>
                 </section>
 
                 <section class="tags-input">           
                     <!-- Select tags --> 
-                    <input class="check-tags" type="checkbox" name ="tags[]" value="1" id="HTML">
+                    <input class="check-tags" type="checkbox" name ="tags[]" value="HTML" id="HTML">
                     <label for="HTML"> HTML </label>
 
 
-                    <input class="check-tags" type="checkbox" name ="tags[]" value="2" id="CSS" >
+                    <input class="check-tags" type="checkbox" name ="tags[]" value="CSS" id="CSS" >
                     <label for="CSS"> CSS </label>
 
 
-                    <input class="check-tags" type="checkbox" name ="tags[]" value="3" id="JavaScript">
+                    <input class="check-tags" type="checkbox" name ="tags[]" value="JavaScript" id="JavaScript">
                     <label for="JavaScript"> JavaScript </label>
 
 
-                    <input class="check-tags" type="checkbox" name ="tags[]" value="4" id="AvanaceradJS">
+                    <input class="check-tags" type="checkbox" name ="tags[]" value="AvanaceradJS" id="AvanaceradJS">
                     <label for="AvanaceradJS"> Avancerad JavaScript </label>
 
-                    <input class="check-tags" type="checkbox" name ="tags[]" value="5" id="UX">
+                    <input class="check-tags" type="checkbox" name ="tags[]" value="UX" id="UX">
                     <label for="UX"> UX och design </label>
 
-                    <input class="check-tags" type="checkbox" name ="tags[]" value="6" id="PHP"> 
+                    <input class="check-tags" type="checkbox" name ="tags[]" value="PHP" id="PHP"> 
                     <label for="PHP"> PHP </label>
 
-                    <input class="check-tags" type="checkbox" name ="tags[]" value="7" id="Projektmetodik">
+                    <input class="check-tags" type="checkbox" name ="tags[]" value="Projektmetodik" id="Projektmetodik">
                     <label for="Projektmetodik"> Projektmetodik </label>
 
-                    <input class="check-tags" type="checkbox" name ="tags[]" value="8" id="Program-metodik">
+                    <input class="check-tags" type="checkbox" name ="tags[]" value="Program-metodik" id="Program-metodik">
                     <label for="Program-metodik"> Programmeringsmetodik </label>
 
                 </section>
@@ -55,13 +54,13 @@ include "./templates/footer.php";
 
                     <!-- Select category -->
                 <div class = "category-save">    
-                    <select class ="select-category" name = "category">
+                    <select class ="select-category" name = "category" id="soflow">
                         <option value = "" disabled selected> Välj kategori </option>
                         <option value = 1> Frontend </option>
                         <option value = 2> Backend </option>
-                        <option value = 3> Övrigt </option>
+                        <option value = 2> Övrigt </option>
                     </select>
-                    <button type="submit" class="save">Save</button>
+                    <button type="submit">Save</button>
                 </div>  
    
         </form>

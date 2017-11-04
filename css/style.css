@@ -1,42 +1,48 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     text-decoration: none;
+    list-style: none;
 }
 
-body {
-    background-image: url("./images/chas.png");
-}
-
-
-body:after {
+#headervideo {
+    width: 100%;
     z-index: -1;
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to top, transparent 0%, rgba(138, 198, 199, 0.473) 100%);
-  }
+}
 
 header {
     display: flex;
     align-items: baseline;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: auto;
-    font-size: 40px;
-    text-transform: uppercase;
+    font-size: 25px;
     text-align: center;
-    height: 150px;
-    color:  rgb(245, 238, 238);
+    text-transform: uppercase;
+    height: 100px;
+    color:  rgb(27, 26, 26);
+    width: 100%;
+}
+
+#logo {
+    position: absolute;
+    color: white;
+    font-size: 90px;
+    margin-top: 40px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+}
+
+.info {
     width: 70%;
-    opacity: 0.7;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
 }
 
 .logout {
-    font-size: 20px;
+    font-size: 25px;
     text-transform: uppercase;
     cursor: pointer;
     color:  rgb(218, 213, 213);
@@ -45,38 +51,32 @@ header {
 .create-post-h1 {
     font-size: 30px;
     text-transform: uppercase;
-    margin-bottom: 10px;
     color: rgb(192, 187, 187);
-    margin-left: 195px;
 }
 
 .create {
+    margin-top: 150px;
     display: flex;
+    justify-content: space-around;
     margin: auto;
-    background-color: rgba(255, 255, 255, 0.096);
     width: 70%;
-    height: 59%;
+    height: 50%;
 }
 
-.select-tags {
+.tags-input {
     font-size: 17px;
     width: 33%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     padding: 15px;
-    background-color: rgba(26, 25, 25, 0.281);
-    margin: 10px;
+    background-color: rgba(26, 25, 25, 0.418);
+    margin: 8px;
     color: rgb(218, 213, 213);   
 }
 
-.tag {
+.post-tags {
     display: flex;
-    align-items: center;
-}
-
-.check-tags {
-    margin-right: 5px;
 }
 
 label:hover {
@@ -99,27 +99,6 @@ label:hover {
     font-size: 20px;
 }
 
-select#soflow {
-    -webkit-appearance: button;
-    -webkit-border-radius: 2px;
-    -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-    -webkit-padding-end: 20px;
-    -webkit-padding-start: 2px;
-    -webkit-user-select: none;
-    background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
-    background-position: 97% center;
-    background-repeat: no-repeat;
-    border: 1px solid #AAA;
-    color: rgb(139, 137, 137);
-    font-size: 20px;
-    overflow: hidden;
-    padding: 5px 10px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 300px;
-    cursor: pointer;
- }
-
 .category-save {
     display: flex;
     justify-content: space-between;
@@ -127,36 +106,39 @@ select#soflow {
     margin-bottom: 10px;
 }
 
-.save {
-    font-size: 30px;
-    text-transform: uppercase;
-    color: rgb(218, 213, 213); 
-    margin-right: 11px;
-    padding-left: 225px;
-    padding-right: 10px;
+input[type=checkbox]{
+    display: none;
 }
 
-.save:hover {
-    cursor: pointer;
+
+input[type=checkbox]:checked + label {
     color: rgba(26, 25, 25, 0.479);
 }
 
 input[type=text] {
+    padding: 10px;
+    border: none;
+    border-bottom: solid 2px #2e2d2d;
+    transition: border 0.3s;
+    background-color: rgba(255, 255, 255, 0);
     width: 632px;
     padding: 10px;
     margin: 10px 0px 5px 0px;
     font-size: 20px;
-    box-sizing: border-box;
-    border: 1px solid rgb(196, 193, 193);
+    box-sizing: border-box;  
 }
 
 input[id=text]{
     height: 250px;
 }
 
+input[type=submit]:hover {
+    background-color: rgba(26, 25, 25, 0.479);
+}
+
 .textfield {
     width: 610px; 
-    height: 300px;
+    height: 285px;
     font-size: 20px;
     padding: 10px;
 }
@@ -164,41 +146,106 @@ input[id=text]{
 
 /* INDEX */
 
-.box {
-    width: 70%;
-    height: 60%;
-    margin: auto;
-}
-
-.create-link {
-    color: rgb(245, 238, 238);
-    width: 200px;
-}
-
-
-/* NY ANVÄNDARE */
-.new-user-info {
+.index {
     display: flex;
+    flex: 1;
+    width: 60%;
+    height: 50%;
     margin: auto;
-    background-color: rgba(255, 255, 255, 0.096);
-    width: 53%;
-    height: 65%;
+    margin-top: 80px;
+    background-color: rgba(255, 255, 255, 0.363);
 }
 
-.create-user {
+.loginsection {
     display: flex;
     flex-direction: column;
-    margin: auto;
-    justify-content: space-around;
-    font-size: 12px;
-}
-
-input[type="submit"] {
-    font-size: 50px;
     width: 50%;
 }
 
-.submit-buttons {
+.search {
+    width: 50%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.171);
+}
+
+.search > h2, .create-h2 {
+    text-transform: uppercase;
+    margin-top: 20px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    margin-bottom: 30px;
+}
+
+.navmenu {
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.searchposts {
     display: flex;
+    flex-direction: column;
+    margin: 15px;
+    margin-left:100px;
+}
+
+.searchposts > li {
+    color: rgb(53, 53, 51);
+}
+
+.categories > li > a , .tags > li > a {
+    color: rgb(192, 115, 79);
+    margin-left: 15px;
+}
+
+.categories > li > a:hover , .tags > li > a:hover {
+    color: rgb(231, 226, 220);
+}
+
+.categories, .tags {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+
+
+
+/* LOGGA IN */
+.user-login {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.171);
+    width: 65%;
+    height: 70%;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 10px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logintext {
+    display: flex;
+    flex-direction: column;
+}
+
+#username, #password {
+    width: 100%;
+    height: 10%;
+    font-size: 12px;
+}
+
+#loginbutton {
+    border: none;
+    text-transform: uppercase;
+    background-color:rgba(255, 255, 255, 0);
+    font-size: 20px;
 }
 
