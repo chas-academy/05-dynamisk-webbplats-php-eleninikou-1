@@ -1,15 +1,6 @@
+ 
+    <footer>
+        <h5>Chas Academy</h5>   
+    </footer>
 </body>
-<script>
-    let video = document.getElementById('#headervideo');
-    
-    function loop(){
-        video.loop = true;
-        video.load();
-    }
-    
-</script>    
-
-<footer>
-    
-</footer>
 </html>

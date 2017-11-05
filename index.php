@@ -7,8 +7,7 @@ include './templates/header.php';
 include './src/core/connection.php'; //Include the databse connection
 session_start();
 
-
-/*// Kollar vart filer till klasserna finns. Laddar in de
+/*
 function autoloader($classname)
 {
     $lastSlash = strpos($classname, '\\') + 1;
@@ -18,7 +17,7 @@ function autoloader($classname)
     require_once($filename);
 }
 
-spl_autoload_register('autoloader');*/
+spl_autoload_register('autoloader'); */
 
 ?>
     <section class="index">

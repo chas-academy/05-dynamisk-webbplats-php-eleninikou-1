@@ -3,10 +3,27 @@
 namespace Teorihandbok\Controllers;
 
 use Teorihandbok\Models\PostModel;
+use PDO;
 
-class PostController extends AbstractController
+class PostController //extends AbstractController
 {
+
+    public function saveNewPost() {
+
+        require_once './Core/connection.php';
+        
+        $newPost = array(
+            'title'    => $_POST['title'],
+            'body'     => $_POST['body'],
+            'category' => $_POST['category'],
+            'tags'     => $_POST['tags']
+        );
+
+        $saveNewPost = new PostModel;
+        $post = $saveNewPost->savePost();
     
+        header("location: ../../views/admin.php");
+    }
 }
 
 

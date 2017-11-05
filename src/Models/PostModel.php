@@ -2,16 +2,82 @@
 
 namespace Toerihandbok\Models;
 
-use Teorihandbok\Domain\posts;
+use Teorihandbok\src\Controllers\PostController;
 
-// To get access to database connection
-class Postmodel extends Abstractmodel 
+
+//require_once './Core/connection.php';
+
+
+class PostModel //extends AbstractModel to get connection. 
 {
-    public function getByCategory(int $category): Post
+    public function savePost()
     {
-        $query = 'SELECT * FROM posts WHERE category = :category';
         
+        try {  
+
+            require './Core/connection.php';
+
+            $query = "INSERT INTO posts (title, body, category, tag) VALUES (:title, :body, :category, :tags)";
+            //The query returns a PDO statement as a string
+            $statement = $connection->prepare($query);
+
+            $statement->bindValue(':title', $newPost['title'], PDO::PARAM_STR); 
+            $statement->bindValue(':body', $newPost['body'], PDO::PARAM_STR);
+            $statement->bindValue(':category', $newPost['category'], PDO::PARAM_INT);
+            $statement->bindValue(':tags', $newPost['tags'], PDO::PARAM_INT);
+
+            $postID = $connection->lastInsertId();
+
+            $query = "INSERT INTO post_category (posts_id, categories_id) VALUES (:post, :category)";
+            $statement = $connection->prepare($query);
+            $statment->bindValue(':post', $postID, PDO::PARAM_INT);
+
+
+            $query = "INSERT INTO post_tags (posts_id, tags_id) VALUES (:post, :tags)";
+            $statement = $connection->prepare($query);
+            $statement->bindValue(':post', $postID, PDO::PARAM_INT);
+
+            foreach($tags as $tag) {
+                $statement->bindValue(':tags', $tag);
+            }
+
+
+            $statement->execute(); // ? Vilken av de ?
+            $connection->handler->commit();
+       
+        } catch (Exception $e) {       
+            echo $e->getMessage();
+            die();
+        }
     }
+
+    public function updatePost()
+    {
+        //$id = valt inlägg.
+        try {  
+
+            require './Core/connection.php';
+
+            $query = "UPDATE posts SET title = "$title", body = "$body", category = "$category", tag = "$tags" WHERE id = $id";
+            //UPDATE posts SET title = "snälla", body = "fungera" WHERE id = 24; -> fungerar.
+            
+            $statement = $connection->prepare($query);
+            $statement->execute(); 
+
+        } catch (Exception $e) {  
+            //$connectino->handler->rollBack():     
+            echo $e->getMessage();
+            die();
+        }
+    }
+
+
+    public function deletePost()
+    {
+        $query = "DELETE FROM posts WHERE id = $id; "
+    }
+
+
 
 }
 

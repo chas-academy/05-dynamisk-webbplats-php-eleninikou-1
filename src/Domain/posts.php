@@ -2,32 +2,28 @@
 
 namespace Teorihandbok\Domain;
 
-use PDO;
+use \PDO;
     
-    save();
-
     function save() {
        
-       require_once '../Core/database.php';
+       require_once '../Core/connection.php';
         
         try {            
-            $new_post = array(
+            $newPost = array(
                 'title'    => $_POST['title'],
                 'body'     => $_POST['body'],
                 'category' => $_POST['category'],
                 'tags'     => $_POST['tags']
             );
-    
-            print_r($new_post);
 
-            $query = "INSERT INTO posts (title, body, post_category, post_tag) VALUES (:title, :body, :category, :tags)";
+            $query = "INSERT INTO posts (title, body, category, tag) VALUES (:title, :body, :category, :tags)";
             //The query returns a PDO statement as a string
             $statement = $connection->prepare($query);
 
-            $statement->bindValue(':title', $new_post['title'], PDO::PARAM_STR); 
-            $statement->bindValue(':body', $new_post['body'], PDO::PARAM_STR);
-            $statement->bindValue(':category', $new_post['category'], PDO::PARAM_INT);
-            $statement->bindValue(':tags', $new_post['tags'], PDO::PARAM_INT);
+            $statement->bindValue(':title', $newPost['title'], PDO::PARAM_STR); 
+            $statement->bindValue(':body', $newPost['body'], PDO::PARAM_STR);
+            $statement->bindValue(':category', $newPost['category'], PDO::PARAM_INT);
+            $statement->bindValue(':tags', $newPost['tags'], PDO::PARAM_INT);
 
             $statement->execute();
 
@@ -37,8 +33,9 @@ use PDO;
             echo $e->getMessage();
             die();
         }
-
     }
+    save();
+    header("location: ../../views/admin.php");
 
 
 

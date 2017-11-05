@@ -1,5 +1,6 @@
 <?php
 
+/*
 namespace Teorihandbok\Models;
 
 use src\Core\connection;
@@ -11,4 +12,4 @@ abstract class AbstractModel {
     public function __construct() {
         $this->connection = Connection::getInstance()->handler;
     }
-}
+}*/

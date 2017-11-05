@@ -15,7 +15,7 @@
 <body>
 
 <header>
-    <video id="headervideo" class ="video" autoplay>
+    <video id="headervideo" class ="video" autoplay controls loop>
         <source src="./css/images/hands.mp4" type="video/mp4">
     </video>
 

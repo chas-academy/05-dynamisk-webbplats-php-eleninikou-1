@@ -11,6 +11,17 @@
     z-index: -1;
 }
 
+.backgroundphoto {
+z-index: -1;
+  min-height: 100%;
+  min-width: 100%;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 header {
     display: flex;
     align-items: baseline;
@@ -33,64 +44,95 @@ header {
     font-weight: bold;
 }
 
-.info {
-    width: 70%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+.admin-logo {
+    width: 100%;
+    font-size: 90px;
+    margin-top: 40px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+    color: rgb(51, 50, 50);
 }
 
-.logout {
-    font-size: 25px;
-    text-transform: uppercase;
-    cursor: pointer;
-    color:  rgb(218, 213, 213);
-}
-
-.create-post-h1 {
-    font-size: 30px;
-    text-transform: uppercase;
-    color: rgb(192, 187, 187);
-}
-
-.create {
-    margin-top: 150px;
-    display: flex;
-    justify-content: space-around;
-    margin: auto;
-    width: 70%;
-    height: 50%;
-}
-
-.tags-input {
-    font-size: 17px;
+.right-side {
     width: 33%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.logout {
+    width: 85%;
+    display: flex;
+    align-content: right;
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color:  rgb(54, 52, 52);
+    border-bottom: 1px solid black;
+}
+
+.create {
+    display: flex;
     justify-content: space-around;
-    padding: 15px;
-    background-color: rgba(26, 25, 25, 0.418);
-    margin: 8px;
-    color: rgb(218, 213, 213);   
+    margin: auto;
+    margin-top: 35px;
+    width: 70%;
+    height: 65%;
+    background-color: rgba(255, 255, 255, 0.658);
+}
+
+.post-input {
+    width: 100%;
+}
+
+
+.logout {
+    text-transform: uppercase;
+    font-size: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.select-tags {
+    height: 45%;
+    width: 100%;
+    font-size: 15px;
+    padding: 10px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.658);
+    border-bottom: 1px solid black;
+}
+
+.select {
+    font-size: 17px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+select > option {
+    cursor: pointer;
+}
+
+select > option:hover {
+    color: rgb(172, 165, 165);
 }
 
 .post-tags {
     display: flex;
 }
 
-label:hover {
-    cursor: pointer;
-    color: rgba(26, 25, 25, 0.479);
-}
-
-
-.create > h2 {
+.select-category {
+    width: 100%;
+    height: 25%;
+    font-size: 17px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
     text-align: center;
-    color: rgb(61, 59, 59);
-    font-size: 20px;
-    position: absolute;
-    margin-left: 19px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.658);
+    border-bottom: 1px solid black;
 }
 
 .create-post {
@@ -99,28 +141,12 @@ label:hover {
     font-size: 20px;
 }
 
-.category-save {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
-    margin-bottom: 10px;
-}
-
-input[type=checkbox]{
-    display: none;
-}
-
-
-input[type=checkbox]:checked + label {
-    color: rgba(26, 25, 25, 0.479);
-}
-
 input[type=text] {
-    padding: 10px;
     border: none;
-    border-bottom: solid 2px #2e2d2d;
+    border-bottom: 1px solid black;
+    padding: 10px;
     transition: border 0.3s;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0.219);
     width: 632px;
     padding: 10px;
     margin: 10px 0px 5px 0px;
@@ -132,15 +158,23 @@ input[id=text]{
     height: 250px;
 }
 
-input[type=submit]:hover {
-    background-color: rgba(26, 25, 25, 0.479);
-}
-
 .textfield {
-    width: 610px; 
-    height: 285px;
+    border: none;
+    border-bottom: 1px solid black;
+    width: 632px; 
+    height: 347px;
     font-size: 20px;
     padding: 10px;
+    background-color: rgba(255, 255, 255, 0.76);
+}
+
+.save {
+    border: none;
+    font-size: 35px;
+    color: rgb(46, 44, 44);
+    background-color: rgba(255, 255, 255, 0);
+    text-transform: uppercase;
+    cursor: pointer;
 }
 
 
@@ -153,7 +187,7 @@ input[type=submit]:hover {
     height: 50%;
     margin: auto;
     margin-top: 80px;
-    background-color: rgba(255, 255, 255, 0.363);
+    background-color: rgba(255, 255, 255, 0.658);
 }
 
 .loginsection {
@@ -165,7 +199,7 @@ input[type=submit]:hover {
 .search {
     width: 50%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.171);
+    background-color: rgba(255, 255, 255, 0.288);
 }
 
 .search > h2, .create-h2 {
@@ -214,8 +248,8 @@ input[type=submit]:hover {
 .user-login {
     display: flex;
     flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.171);
-    width: 65%;
+    background-color: rgba(255, 255, 255, 0.473);
+    width: 80%;
     height: 70%;
     align-items: center;
     margin: auto;
@@ -249,3 +283,19 @@ input[type=submit]:hover {
     font-size: 20px;
 }
 
+
+footer {
+    width: 100%;
+    display: flex;
+    height: 70px;
+    background-color: rgba(255, 255, 255, 0.678);
+    position: absolute;
+    bottom: 0px;
+    justify-content: center;
+}
+
+footer > h5 {
+    margin-top: 15px;
+    text-transform: uppercase;
+    font-size: 20px;
+}
