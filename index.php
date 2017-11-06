@@ -41,6 +41,7 @@ spl_autoload_register('autoloader'); */
                     <li><a href="./views/Projektmetodik.php">Projektmetodik</a></li>
                     <li><a href="./views/programmeringsmetodik.php">Programmeringsmetodik</a></li>
                 </ul>
+           <!-- <li class="navmenu"><a> Alla inlägg </a></li> -->
         </ul>
     </nav>
 

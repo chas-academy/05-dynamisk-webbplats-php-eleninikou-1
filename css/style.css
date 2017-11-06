@@ -45,12 +45,14 @@ header {
 }
 
 .admin-logo {
+    padding-top: 30px;
     width: 100%;
     font-size: 90px;
-    margin-top: 40px;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: bold;
     color: rgb(51, 50, 50);
+    background-color: rgba(255, 255, 255, 0.658);
+    height: 90px;
 }
 
 .right-side {
@@ -162,7 +164,7 @@ input[id=text]{
     border: none;
     border-bottom: 1px solid black;
     width: 632px; 
-    height: 347px;
+    height: 349px;
     font-size: 20px;
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.76);

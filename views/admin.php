@@ -41,7 +41,7 @@ include "../templates/footer.php";
                 <section class="right-side">
                     <a href ="../index.php" class ="logout">Logga ut</a>
                         <!-- Select Tags -->          
-                        <select multiple class="select-tags"> 
+                        <select multiple class="select-tags" name="tags"> 
                             <option value="" disabled selected class="select"> Välj taggar </option>
                             <option value= "HTML"> HTML </option>
                             <option value= "CSS"> CSS </option>
@@ -54,7 +54,7 @@ include "../templates/footer.php";
                         </select>    
 
                     <!-- Select category -->
-                    <select multiple class ="select-category" name = "category">
+                    <select multiple class ="select-category" name ="category">
                         <option value = "" disabled selected class ="select"> Välj kategori </option>
                         <option value = 1> Frontend </option>
                         <option value = 2> Backend </option>

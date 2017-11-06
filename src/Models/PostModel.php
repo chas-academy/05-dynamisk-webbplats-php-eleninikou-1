@@ -31,6 +31,7 @@ class PostModel //extends AbstractModel to get connection.
             $query = "INSERT INTO post_category (posts_id, categories_id) VALUES (:post, :category)";
             $statement = $connection->prepare($query);
             $statment->bindValue(':post', $postID, PDO::PARAM_INT);
+            $statment->bindValue()
 
 
             $query = "INSERT INTO post_tags (posts_id, tags_id) VALUES (:post, :tags)";
