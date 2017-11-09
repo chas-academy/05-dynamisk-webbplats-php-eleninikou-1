@@ -1,5 +1,10 @@
 
 {
+  "start": {
+    "controller": "Default",
+    "method": "start"
+  },
+
   "posts": {
     "controller": "Post",
     "method": "getAll"
@@ -10,47 +15,28 @@
     "method": "getAllWithPageNumber",
     "params": {
       "page": "number"
-    },
+    }
+  },
 
-    "login": {
-      "controller": "User",
-      "method": "login",
-    },
+  "login": {
+    "controller": "User",
+    "method": "login",
+  },
+
+  "categories/": {
+    "controller": "Post",     // <--- Controller som körs
+    "method": "getCategories", // <--- Vilken metod i controllern
+  },
+
+  "posts/category/:id": {
+      "controller": "Post",
+      "method": "getByCategory", // <--- Denna metod tar emot en int $categoryId (eller vad du nu väljer att kalla den)
+      "params": {
+        "id": "number"
+      }
   }
 
 
 }
 
 
-
-
-{
-    "start": {
-      "controller": "Default",
-      "method": "start"
-    },
-    
-    },
-    "book/:id": {
-      "controller": "Book",
-      "method": "get",
-      "params": {
-        "id": "number"
-      }
-    },
-    "books/search": {
-      "controller": "Book",
-      "method": "search"
-    },
-    "customers": {
-      "controller": "Customer",
-      "method": "getAll"
-    },
-    "customer/:id": {
-      "controller": "Customer",
-      "method": "get",
-      "params": {
-        "id": "number"
-      }
-    }
-  }

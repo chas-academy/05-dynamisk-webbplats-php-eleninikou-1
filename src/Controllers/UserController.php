@@ -5,8 +5,6 @@ session_start();
 $msg = "";
 
 
-
-
      // Run the code only if form is submitted
 if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) 
 {   

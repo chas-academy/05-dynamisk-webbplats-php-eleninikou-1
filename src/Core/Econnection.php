@@ -10,20 +10,6 @@ use PDO;
 require ('Econfig.php');
 
 
-//class Connection extends Singleton
-//{
-//    public $handler;
-//    protected function __construct()
-//    {
-//        try {
-//            $this->handler = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME;charset=utf8","root","root");
-//            $this->handler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//        } catch (PDOException $e){
-//            echo $e->getMessage();
-//            die();
-//        }
-//    }
-//}
 
 try { 
     // Connecting to the db with users table

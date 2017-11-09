@@ -1,7 +1,5 @@
 <?php
 
-
-/*
 namespace Bookstore\Controllers;
 
 use Bookstore\Core\Request;
@@ -10,7 +8,7 @@ abstract class AbstractController
 {
     protected $request;
     protected $view;
-    protected $customerId;
+    
 
     public function __construct(Request $request)
     {
@@ -30,4 +28,4 @@ abstract class AbstractController
     }
 }
 
-*/
+

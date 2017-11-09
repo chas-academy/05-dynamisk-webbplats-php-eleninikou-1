@@ -3,8 +3,8 @@
 namespace Teorihandbok\Models;
 
 use Teorihandbok\Domain\Book;
-use Teorihandbok\Exceptions\DbException;
-use Teorihandbok\Exceptions\NotFoundException;
+//use Teorihandbok\Exceptions\DbException;
+//use Teorihandbok\Exceptions\NotFoundException;
 use PDO;
 
 
@@ -23,17 +23,17 @@ class PostModel extends AbstractModel
             $statement->bindValue(':category', $newPost['category'], PDO::PARAM_INT);
             $statement->bindValue(':tags', $newPost['tags'], PDO::PARAM_INT);
 
-            $postID = $connection->lastInsertId();
+            $postID = $this->db->lastInsertId();
 
             // Insert postID and category
             $query = "INSERT INTO post_category (posts_id, categories_id) VALUES (:post, :category)";
-            $statement = $connection->prepare($query);
+            $statement = $this->db->prepare($query);
             $statment->bindValue(':post', $postID, PDO::PARAM_INT);
             $statment->bindValue(':category', $newPost['category'], PDO::PARAM_INT); // Samma namn som ID - fusk?
 
             // Insert postID and tags
             $query = "INSERT INTO post_tags (posts_id, tags_id) VALUES (:post, :tags)";
-            $statement = $connection->prepare($query);
+            $statement = $this->db->prepare($query);
             $statement->bindValue(':post', $postID, PDO::PARAM_INT);
             foreach($tags as $tag) {
                 $statement->bindValue(':tags', $tag, PDO::PARAM_INT);
@@ -41,7 +41,7 @@ class PostModel extends AbstractModel
 
 
             $statement->execute(); // ? Vilken av de ?
-            $connection->handler->commit();
+            $this->db->handler->commit();
        
         } catch (Exception $e) {       
             echo $e->getMessage();
@@ -52,14 +52,12 @@ class PostModel extends AbstractModel
     public function updatePost()
     {
         //$id = valt inlägg.
-        try {  
-
-            require './Core/connection.php';
+        try { 
 
             $query = "UPDATE posts SET title = "$title", body = "$body", category = "$category", tag = "$tags" WHERE id = $id";
             //UPDATE posts SET title = "snälla", body = "fungera" WHERE id = 24; -> fungerar.
             
-            $statement = $connection->prepare($query);
+            $statement = $this->db->prepare($query);
             $statement->execute(); 
 
         } catch (Exception $e) {  
@@ -75,6 +73,50 @@ class PostModel extends AbstractModel
         $query = "DELETE FROM posts WHERE id = $id; "
     }
 
+
+    public function getByCategory (int $category)
+    {
+        //$category = 
+
+        try {
+
+            $query = "SELECT posts.title, posts.body
+            from posts
+            join post_category
+               on posts.category = post_category.categories_id
+            where categories_id = $category";
+
+            $statement = $this->db->prepare($query);
+            $statement->bindValue(':category', $new_post['category']);
+
+            
+
+        } catch (Exception $e) {       
+            echo $e->getMessage();
+            die();
+        }
+    }
+
+    public function getByTags(int $tag)
+    {
+        try {
+            
+            $query = "SELECT posts.title, posts.body
+            from posts
+            join post_tag
+               on posts.tag = post_tag.tag_id
+            where tag_id = $tag";
+
+            $statement = $this->db->prepare($query);
+            $statement->bindValue(':tag', $new_post['tag']);
+
+
+        } catch (Exception $e) {       
+            echo $e->getMessage();
+            die();
+        }
+
+    }
 
 
 }

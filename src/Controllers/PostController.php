@@ -9,8 +9,6 @@ class PostController extends AbstractController
 {
 
     public function saveNewPost() {
-
-        require_once './Core/connection.php';
         
         $newPost = array(
             'title'    => $_POST['title'],
@@ -22,17 +20,34 @@ class PostController extends AbstractController
         $saveNewPost = new PostModel;
         $post = $saveNewPost->savePost();
     
-        header("location: ../../views/admin.php");
+        
+        return $this->render('views/book.php', $properties);
+    }
+
+    public function getByCategory() 
+    {
+        $postModel = new BookModel();
+        
+            $posts = $postModel->getByCategory($this->category);
+    
+            $properties = [
+                'post' => $posts,
+                'currentPage' => 1,
+                'lastPage' => true
+            ];
+            return $this->render('views/book.php', $properties);
+        }
+    }
+
+    public function getCategories()
+    {
+        
     }
 }
 
 
 /*
 namespace Bookstore\Controllers;
-
-use Bookstore\Exceptions\DbException;
-use Bookstore\Exceptions\NotFoundException;
-use Bookstore\Models\BookModel;
 
 class BookController extends AbstractController
 {
