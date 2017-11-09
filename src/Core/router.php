@@ -49,7 +49,7 @@ class Router {
     }
 
 
-    // Tar emot routern och en array av info om det finns någon. 
+    // Tar emot route och en array av info om det finns någon. 
     private function getRegexRoute(string $route, array $info): string {
         if (isset($info['params'])) {
             foreach ($info['params'] as $name => $type) {

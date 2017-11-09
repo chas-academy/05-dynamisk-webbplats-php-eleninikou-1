@@ -1,6 +1,8 @@
 <?php
 
-namespace Bookstore\Controllers;
+namespace Teorihandbok\Controllers;
+
+use Teorihandbok\Core\Request;
 
 class ErrorController extends AbstractController
 {

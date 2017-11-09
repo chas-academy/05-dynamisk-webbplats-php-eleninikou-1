@@ -3,6 +3,7 @@
 include "../templates/footer.php"; 
 use Teorihandbok\Controllers\UserController;
 
+login();
 
 ?>
 
@@ -31,14 +32,19 @@ use Teorihandbok\Controllers\UserController;
     <!-- Create new post -->
     <section class = "create">
         <!-- Insert title and body -->  
-        <form class="create-post" action="../src/Controllers/PostController.php" method="post">
+        <form class="create-post" action="../src/Domain/posts.php" method="post">
             
             <div class="post-tags">
                 <section class="post-input">
                     <h2> Skapa inlägg </h2>
                     <input type="text"  id="title" name="title" placeholder =" Titel">
                     <textarea type="text" id="body" name="body" class="textfield" placeholder=" Text"></textarea>
-                        <button type="submit" class="save">Spara </button>       
+                    
+                    <div class="arrow">
+                        <button type="submit" class="save">Spara </button>
+                        <span class="arrow-head"></span>
+                        <span class="arrow-arm"></span>
+                    </div>  
                 </section>
             
                 <section class="right-side">

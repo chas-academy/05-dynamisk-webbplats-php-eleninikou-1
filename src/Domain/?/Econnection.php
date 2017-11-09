@@ -9,8 +9,6 @@ use PDO;
 // Include the variables
 require ('Econfig.php');
 
-
-
 try { 
     // Connecting to the db with users table
     $connection = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME;charset=utf8","root","root");

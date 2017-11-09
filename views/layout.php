@@ -1,7 +1,6 @@
 <?php 
 include './templates/footer.php'; 
 include './templates/header.php'; 
-include './src/Core/Econnection.php';
 ?>
 
 <section class="index">
@@ -34,7 +33,7 @@ include './src/Core/Econnection.php';
         
         <section class ="user-login">
 
-            <form class="login" action="./src/Controllers/UserController.php" method="POST">
+            <form class="login" action="./views/admin.php" method="POST">
                 <div class="logintext">
                     <input type="text" name="username" id="username">
                     <h5>Namn</h5>

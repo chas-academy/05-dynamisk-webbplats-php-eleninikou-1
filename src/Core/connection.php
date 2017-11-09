@@ -3,8 +3,8 @@
     namespace Teorihandbok\Core;
 
     use \PDO;
-    use Teorihandbok\Core\config;
-    use Teorihandbok\Utils\singleton;
+    use Teorihandbok\Core\Config;
+    use Teorihandbok\Utils\Singleton;
 
     class Connection extends Singleton
     {

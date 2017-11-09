@@ -11,14 +11,14 @@
   },
 
   "posts/:page": {
-    "controller": "Posts",
+    "controller": "Post",
     "method": "getAllWithPageNumber",
     "params": {
       "page": "number"
     }
   },
 
-  "login": {
+  "admin": {
     "controller": "User",
     "method": "login"
   },

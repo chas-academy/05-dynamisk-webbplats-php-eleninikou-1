@@ -8,8 +8,10 @@ use Teorihandbok\Domain\Book;
 use PDO;
 
 
-class PostModel extends AbstractModel  
+class PostModel extends AbstractModel  // Får connection
 {
+    const CLASSNAME = '\Teorihandbok\Domain\Post';
+
     public function savePost()
     {
         
@@ -47,11 +49,81 @@ class PostModel extends AbstractModel
             echo $e->getMessage();
             die();
         }
+
     }
+
+    public function getByCategory (int $category): array
+    {
+        try {
+
+            $query = "SELECT posts.title, posts.body
+            from posts
+            join post_category
+               on posts.category = post_category.categories_id
+            where categories_id = $category";
+
+            $statement = $this->db->prepare($query);
+            $statement->bindValue(':category', $new_post['category']);
+
+            return $sth->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
+
+        } catch (Exception $e) {       
+            echo $e->getMessage();
+            die();
+        }
+    }
+
+    public function getByTags(int $tag): array
+    {
+        try {
+            
+            $query = "SELECT posts.title, posts.body
+            from posts
+            join post_tag
+               on posts.tag = post_tag.tag_id
+            where tag_id = $tag";
+
+            $statement = $this->db->prepare($query);
+            $statement->bindValue(':tag', $new_post['tag']);
+
+
+            return $sth->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
+
+        } catch (Exception $e) {       
+            echo $e->getMessage();
+            die();
+        }
+
+    }
+
+    public function getAll(int $page, int $pageLength): array
+    {
+        $start = $pageLength * ($page - 1);
+        
+                $query = 'SELECT * FROM posts LIMIT :page, :length';
+                $sth = $this->db->prepare($query);
+                $sth->bindParam('page', $start, PDO::PARAM_INT);
+                $sth->bindParam('length', $pageLength, PDO::PARAM_INT);
+                $sth->execute();
+        
+                return $sth->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
+    }
+
+    public function get(int $id): Post
+    {
+        $query = 'SELECT * FROM posts WHERE id = :id';
+        $sth = $this->db->prepare($query);
+        $sth->execute(['id' => $id]);
+
+        $books = $sth->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
+        if (empty($posts)) {
+            //throw new NotFoundException();
+        }
+
+        return $posts[0];
 
     public function updatePost()
     {
-        //$id = valt inlägg.
         try { 
 
             $query = "UPDATE posts SET title = "$title", body = "$body", category = "$category", tag = "$tags" WHERE id = $id";
@@ -67,114 +139,13 @@ class PostModel extends AbstractModel
         }
     }
 
-
-    public function deletePost()
-    {
-        $query = "DELETE FROM posts WHERE id = $id; "
-    }
-
-
-    public function getByCategory (int $category)
-    {
-        //$category = 
-
-        try {
-
-            $query = "SELECT posts.title, posts.body
-            from posts
-            join post_category
-               on posts.category = post_category.categories_id
-            where categories_id = $category";
-
-            $statement = $this->db->prepare($query);
-            $statement->bindValue(':category', $new_post['category']);
-
-            
-
-        } catch (Exception $e) {       
-            echo $e->getMessage();
-            die();
-        }
-    }
-
-    public function getByTags(int $tag)
-    {
-        try {
-            
-            $query = "SELECT posts.title, posts.body
-            from posts
-            join post_tag
-               on posts.tag = post_tag.tag_id
-            where tag_id = $tag";
-
-            $statement = $this->db->prepare($query);
-            $statement->bindValue(':tag', $new_post['tag']);
-
-
-        } catch (Exception $e) {       
-            echo $e->getMessage();
-            die();
-        }
-
+    public function deletePost(int $id)
+    {   
+        // Query fungerar.
+        $query = "DELETE FROM posts WHERE id = $id";
     }
 
 
 }
 
 
-
-
-/*
-namespace Bookstore\Models;
-
-use Bookstore\Domain\Book;
-use Bookstore\Exceptions\DbException;
-use Bookstore\Exceptions\NotFoundException;
-use PDO;
-
-class BookModel extends AbstractModel
-{
-    const CLASSNAME = '\Bookstore\Domain\Book';
-
-    public function get(int $bookId): Book
-    {
-        $query = 'SELECT * FROM books WHERE id = :id';
-        $sth = $this->db->prepare($query);
-        $sth->execute(['id' => $bookId]);
-
-        $books = $sth->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
-        if (empty($books)) {
-            throw new NotFoundException();
-        }
-
-        return $books[0];
-    }
-
-    public function getAll(int $page, int $pageLength): array
-    {
-        $start = $pageLength * ($page - 1);
-
-        $query = 'SELECT * FROM books LIMIT :page, :length';
-        $sth = $this->db->prepare($query);
-        $sth->bindParam('page', $start, PDO::PARAM_INT);
-        $sth->bindParam('length', $pageLength, PDO::PARAM_INT);
-        $sth->execute();
-
-        return $sth->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
-    }
-
-    public function search(string $title, string $author): array
-    {
-        $query = <<<SQL
-SELECT * FROM books
-WHERE title LIKE :title AND author LIKE :author
-SQL;
-        $sth = $this->db->prepare($query);
-        $sth->bindValue('title', "%$title%");
-        $sth->bindValue('author', "%$author%");
-        $sth->execute();
-
-        return $sth->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
-    }
-}
-*/

@@ -1,3 +1,9 @@
+<?php
+
+namespace Teorihandboken\templates;
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">

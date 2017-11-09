@@ -2,7 +2,7 @@
 
 namespace Teorihandbok\src\Domain;
 
-class Posts {
+class Post {
 
     private $id;
     private $title;
@@ -50,9 +50,19 @@ class Posts {
             $this->body = $body;
         }
 
+        public function getTag(): int
+        {
+            return $this->tag;
+        }
+
         public function setTag(int $tag)
         {
             $this->tag = $tag;
+        }
+
+        public function getCategory(): int
+        {
+            return $this->category;
         }
 
         public function setCategory(int $category)
