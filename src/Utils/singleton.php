@@ -7,7 +7,7 @@
 
     // In utils
     namespace Teorihandbok\src\Utils;
-
+    
     /* Don't want to create a new Singelton so -> 
     ABSTRACT so that they can extend from it instead */
     abstract class Singleton

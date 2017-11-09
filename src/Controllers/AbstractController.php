@@ -17,10 +17,6 @@ abstract class AbstractController
         $this->request = $request;
     }
 
-    public function setCustomerId(int $customerId)
-    {
-        $this->customerId = $customerId;
-    }
 
     protected function render(string $template, array $params): string
     {

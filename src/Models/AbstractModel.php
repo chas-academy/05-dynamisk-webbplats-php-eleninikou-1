@@ -1,15 +1,13 @@
 <?php
 
-/*
 namespace Teorihandbok\Models;
 
-use src\Core\connection;
+use Teorihandbok\src\Core\Connection;
 
 abstract class AbstractModel {
-    
-    protected $connection;
+    protected $db;
 
     public function __construct() {
-        $this->connection = Connection::getInstance()->handler;
+        $this->db = Connection::getInstance()->handler;
     }
-}*/
+}

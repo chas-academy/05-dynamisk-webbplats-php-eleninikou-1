@@ -1,25 +1,22 @@
 <?php
 
-namespace Toerihandbok\Models;
+namespace Teorihandbok\Models;
 
-use Teorihandbok\src\Controllers\PostController;
+use Teorihandbok\Domain\Book;
+use Teorihandbok\Exceptions\DbException;
+use Teorihandbok\Exceptions\NotFoundException;
+use PDO;
 
 
-//require_once './Core/connection.php';
-
-
-class PostModel //extends AbstractModel to get connection. 
+class PostModel extends AbstractModel  
 {
     public function savePost()
     {
         
         try {  
-
-            require './Core/connection.php';
-
+            // Insert to Post
             $query = "INSERT INTO posts (title, body, category, tag) VALUES (:title, :body, :category, :tags)";
-            //The query returns a PDO statement as a string
-            $statement = $connection->prepare($query);
+            $statement = $this->db->prepare($query);
 
             $statement->bindValue(':title', $newPost['title'], PDO::PARAM_STR); 
             $statement->bindValue(':body', $newPost['body'], PDO::PARAM_STR);
@@ -28,18 +25,18 @@ class PostModel //extends AbstractModel to get connection.
 
             $postID = $connection->lastInsertId();
 
+            // Insert postID and category
             $query = "INSERT INTO post_category (posts_id, categories_id) VALUES (:post, :category)";
             $statement = $connection->prepare($query);
             $statment->bindValue(':post', $postID, PDO::PARAM_INT);
-            $statment->bindValue()
+            $statment->bindValue(':category', $newPost['category'], PDO::PARAM_INT); // Samma namn som ID - fusk?
 
-
+            // Insert postID and tags
             $query = "INSERT INTO post_tags (posts_id, tags_id) VALUES (:post, :tags)";
             $statement = $connection->prepare($query);
             $statement->bindValue(':post', $postID, PDO::PARAM_INT);
-
             foreach($tags as $tag) {
-                $statement->bindValue(':tags', $tag);
+                $statement->bindValue(':tags', $tag, PDO::PARAM_INT);
             }
 
 

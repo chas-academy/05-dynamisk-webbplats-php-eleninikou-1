@@ -1,11 +1,11 @@
 <?php
 
-namespace Teorihandbok\Controllers;
+namespace Teorihandbok\src\Controllers;
 
-use Teorihandbok\Models\PostModel;
+use Teorihandbok\src\Models\PostModel;
 use PDO;
 
-class PostController //extends AbstractController
+class PostController extends AbstractController
 {
 
     public function saveNewPost() {

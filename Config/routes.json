@@ -1,24 +1,35 @@
 
+{
+  "posts": {
+    "controller": "Post",
+    "method": "getAll"
+  },
 
-/*
+  "posts/:page": {
+    "controller": "Posts",
+    "method": "getAllWithPageNumber",
+    "params": {
+      "page": "number"
+    },
 
-Axels kod:
+    "login": {
+      "controller": "User",
+      "method": "login",
+    },
+  }
+
+
+}
+
+
+
 
 {
     "start": {
       "controller": "Default",
       "method": "start"
     },
-    "books/:page": {
-      "controller": "Book",
-      "method": "getAllWithPage",
-      "params": {
-        "page": "number"
-      }
-    },
-    "books": {
-      "controller": "Book",
-      "method": "getAll"
+    
     },
     "book/:id": {
       "controller": "Book",
@@ -42,4 +53,4 @@ Axels kod:
         "id": "number"
       }
     }
-  }*/
+  }

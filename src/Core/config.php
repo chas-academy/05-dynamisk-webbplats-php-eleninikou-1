@@ -1,13 +1,25 @@
 <?php
 
-namespace Teorihandbok\src\Core;
+namespace Teorihandbok\Core;
 
-    // Parameters to set upp connection with database
-    $DB_HOST     = '127.0.0.1';
-    $DB_USER     = 'root';
-    $DB_PWD      = 'root';
-    $DB_NAME     = 'teorihandboken';
-    $DSN         = 'mysql:host=$DB_HOST;dbname=$DB_NAME"';
+use Teorihandbok\Utils\Singleton;
+// use \Exceptions\NotFoundException;
 
+    class Config extends Singleton
+    {
+        private $data;
 
-?>
+        protected function __construct()
+        {
+            $json = file_get_contents(__DIR__ . '/../../config/app.json');
+            $this->data = json_decode($json, true);
+        }
+
+        public function get($key)
+        {
+            if (!isset($this->data[$key])) {
+                throw new NotFoundException("Key $key not in config.");
+            }
+            return $this->data[$key];
+        }
+    }

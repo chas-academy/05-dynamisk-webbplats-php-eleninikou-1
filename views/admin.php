@@ -21,7 +21,7 @@ include "../templates/footer.php";
 <body>
 
 <header>
-    <img src="../css/images/view.jpg" class ="backgroundphoto">
+    <img src="../css/images/desk.jpg" class ="backgroundphoto"> 
     <h1 class ="admin-logo">Teorihandboken</h1> 
 </header>
 
@@ -33,35 +33,40 @@ include "../templates/footer.php";
             
             <div class="post-tags">
                 <section class="post-input">
-                    <input type="text"  id="title" name="title">
-                    <textarea type="text" id ="body" name="body" class="textfield"></textarea>
+                    <h2> Skapa inlägg </h2>
+                    <input type="text"  id="title" name="title" placeholder =" Titel">
+                    <textarea type="text" id="body" name="body" class="textfield" placeholder=" Text"></textarea>
                     
+                    <div class="arrow">
+                        <button type="submit" class="save">Spara </button>
+                        <span class="arrow-head"></span>
+                        <span class="arrow-arm"></span>
+                    </div>  
                 </section>
             
                 <section class="right-side">
-                    <a href ="../index.php" class ="logout">Logga ut</a>
+                <a href="#" class="close-button"></a>
+                    <a href ="../index.php" class ="logout"></a>
                         <!-- Select Tags -->          
-                        <select multiple class="select-tags" name="tags"> 
+                        <select multiple class="select-tags" name="tag[]"> 
                             <option value="" disabled selected class="select"> Välj taggar </option>
-                            <option value= "HTML"> HTML </option>
-                            <option value= "CSS"> CSS </option>
-                            <option value= "JavaScript"> JavaScript </option>
-                            <option value= "AvanaceradJS"> Avancerad JavaScript </option>
-                            <option value= "UX"> UX och design </option>
-                            <option value= "PHP"> PHP </option>
-                            <option value= "Projektmetodik"> Projektmetodik </option>
-                            <option value= "Program-metodik"> Programmeringsmetodik </option>
+                            <option value= 1> HTML </option>
+                            <option value= 2> CSS </option>
+                            <option value= 3> JavaScript </option>
+                            <option value= 4> Avancerad JavaScript </option>
+                            <option value= 5> UX och design </option>
+                            <option value= 6> PHP </option>
+                            <option value= 7> Projektmetodik </option>
+                            <option value= 8> Programmeringsmetodik </option>
                         </select>    
 
                     <!-- Select category -->
-                    <select multiple class ="select-category" name ="category">
-                        <option value = "" disabled selected class ="select"> Välj kategori </option>
-                        <option value = 1> Frontend </option>
-                        <option value = 2> Backend </option>
-                        <option value = 3> Övrigt </option>
+                    <select multiple class="select-category" name="category">
+                        <option value= "" disabled selected class="select"> Välj kategori </option>
+                        <option value= 1> Frontend </option>
+                        <option value= 2> Backend </option>
+                        <option value= 3> Övrigt </option>
                     </select>
-                    <button type="submit" class="save">Spara</button>
             </div>  
-   
         </form>
     </section>

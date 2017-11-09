@@ -1,13 +1,12 @@
 <?php 
 
-Namespace Teorihandbok;
-
 include './templates/footer.php'; 
 include './templates/header.php'; 
-include './src/core/connection.php'; //Include the databse connection
-session_start();
+include './src/Core/Econnection.php';
 
-/*
+use Teorihandbok\Core\router;
+
+
 function autoloader($classname)
 {
     $lastSlash = strpos($classname, '\\') + 1;
@@ -17,12 +16,14 @@ function autoloader($classname)
     require_once($filename);
 }
 
-spl_autoload_register('autoloader'); */
+spl_autoload_register('autoloader'); 
+
+$router = new Router();
 
 ?>
-    <section class="index">
+<section class="index">
     <nav class ="search">
-        <h2>Sök inlägg</h2>
+        <h2>Sök</h2>
         <ul class="Searchposts">
             <li class="navmenu">Efter Kategori</li>
                 <ul class="categories">
@@ -46,11 +47,11 @@ spl_autoload_register('autoloader'); */
     </nav>
 
     <section class="loginsection">
-        <h2 class="create-h2">Skapa inlägg</h2>
+        <h2 class="create-h2">Skapa</h2>
         
         <section class ="user-login">
 
-            <form class="login" action="./src/Controllers/UserLoginController.php" method="POST">
+            <form class="login" action="./src/Controllers/UserController.php" method="POST">
                 <div class="logintext">
                     <input type="text" name="username" id="username">
                     <h5>Namn</h5>
@@ -59,9 +60,14 @@ spl_autoload_register('autoloader'); */
                     <input type="text" name="password" id="password"> 
                     <h5>Lösenord</h5>
                 </div>
-
                 <button type="submit" name="login" id="loginbutton" value="LOGGA IN"> Logga in </button>
             </form> 
         </section>
-    </section>    
+    </section>
+    <section class="book">
+        <h2 class="create-h2">Läs</h2>
+        
+        <a href="#"><img src="./css/images/book.png" class ="theBook"></a>
+    </section>
+</section>    
 
