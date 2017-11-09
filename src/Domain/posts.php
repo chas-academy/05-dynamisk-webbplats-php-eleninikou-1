@@ -1,6 +1,6 @@
 <?php 
 
-namespace Teorihandbok\src\Domain;
+namespace Teorihandbok\Domain;
 
 use \PDO;
     
@@ -25,7 +25,7 @@ use \PDO;
             $statement->bindValue(':title', $newPost['title'], PDO::PARAM_STR); 
             $statement->bindValue(':body', $newPost['body'], PDO::PARAM_STR);
             $statement->bindValue(':category', $newPost['category'], PDO::PARAM_INT);
-            /*$statement->bindValue(':tag', $newPost['tag'], PDO::PARAM_INT);*/
+            /* $statement->bindValue(':tag', $newPost['tag'], PDO::PARAM_INT); */
             
             foreach($tags as $tag) {
                 $statement->bindValue(':tag', $tag, PDO::PARAM_INT);

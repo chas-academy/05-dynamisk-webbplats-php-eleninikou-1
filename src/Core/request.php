@@ -1,7 +1,6 @@
 <?php
 
-namespace Teorihandbok\src\Core;
-use Teorihandbok\src\Core\requestFilter;
+namespace Teorihandbok\Core;
 
 class Request {
 

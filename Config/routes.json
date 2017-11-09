@@ -1,6 +1,6 @@
 
 {
-  "start": {
+  "": {
     "controller": "Default",
     "method": "start"
   },
@@ -20,17 +20,17 @@
 
   "login": {
     "controller": "User",
-    "method": "login",
+    "method": "login"
   },
 
   "categories/": {
-    "controller": "Post",     // <--- Controller som körs
-    "method": "getCategories", // <--- Vilken metod i controllern
+    "controller": "Post",
+    "method": "getCategories"
   },
 
   "posts/category/:id": {
       "controller": "Post",
-      "method": "getByCategory", // <--- Denna metod tar emot en int $categoryId (eller vad du nu väljer att kalla den)
+      "method": "getByCategory",
       "params": {
         "id": "number"
       }

@@ -1,10 +1,10 @@
 <?php
 
-    namespace Teorihandbok\src\Core;
+    namespace Teorihandbok\Core;
 
     use \PDO;
-    use Teorihandbok\src\Core\config;
-    use Teorihandbok\src\Utils\singleton;
+    use Teorihandbok\Core\config;
+    use Teorihandbok\Utils\singleton;
 
     class Connection extends Singleton
     {

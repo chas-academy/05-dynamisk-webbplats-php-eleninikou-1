@@ -1,5 +1,5 @@
 <?php
-    namespace Teorihandbok\src\Core;
+    namespace Teorihandbok\Core;
 
     // En klass för att kunna hämta ut och filtrera parametrar från requests som nyckel-värde par. (map)
     // Ska användas för att innehålla parametrar vi får via GET och POST metoderna (samt kakor) via requests. 

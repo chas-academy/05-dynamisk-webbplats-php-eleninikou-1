@@ -2,7 +2,7 @@
 
 namespace Teorihandbok\Models;
 
-use Teorihandbok\src\Core\Connection;
+use Teorihandbok\Core\Connection;
 
 abstract class AbstractModel {
     protected $db;

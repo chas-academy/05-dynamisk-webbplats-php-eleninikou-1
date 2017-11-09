@@ -1,8 +1,8 @@
 <?php
 
-namespace Teorihandbok\src\Controllers;
+namespace Teorihandbok\Controllers;
 
-use Teorihandbok\src\Models\PostModel;
+use Teorihandbok\Models\PostModel;
 use PDO;
 
 class PostController extends AbstractController
@@ -41,7 +41,7 @@ class PostController extends AbstractController
 
     public function getCategories()
     {
-        
+
     }
 }
 

@@ -11,7 +11,8 @@ namespace Teorihandbok\Core;
 
 use Teorihandbok\Controllers\ErrorController;
 use Teorihandbok\Controllers\PostController;
-use Core\request;
+use Teorihandbok\Controllers\DefaultController;
+
 
 class Router {
                                           // regex = regular expressions. Uppsättning regler för
@@ -27,10 +28,12 @@ class Router {
     public function __construct() {
         $json = file_get_contents(__DIR__ . '/../../Config/routes.json'); 
         $this->routeMap = json_decode($json, true);
+
     }
 
 
-    public function route(Request $request): string {
+    public function route(Request $request): string 
+    {
         $path = $request->getPath();
 
         foreach ($this->routeMap as $route => $info) {
@@ -39,9 +42,10 @@ class Router {
                 return $this->executeController($route, $path, $info, $request);
             }
         }
-
-        $errorController = new ErrorController($request);
-        return $errorController->notFound();
+        
+      
+         $errorController = new ErrorController($request);
+         return $errorController->notFound();
     }
 
 
@@ -63,7 +67,7 @@ class Router {
         array $info,                    // vilka parametrar?
         Request $request        
     ): string {
-        $controllerName = '\Teorihandbok\src\Controllers\\' . $info['controller'] . 'Controller';
+        $controllerName = '\Teorihandbok\Controllers\\' . $info['controller'] . 'Controller';
         $controller = new $controllerName($request); // Controllern styr vad som ska ske beroende på vår request
 
         if (isset($info['login']) && $info['login']) {
@@ -97,5 +101,6 @@ class Router {
         }
 
         return $params;
+
     }
 }
