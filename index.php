@@ -1,7 +1,7 @@
 <?php 
 
-use Teorihandbok\Core\router;
-use Teorihandbok\Core\request;
+use Teorihandbok\Core\Router;
+use Teorihandbok\Core\Request;
 
 function autoloader($classname)
 {

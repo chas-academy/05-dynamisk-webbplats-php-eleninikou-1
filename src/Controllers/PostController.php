@@ -1,12 +1,11 @@
 <?php
 
 namespace Teorihandbok\Controllers;
-
 use Teorihandbok\Models\PostModel;
-use Teorihandbok\Controllers\AbstractController;
-use \PDO;
 
-class PostController extends AbstractController
+
+
+class PostController extends AbstractController 
 {
     const PAGE_LENGTH = 10;
     
@@ -15,14 +14,15 @@ class PostController extends AbstractController
         $page = (int)$page;
         $postModel = new PostModel();
 
-        $posts = $postModel->getAll($page, self::PAGE_LENGTH);
+        $posts = $postModel->getAll($page, self::PAGE_LENGTH); 
 
         $properties = [
             'posts' => $posts,
             'currentPage' => $page,
             'lastPage' => count($posts) < self::PAGE_LENGTH
         ];
-        return $this->render('views/posts.php', $properties);
+        
+        return $this->render('./posts.php', $properties);
     }
 
     public function getAll(): string
@@ -30,21 +30,20 @@ class PostController extends AbstractController
         return $this->getAllWithPage(1);
     }
 
-    public function get(int $postId): string
+    /*
+    public function get($id): string
     {
-        $postModel = new PostModel();
-
+        $postModel = new PostModel()
         try {
             $post = $postModel->get($id);
         } catch (\Exception $e) {
             $properties = ['errorMessage' => 'Post not found!'];
             return $this->render('views/error.php', $properties);
-        }
-
+        
         $properties = ['post' => $post];
         // I fallet update ska den till admin. 
         return $this->render('views/admin.php', $properties);
-    }
+    }*/
 
     public function saveNewPost() {
         
@@ -57,39 +56,27 @@ class PostController extends AbstractController
 
         $saveNewPost = new PostModel;
         $post = $saveNewPost->savePost();
-
-        // $saveNewPost->getAll(); Vill hämta alla till book.php 
-    
-        $properties = [
-            'post' => $post,
-            'currentPage' => 1,
-            'lastPage' => true
-        ];
         
-        return $this->render('views/posts.php', $properties);
+        $this->getAll(); // Kan man köra funktionen så?
+        
     }
 
-    public function getByCategory() 
+    public function getPostsByCategory($category) 
     {
         $postModel = new PostModel();
-        $posts = $postModel->getByCategory($this->category);
+        $posts = $postModel->getByCategory($category);
     
-            $properties = [
-                'post' => $posts,
-                'currentPage' => 1,
-                'lastPage' => true
-            ];
-            return $this->render('views/posts.php', $properties);
+        $this->getAll();
     }
 
-
-    public function getCategories()
+    public function getPostsByTag($tag)
     {
-
+        $postmodel = new PostModel();
+        $posts = $postModel->getByTag($tag);
+        getAll();
     }
-
     
-    public function changePost()
+    public function changePost($id)
     {
         $postModel = new PostModel();
         $posts = $postModel->get($this->id);

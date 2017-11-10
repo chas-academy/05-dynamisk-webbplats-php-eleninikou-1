@@ -9,20 +9,20 @@ include './templates/header.php';
         <ul class="Searchposts">
             <li class="navmenu">Efter Kategori</li>
                 <ul class="categories">
-                    <li><a href="./views/Frontend.php">Frontend</a></li>
-                    <li><a href="./views/Backend.php">Backend</a></li>
-                    <li><a href="./views/Other.php">Övrigt</a></li>
+                    <li><a href="./posts/category/1">Frontend</a></li>
+                    <li><a href="./posts/category/2">Backend</a></li>
+                    <li><a href="./posts/category/3">Övrigt</a></li>
                 </ul>
             <li class="navmenu">Efter taggar</li>
                 <ul class="tags">
-                    <li><a href="./views/HTML.php">HTML</a></li>
-                    <li><a href="./views/CSS.php">CSS</a></li>
-                    <li><a href="./views/JavaScript.php">JavaScript</a></li>
-                    <li><a href="./views/AvanceradJavaScript.php">Avancerad Javascript</a></li>
-                    <li><a href="./views/UXDesign.php">UX och Design</a></li>
-                    <li><a href="./views/PHP.php">PHP</a></li>
-                    <li><a href="./views/Projektmetodik.php">Projektmetodik</a></li>
-                    <li><a href="./views/programmeringsmetodik.php">Programmeringsmetodik</a></li>
+                    <li><a href="./posts/tags/1">HTML</a></li>
+                    <li><a href="./posts/tags/2">CSS</a></li>
+                    <li><a href="./posts/tags/3">JavaScript</a></li>
+                    <li><a href="./posts/tags/4">Avancerad Javascript</a></li>
+                    <li><a href="./posts/tags/5">UX och Design</a></li>
+                    <li><a href="./posts/tags/6">PHP</a></li>
+                    <li><a href="./posts/tags/7">Projektmetodik</a></li>
+                    <li><a href="./posts/tags/8">Programmeringsmetodik</a></li>
                 </ul>
            <!-- <li class="navmenu"><a> Alla inlägg </a></li> -->
         </ul>
@@ -49,7 +49,7 @@ include './templates/header.php';
     <section class="book">
         <h2 class="create-h2">Läs</h2>
         
-        <a href="#"><img src="./css/images/book.png" class ="theBook"></a>
+        <a href="./views/posts.php"><img src="./css/images/book.png" class ="theBook"></a>
     </section>
 </section>    
 

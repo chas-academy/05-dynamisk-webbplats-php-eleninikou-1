@@ -13,7 +13,6 @@ use Teorihandbok\Controllers\ErrorController;
 use Teorihandbok\Controllers\PostController;
 use Teorihandbok\Controllers\DefaultController;
 
-
 class Router {
                                           // regex = regular expressions. Uppsättning regler för
                                           // att hämta ut och matcha saker.    
@@ -29,6 +28,7 @@ class Router {
         $json = file_get_contents(__DIR__ . '/../../Config/routes.json'); 
         $this->routeMap = json_decode($json, true);
 
+
     }
 
 
@@ -43,7 +43,6 @@ class Router {
             }
         }
         
-      
          $errorController = new ErrorController($request);
          return $errorController->notFound();
     }

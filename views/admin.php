@@ -1,8 +1,6 @@
 <?php 
 
 include "../templates/footer.php"; 
-use Teorihandbok\Controllers\UserController;
-
 
 ?>
 
@@ -31,7 +29,7 @@ use Teorihandbok\Controllers\UserController;
     <!-- Create new post -->
     <section class = "create">
         <!-- Insert title and body -->  
-        <form class="create-post" action="../src/Controllers/PostController.php" method="post">
+        <form class="create-post" action="./posts/save.php" method="post">
             
             <div class="post-tags">
                 <section class="post-input">
@@ -42,8 +40,8 @@ use Teorihandbok\Controllers\UserController;
                 </section>
             
                 <section class="right-side">
-                <a href="#" class="close-button"></a>
-                    <a href ="../layout.php" class ="logout"></a>
+                <a href="" class="close-button"></a>
+                    <a href ="../views/layout.php" class ="logout"></a>
                         <!-- Select Tags -->          
                         <select multiple class="select-tags" name="tag[]"> 
                             <option value="" disabled selected class="select"> Välj taggar </option>

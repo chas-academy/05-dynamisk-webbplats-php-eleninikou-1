@@ -4,7 +4,7 @@
     "controller": "Default",
     "method": "start"
   },
-
+  
   "posts": {
     "controller": "Post",
     "method": "getAll"
@@ -18,25 +18,31 @@
     }
   },
 
+  "posts/save" : {
+    "controller": "Post",
+    "method": "saveNewPost"
+  },
+
   "admin": {
     "controller": "User",
     "method": "login"
-  },
-
-  "categories/": {
-    "controller": "Post",
-    "method": "getCategories"
-  },
+   },
 
   "posts/category/:id": {
       "controller": "Post",
-      "method": "getByCategory",
+      "method": "getPostsByCategory",
       "params": {
         "id": "number"
       }
+   },  
+     
+  "posts/tags/:id": {
+    "controller": "Post",
+    "method": "getByTag",
+    "params": {
+      "id": "number"
+    }
   }
-
-
 }
 
 

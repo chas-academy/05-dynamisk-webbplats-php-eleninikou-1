@@ -6,7 +6,7 @@
     samma uppkoppling man har.   */
 
     // In utils
-    namespace Teorihandbok\src\Utils;
+    namespace Teorihandbok\Utils;
     
     /* Don't want to create a new Singelton so -> 
     ABSTRACT so that they can extend from it instead */

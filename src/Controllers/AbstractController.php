@@ -1,7 +1,6 @@
 <?php
 
 namespace Teorihandbok\Controllers;
-
 use Teorihandbok\Core\Request;
 
 abstract class AbstractController
@@ -9,12 +8,10 @@ abstract class AbstractController
     protected $request;
     protected $view;
     
-
     public function __construct(Request $request)
     {
         $this->request = $request;
     }
-
 
     protected function render(string $template, array $params): string
     {

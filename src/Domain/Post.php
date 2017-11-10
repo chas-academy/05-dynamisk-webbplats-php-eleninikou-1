@@ -1,6 +1,7 @@
 <?php
 
-namespace Teorihandbok\src\Domain;
+namespace Teorihandbok\Domain;
+
 
 class Post {
 

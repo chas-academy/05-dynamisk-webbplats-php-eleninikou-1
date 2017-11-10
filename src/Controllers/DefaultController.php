@@ -2,16 +2,14 @@
 
 namespace Teorihandbok\Controllers;
 
-// use Teorihandbok\Exceptions\NotFoundException;
-
 class DefaultController extends AbstractController
 {
     public function start(): string
     {
-        $properties = [
-        ];
+        // Tom för att jag måste ha med en array i render();
+        $properties = [];
 
-        return $this->render('views/layout.php', $properties);
+        return $this->render('./views/layout.php', $properties);
     }
 
 }

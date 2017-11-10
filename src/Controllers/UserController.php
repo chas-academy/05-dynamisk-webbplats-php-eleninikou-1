@@ -2,7 +2,9 @@
 
 namespace Teorihandbok\Controllers;
 
-public function login()
+
+/* Skriv om denna */ 
+public function login(): 
 {
     $msg = "";
     session_start();

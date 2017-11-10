@@ -1,7 +1,6 @@
 <?php 
 
 include "../templates/footer.php"; 
-use Teorihandbok\Controllers\UserController;
 
 login();
 

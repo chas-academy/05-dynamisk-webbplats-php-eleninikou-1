@@ -1,6 +1,6 @@
 {
     "db": {
-        "dsn": "mysql:host=127.0.0.1;dbname=Teorihandboken",
+        "dsn": "mysql:host=127.0.0.1;dbname=teorihandboken",
         "user": "root",
         "password": "root"
     }

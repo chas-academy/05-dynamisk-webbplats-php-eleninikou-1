@@ -1,11 +1,8 @@
 <?php
 
 namespace Teorihandbok\Models;
-
-use Teorihandbok\Domain\Book;
-//use Teorihandbok\Exceptions\DbException;
-//use Teorihandbok\Exceptions\NotFoundException;
-use PDO;
+use \Teorihandbok\Domain\Post;
+use \PDO;
 
 
 class PostModel extends AbstractModel  // Får connection
@@ -17,21 +14,22 @@ class PostModel extends AbstractModel  // Får connection
         
         try {  
             // Insert to Post
-            $query = "INSERT INTO posts (title, body, category, tag) VALUES (:title, :body, :category, :tags)";
+            $query = "INSERT INTO posts (title, body, category, tag) VALUES (:title, :body, :category, :tag)";
             $statement = $this->db->prepare($query);
 
             $statement->bindValue(':title', $newPost['title'], PDO::PARAM_STR); 
             $statement->bindValue(':body', $newPost['body'], PDO::PARAM_STR);
             $statement->bindValue(':category', $newPost['category'], PDO::PARAM_INT);
-            $statement->bindValue(':tags', $newPost['tags'], PDO::PARAM_INT);
+            $statement->bindValue(':tag', $newPost['tag'], PDO::PARAM_INT);
 
+            
             $postID = $this->db->lastInsertId();
 
             // Insert postID and category
             $query = "INSERT INTO post_category (posts_id, categories_id) VALUES (:post, :category)";
             $statement = $this->db->prepare($query);
             $statment->bindValue(':post', $postID, PDO::PARAM_INT);
-            $statment->bindValue(':category', $newPost['category'], PDO::PARAM_INT); // Samma namn som ID - fusk?
+            $statment->bindValue(':category', $newPost['category'], PDO::PARAM_INT); 
 
             // Insert postID and tags
             $query = "INSERT INTO post_tags (posts_id, tags_id) VALUES (:post, :tags)";
@@ -40,10 +38,10 @@ class PostModel extends AbstractModel  // Får connection
             foreach($tags as $tag) {
                 $statement->bindValue(':tags', $tag, PDO::PARAM_INT);
             }
+            
 
-
-            $statement->execute(); // ? Vilken av de ?
-            $this->db->handler->commit();
+            $statement->execute();     
+            
        
         } catch (Exception $e) {       
             echo $e->getMessage();
@@ -52,48 +50,15 @@ class PostModel extends AbstractModel  // Får connection
 
     }
 
-    public function getByCategory (int $category): array
+    public function get(int $id): Post
     {
-        try {
+        $query = 'SELECT * FROM posts WHERE id = :id';
+        $statement = $this->db->prepare($query);
+        $statement->execute([':id' => $id]);
 
-            $query = "SELECT posts.title, posts.body
-            from posts
-            join post_category
-               on posts.category = post_category.categories_id
-            where categories_id = $category";
-
-            $statement = $this->db->prepare($query);
-            $statement->bindValue(':category', $new_post['category']);
-
-            return $sth->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
-
-        } catch (Exception $e) {       
-            echo $e->getMessage();
-            die();
-        }
-    }
-
-    public function getByTags(int $tag): array
-    {
-        try {
-            
-            $query = "SELECT posts.title, posts.body
-            from posts
-            join post_tag
-               on posts.tag = post_tag.tag_id
-            where tag_id = $tag";
-
-            $statement = $this->db->prepare($query);
-            $statement->bindValue(':tag', $new_post['tag']);
-
-
-            return $sth->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
-
-        } catch (Exception $e) {       
-            echo $e->getMessage();
-            die();
-        }
-
+        $posts = $statement->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
+        
+        return $posts[0];
     }
 
     public function getAll(int $page, int $pageLength): array
@@ -101,43 +66,82 @@ class PostModel extends AbstractModel  // Får connection
         $start = $pageLength * ($page - 1);
         
                 $query = 'SELECT * FROM posts LIMIT :page, :length';
-                $sth = $this->db->prepare($query);
-                $sth->bindParam('page', $start, PDO::PARAM_INT);
-                $sth->bindParam('length', $pageLength, PDO::PARAM_INT);
-                $sth->execute();
+                $statement = $this->db->prepare($query);
+                $statement->bindParam(':page', $start, PDO::PARAM_INT);
+                $statement->bindParam(':length', $pageLength, PDO::PARAM_INT);
+                $statement->execute();
         
-                return $sth->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
+                return $statement->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
     }
 
-    public function get(int $id): Post
+    public function getByCategory (int $category): array
     {
-        $query = 'SELECT * FROM posts WHERE id = :id';
-        $sth = $this->db->prepare($query);
-        $sth->execute(['id' => $id]);
+        try {
+            $query = 'SELECT *
+            FROM posts
+            WHERE category = :category';
 
-        $books = $sth->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
-        if (empty($posts)) {
-            //throw new NotFoundException();
-        }
-
-        return $posts[0];
-
-    public function updatePost()
-    {
-        try { 
-
-            $query = "UPDATE posts SET title = "$title", body = "$body", category = "$category", tag = "$tags" WHERE id = $id";
-            //UPDATE posts SET title = "snälla", body = "fungera" WHERE id = 24; -> fungerar.
-            
             $statement = $this->db->prepare($query);
-            $statement->execute(); 
+            $statement->execute([':category' => $category]);
+        
 
-        } catch (Exception $e) {  
-            //$connectino->handler->rollBack():     
+            //   Vrf fungerar ej fetchAll? --------------------------------------------------------  //
+           
+            $posts = $statement->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
+            // PDOStatement::fetchAll — Returns an array containing all of the result set rows
+
+            return $posts;
+
+        } catch (Exception $e) {       
             echo $e->getMessage();
             die();
         }
+
     }
+
+    public function getByTag(int $tag): array
+    {
+        try {
+
+            $query = "SELECT *
+            FROM posts
+            WHERE tag = :tag";
+
+            $statement = $this->db->prepare($query);
+            $statement->execute([':tag' => $tag]);
+
+            $posts = $statement->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
+
+            return $posts; 
+
+        } catch (Exception $e) {       
+            echo $e->getMessage();
+            die();
+        }
+
+    }    
+
+    public function updatePost(int $id)
+    {
+
+        try { 
+
+            $query = "UPDATE posts SET (title, body, category, tag) VALUE (:title, :body, :category, :tag) WHERE id = $id";
+            //UPDATE posts SET title = "snälla", body = "fungera" WHERE id = 24; -> fungerar.
+            
+            $statement = $this->db->prepare($query);
+            $statement->bindValue(':title', $newPost['title'], PDO::PARAM_STR); 
+            $statement->bindValue(':body', $newPost['body'], PDO::PARAM_STR);
+            $statement->bindValue(':category', $newPost['category'], PDO::PARAM_INT);
+            $statement->bindValue(':tag', $newPost['tag'], PDO::PARAM_INT);
+            $statement->execute(); 
+
+        } catch (Exception $e) {  
+            //$connection->handler->rollBack():     
+            echo $e->getMessage();
+            die();
+        }
+    } 
 
     public function deletePost(int $id)
     {   
