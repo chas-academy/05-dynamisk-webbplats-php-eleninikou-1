@@ -11,19 +11,6 @@
     z-index: -1;
 }
 
-
-.backgroundphoto {
-  z-index: -1;
-  min-height: 100%;
-  min-width: 100%;
-  width: 100%;
-  height: auto;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-
 header {
     display: flex;
     align-items: baseline;
@@ -40,30 +27,10 @@ header {
 #logo {
     position: absolute;
     color: white;
-    font-size: 90px;
+    font-size: 100px;
     margin-top: 40px;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: bold;
-}
-
-#logo2 {
-    position: absolute;
-    color: white;
-    font-size: 70px;
-    margin-top: 40px;
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: bold;
-}
-
-.admin-logo {
-    padding-top: 30px;
-    width: 100%;
-    font-size: 90px;
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: bold;
-    color: rgb(51, 50, 50);
-    background-color: rgba(255, 255, 255, 0.658);
-    height: 90px;
 }
 
 .right-side {
@@ -220,60 +187,17 @@ textarea::placeholder {
     cursor: pointer;
 }
 
-.arrow {
-    display: flex;
-    align-items: center;
-  }
-  
-  .arrow-head {
-    border: solid black;
-    border-width: 0 3px 3px 0;
-    padding: 10px;
-    transform: rotate(135deg);
-    margin-left: 15px;
-  }
-  
-  .arrow-arm {
-    width: 20px;
-    height: 3px;
-    background-color: black;
-    margin-left: -15px;
-  }
-  
-  .arrow:hover .arrow-arm {
-    animation: arm 800ms ease infinite;
-  }
-  
-  .arrow:hover .arrow-head {
-    animation: head 800ms ease infinite;
-  }
-  
-  @keyframes arm {
-    35% { 
-      transform: translateX(-25%);
-      width: 25px;
-    }
-  }
-  
-  @keyframes head {
-    35% { 
-      transform:
-        translateX(-25%)
-        rotate(135deg);
-    }
-  }
-
 
 /* INDEX */
 
 .index {
     display: flex;
     flex: 1;
-    width: 70%;
-    height: 55%;
+    width: 60%;
+    height: 50%;
     margin: auto;
     margin-top: 80px;
-    background-color: rgba(255, 255, 255, 0.658);
+    background-color: rgba(255, 255, 255, 0.733);
 }
 
 .loginsection {
@@ -298,15 +222,17 @@ textarea::placeholder {
 
 .navmenu {
     text-transform: uppercase;
-    margin-bottom: 5px;
+    text-align: center;
+    margin-top: 25px;
+    font-size: 22px;
 }
 
 .searchposts {
     display: flex;
     flex-direction: column;
-    margin: 15px;
-    margin-left:50px;
+    text-align: center;
 }
+
 
 .searchposts > li {
     color: rgb(53, 53, 51);
@@ -314,27 +240,38 @@ textarea::placeholder {
 
 .categories > li > a , .tags > li > a {
     color: rgb(192, 115, 79);
-    margin-left: 15px;
 }
 
 .categories > li > a:hover , .tags > li > a:hover {
     color: rgb(231, 226, 220);
 }
 
-.categories, .tags {
+.categories {
     display: flex;
-    flex-direction: column;
-    margin-bottom: 5px;
+    text-transform: uppercase;
+    justify-content: space-around;
+    text-align: center;
+    margin: 15px;
+    margin-right: 45px;
+    margin-top: 30px;
 }
 
-
+.tags {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+    margin: 15px;
+    margin-left: 120px;
+    margin-bottom: 30px;
+}
 
 
 /* LOGGA IN */
 .user-login {
     display: flex;
     flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.473);
+    background-color: rgba(255, 255, 255, 0.596);
     width: 80%;
     height: 70%;
     align-items: center;
@@ -389,7 +326,7 @@ footer {
     width: 100%;
     display: flex;
     height: 70px;
-    background-color: rgba(255, 255, 255, 0.678);
+    background-color: rgba(255, 255, 255, 0.781);
     position: absolute;
     bottom: 0px;
     justify-content: center;

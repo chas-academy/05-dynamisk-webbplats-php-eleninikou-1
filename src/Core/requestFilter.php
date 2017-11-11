@@ -1,8 +1,8 @@
 <?php
     namespace Teorihandbok\Core;
 
-    // En klass för att kunna hämta ut och filtrera parametrar från requests som nyckel-värde par. (map)
-    // Ska användas för att innehålla parametrar vi får via GET och POST metoderna (samt kakor) via requests. 
+    // The RequestFilter is a class that can extract att filter parameters from requests as key values.
+    // Will hold the parameters we get from GET, POST and COOKIES. 
 
 
     class RequestFilter
@@ -14,18 +14,18 @@
             $this->map = $baseMap;
         }
 
-        public function has(string $name): bool   // Finns värdet vi letar efter i mappen??
+        public function has(string $name): bool   // Do we have the value we are looking for in map?
         {
             return isset($this->map[$name]);    
         }
 
         public function get(string $name)
         {
-            return $this->map[$name] ?? null;    // Vill hämta ut namnet på något. Då vill man titta
-        }                                        // i mappen. ?? = Annars  
+            return $this->map[$name] ?? null;    // Want to get the name -> look in map
+        }                                        // ?? = Or
 
 
-        public function getInt(string $name)     // Type juggling. från sträng -> heltal
+        public function getInt(string $name)     // Type juggling. from string -> int
         {
             return (int) $this->get($name);
         }
@@ -39,7 +39,7 @@
         public function getString(string $name, bool $filter = true) 
         {
             $value = (string) $this->get($name);
-            return $filter ? addslashes($value) : $value; // För att förhindra SQL injections. ? = Om satt till true;
+            return $filter ? addslashes($value) : $value; // First step to prevent SQL injections. ? = if true;
         }
 
     }

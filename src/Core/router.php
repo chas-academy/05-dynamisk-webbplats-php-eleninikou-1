@@ -1,10 +1,10 @@
 <?php
 
 
-//  ROUTER: behöver göra 3 saker
-//  1. Matcha URL med regular expression
-//  2. Ta ut argumenten från en URL
-//  3. Välja vilken kontroller som ska köras baserat på vilka tillgängliga routes vi har definierat.
+//  ROUTER: Need to do 3 things
+//  1. Match URL with regular expressions
+//  2. Extract arguments from the URL
+//  3. Choose wich controller to run based on the routes we defined.
 
 
 namespace Teorihandbok\Core;
@@ -14,12 +14,12 @@ use Teorihandbok\Controllers\PostController;
 use Teorihandbok\Controllers\DefaultController;
 
 class Router {
-                                          // regex = regular expressions. Uppsättning regler för
-                                          // att hämta ut och matcha saker.    
-    private $routeMap;                    // Uppsättning key values. (Definierat i routes.json)
-    private static $regexPatters = [      // Baserat på den här uppsättningen av karaktärer:
-        'number' => '\d+',                // -> hämta ut det som är av typen nr
-        'string' => '\w'                  // -> hämta ut det som är av typen string    
+                                          // regex = regular expressions. Rules for fetching 
+                                          // and matching things.    
+    private $routeMap;                    // Key values. (Defined in routes.json)
+    private static $regexPatters = [      // Depending on these charachters:
+        'number' => '\d+',                // -> get all that is the type of nr
+        'string' => '\w'                  // -> get all that is the type of string    
     ];
 
 
@@ -48,12 +48,12 @@ class Router {
     }
 
 
-    // Tar emot route och en array av info om det finns någon. 
+    // Accepts the route and the array of info if there is any. 
     private function getRegexRoute(string $route, array $info): string {
         if (isset($info['params'])) {
             foreach ($info['params'] as $name => $type) {
                 $route = str_replace(':' . $name, self::$regexPatters[$type], $route);
-            }              // Ta bort :    $name =namn på nyckeln i array. Kolla typen i routes.json
+            }               // remove :    $name -> name on key. . Check the type in routes.json
                                                  
         }
 
@@ -61,30 +61,34 @@ class Router {
     }
 
     private function executeController(
-        string $route,                  // Vilken route?
-        string $path,                   // Vilken path?
-        array $info,                    // vilka parametrar?
+        string $route,                  // wich route?
+        string $path,                   // wich path?
+        array $info,                    // wich parameters?
         Request $request        
     ): string {
         $controllerName = '\Teorihandbok\Controllers\\' . $info['controller'] . 'Controller';
-        $controller = new $controllerName($request); // Controllern styr vad som ska ske beroende på vår request
+        $controller = new $controllerName($request); // The controller will direct us depending on our request
 
+        // When the router is found and we want to run the controller. We also
+        // look at the parameters. Is the login: true? -> get the cookie 'user'.
+        // Then you can get things from the cookie with the function get().
         if (isset($info['login']) && $info['login']) {
             if ($request->getCookies()->has('user')) {
-                $customerId = $request->getCookies()->get('user');
-                $controller->setCustomerId($customerId);
+                $userId = $request->getCookies()->get('user');
+                $controller->setUserId($userId); // In abstract controller. 
             } else {
-                $errorController = new CustomerController($request);
+                $errorController = new UserController($request);
                 return $errorController->login();
             }
         }
 
         $params = $this->extractParams($route, $path);
         return call_user_func_array([$controller, $info['method']], $params); 
+                                  // Wich controller? Wich Method? Parameters?
     }
 
 
-    // Vad är parametrar i Routern
+    // To get the parameters in the Router
     private function extractParams(string $route, string $path): array {
         
         $params = [];
@@ -93,7 +97,7 @@ class Router {
         $routeParts = explode('/', $route);
 
         foreach ($routeParts as $key => $routePart) {
-            if (strpos($routePart, ':') === 0) {        // Om positionen av : i $routePart = 0
+            if (strpos($routePart, ':') === 0) {        // If the position of : in $routePart = 0
                 $name = substr($routePart, 1);           
                 $params[$name] = $pathParts[$key+1];     
             }

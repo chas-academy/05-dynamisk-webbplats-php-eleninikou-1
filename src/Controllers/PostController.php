@@ -41,9 +41,9 @@ class PostController extends AbstractController
             return $this->render('views/error.php', $properties);
         
         $properties = ['post' => $post];
-        // I fallet update ska den till admin. 
-        return $this->render('views/admin.php', $properties);
-    }*/
+        
+        return $this->render('views/admin.html', $properties);
+    } */
 
     public function saveNewPost() {
         
@@ -57,8 +57,8 @@ class PostController extends AbstractController
         $saveNewPost = new PostModel;
         $post = $saveNewPost->savePost();
         
-        $this->getAll(); // Kan man köra funktionen så?
-        
+        getAll(); // Kan man köra funktionen så?
+        return $this->render('/views/posts.php', $properties);
     }
 
     public function getPostsByCategory($category) 
@@ -66,7 +66,7 @@ class PostController extends AbstractController
         $postModel = new PostModel();
         $posts = $postModel->getByCategory($category);
     
-        $this->getAll();
+        getAll();
     }
 
     public function getPostsByTag($tag)
@@ -76,17 +76,22 @@ class PostController extends AbstractController
         getAll();
     }
     
-    public function changePost($id)
+    public function update($id)
     {
         $postModel = new PostModel();
-        $posts = $postModel->get($this->id);
+        $posts = $postModel->updatePost();
+        $this->getAll();
 
-        $properties = [
-            'title' => $title,
-            'body' => $body,
-        ];
+        return $this->render('views/posts.php', $properties);
+    }
 
-        return $this->render('views/update.php', $properties);
+    public function delete($id)
+    {
+        $postModel = new PostModel();
+        $posts = $postModel->deletePost();
+        $this->getAll();
+
+        return $this->render('views/posts.php', $properties);
     }
 
 }

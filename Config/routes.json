@@ -20,10 +20,29 @@
 
   "posts/save" : {
     "controller": "Post",
-    "method": "saveNewPost"
+    "method": "saveNewPost",
+    "Login": true
   },
 
-  "admin": {
+  "post/:id/update": {
+    "controller": "post",
+    "method": "update",
+      "login": true,
+      "params": {
+      "id": "number"
+    }
+  },
+
+  "post/:id/delete": {
+    "controller": "post",
+    "method": "delete",
+      "login": true,
+      "params": {
+      "id": "number"
+    }
+  },
+
+  "login": {
     "controller": "User",
     "method": "login"
    },
@@ -35,7 +54,7 @@
         "id": "number"
       }
    },  
-     
+
   "posts/tags/:id": {
     "controller": "Post",
     "method": "getByTag",

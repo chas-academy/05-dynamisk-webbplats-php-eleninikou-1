@@ -2,10 +2,10 @@
 
 namespace Teorihandbok\Models;
 use \Teorihandbok\Domain\Post;
-use \PDO;
+use PDO;
 
 
-class PostModel extends AbstractModel  // Får connection
+class PostModel extends AbstractModel  
 {
     const CLASSNAME = '\Teorihandbok\Domain\Post';
 
@@ -71,7 +71,7 @@ class PostModel extends AbstractModel  // Får connection
                 $statement->bindParam(':length', $pageLength, PDO::PARAM_INT);
                 $statement->execute();
         
-                return $statement->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
+                return $posts = $statement->fetchAll(); //PDO::FETCH_CLASS, self::CLASSNAME
     }
 
     public function getByCategory (int $category): array
@@ -125,7 +125,6 @@ class PostModel extends AbstractModel  // Får connection
     {
 
         try { 
-
             $query = "UPDATE posts SET (title, body, category, tag) VALUE (:title, :body, :category, :tag) WHERE id = $id";
             //UPDATE posts SET title = "snälla", body = "fungera" WHERE id = 24; -> fungerar.
             
@@ -137,7 +136,7 @@ class PostModel extends AbstractModel  // Får connection
             $statement->execute(); 
 
         } catch (Exception $e) {  
-            //$connection->handler->rollBack():     
+            $connection->handler->rollBack();     
             echo $e->getMessage();
             die();
         }
@@ -145,8 +144,16 @@ class PostModel extends AbstractModel  // Får connection
 
     public function deletePost(int $id)
     {   
-        // Query fungerar.
-        $query = "DELETE FROM posts WHERE id = $id";
+        try { 
+            $query = "DELETE FROM posts WHERE id = $id";
+            $statement->execute(); 
+
+        } catch (Exception $e) {  
+            $connection->handler->rollBack();     
+            echo $e->getMessage();
+            die();
+        }
+        
     }
 
 

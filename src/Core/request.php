@@ -4,22 +4,22 @@ namespace Teorihandbok\Core;
 
 class Request {
 
-    // Parametrar som kommer som metoder
-    const GET = 'GET';   // Metodtyper
-    const POST = 'POST'; // Metodtyper
+    // Parameters as methods. 
+    const GET = 'GET';   // Type of method
+    const POST = 'POST'; // Type of method
 
     private $domain; 
     private $path;
-    private $method;     // Metoden i sig
+    private $method;     // The method itself
     private $params;
     private $cookies;
 
     
     public function __construct() {
         $this->domain = $_SERVER['HTTP_HOST'];                          // t.ex teorihandboken.se 
-        $this->path = explode('?', $_SERVER['REQUEST_URI'])[0];         // t.ex /my-posts
+        $this->path = explode('?', $_SERVER['REQUEST_URI'])[0];         // t.ex /posts
         $this->method = $_SERVER['REQUEST_METHOD'];                     // GET, POST
-        $this->params = new RequestFilter(array_merge($_POST, $_GET));  // Ska utnyttja filter-klassen
+        $this->params = new RequestFilter(array_merge($_POST, $_GET));  // uses the filter-class
         $this->cookies = new RequestFilter($_COOKIE);                   
     }
 
@@ -40,11 +40,11 @@ class Request {
     }
 
     public function isPost(): bool {
-        return $this->method === self::POST;        // Om metoden = konstanten POST
+        return $this->method === self::POST;        // If the method = const POST
     }
 
     public function isGet(): bool {
-        return $this->method === self::GET;         // Om metoden = konstanten GET
+        return $this->method === self::GET;         // If the method = const GET
     }
 
     public function getParams(): RequestFilter {

@@ -1,9 +1,9 @@
 <?php
 
-    /* Håller koll på alla instanser av klasser och ser till
-    så att de bara har blivit instaniserade en gång. Bra när
-    man sitter med en databasuppkopling, så man vet att det är
-    samma uppkoppling man har.   */
+    /* Keeps track of all instances of classes and makes sures
+    that they only get instanciated? once. Good when you use
+    this typ of connection to a database and you want to make
+    sure that you are using the same connection all the time */ 
 
     // In utils
     namespace Teorihandbok\Utils;
