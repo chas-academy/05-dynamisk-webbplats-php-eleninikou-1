@@ -1,7 +1,8 @@
 <?php
 
 namespace Teorihandbok\Models;
-use \Teorihandbok\Domain\Post;
+use Teorihandbok\Domain\Post;
+use Teorihandbok\Controllers\PostController;
 use PDO;
 
 
@@ -11,8 +12,14 @@ class PostModel extends AbstractModel
 
     public function savePost()
     {
-        
         try {  
+            $newPost = array(
+                'title'    => $_POST['title'],
+                'body'     => $_POST['body'],
+                'category' => $_POST['category'],
+                'tag'      => $_POST['tag']
+            );
+
             // Insert to Post
             $query = "INSERT INTO posts (title, body, category, tag) VALUES (:title, :body, :category, :tag)";
             $statement = $this->db->prepare($query);
@@ -21,28 +28,62 @@ class PostModel extends AbstractModel
             $statement->bindValue(':body', $newPost['body'], PDO::PARAM_STR);
             $statement->bindValue(':category', $newPost['category'], PDO::PARAM_INT);
             $statement->bindValue(':tag', $newPost['tag'], PDO::PARAM_INT);
+        
+            $statement->execute(); 
 
-            
-            $postID = $this->db->lastInsertId();
+        } catch (Exception $e) {       
+            echo $e->getMessage();
+            die();
+        }
 
+
+    }
+
+    public function savePost_category()
+    {
+        $postID = $this->db->lastInsertId();
+        $newPost = array(
+            'title'    => $_POST['title'],
+            'body'     => $_POST['body'],
+            'category' => $_POST['category'],
+            'tag'      => $_POST['tag']
+        );
+
+        try {
+          
             // Insert postID and category
             $query = "INSERT INTO post_category (posts_id, categories_id) VALUES (:post, :category)";
             $statement = $this->db->prepare($query);
-            $statment->bindValue(':post', $postID, PDO::PARAM_INT);
-            $statment->bindValue(':category', $newPost['category'], PDO::PARAM_INT); 
+            $statement->bindValue(':post', $postID, PDO::PARAM_INT);
+            $statement->bindValue(':category', $newPost['category'], PDO::PARAM_INT); 
 
+            $statement->execute(); 
+
+        } catch (Exception $e) {       
+            echo $e->getMessage();
+            die();
+        }
+    }
+
+    public function savePost_tag()
+    {
+        $postID = $this->db->lastInsertId();
+        $newPost = array(
+            'title'    => $_POST['title'],
+            'body'     => $_POST['body'],
+            'category' => $_POST['category'],
+            'tag'      => $_POST['tag']
+        );
+
+        try {
             // Insert postID and tags
-            $query = "INSERT INTO post_tags (posts_id, tags_id) VALUES (:post, :tags)";
+            $query = "INSERT INTO post_tags (posts_id, tags_id) VALUES (:post, :tag)";
             $statement = $this->db->prepare($query);
             $statement->bindValue(':post', $postID, PDO::PARAM_INT);
-            foreach($tags as $tag) {
-                $statement->bindValue(':tags', $tag, PDO::PARAM_INT);
-            }
+            $statement->bindValue(':tag', $newPost['tag'], PDO::PARAM_INT);
             
-
             $statement->execute();     
             
-       
         } catch (Exception $e) {       
             echo $e->getMessage();
             die();
@@ -61,6 +102,15 @@ class PostModel extends AbstractModel
         return $posts[0];
     }
 
+    public function reallyGetAll()
+    {
+        $query = 'SELECT * FROM posts';
+        $statement = $this->db->prepare($query);
+
+        $statement->execute();
+        return $posts = $statement->fetchAll(); 
+    }
+
     public function getAll(int $page, int $pageLength): array
     {
         $start = $pageLength * ($page - 1);
@@ -71,7 +121,7 @@ class PostModel extends AbstractModel
                 $statement->bindParam(':length', $pageLength, PDO::PARAM_INT);
                 $statement->execute();
         
-                return $posts = $statement->fetchAll(); //PDO::FETCH_CLASS, self::CLASSNAME
+                return $posts = $statement->fetchAll(); 
     }
 
     public function getByCategory (int $category): array
@@ -87,7 +137,7 @@ class PostModel extends AbstractModel
 
             //   Vrf fungerar ej fetchAll? --------------------------------------------------------  //
            
-            $posts = $statement->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
+            $posts = $statement->fetchAll();
             // PDOStatement::fetchAll — Returns an array containing all of the result set rows
 
             return $posts;

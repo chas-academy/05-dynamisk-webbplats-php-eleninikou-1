@@ -193,7 +193,7 @@ textarea::placeholder {
 .index {
     display: flex;
     flex: 1;
-    width: 60%;
+    width: 70%;
     height: 50%;
     margin: auto;
     margin-top: 80px;
@@ -217,13 +217,13 @@ textarea::placeholder {
     margin-top: 20px;
     text-align: center;
     border-bottom: 1px solid black;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .navmenu {
     text-transform: uppercase;
     text-align: center;
-    margin-top: 25px;
+    margin-top: 16px;
     font-size: 22px;
 }
 
@@ -253,7 +253,7 @@ textarea::placeholder {
     text-align: center;
     margin: 15px;
     margin-right: 45px;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .tags {
@@ -261,9 +261,10 @@ textarea::placeholder {
     flex-direction: column;
     justify-content: space-between;
     height: 200px;
-    margin: 15px;
-    margin-left: 120px;
-    margin-bottom: 30px;
+    margin-top: 7px;
+    margin-bottom: 25px;
+    text-align: center;
+    
 }
 
 
@@ -272,8 +273,8 @@ textarea::placeholder {
     display: flex;
     flex-direction: column;
     background-color: rgba(255, 255, 255, 0.596);
-    width: 80%;
-    height: 70%;
+    width: 90%;
+    height: 92%;
     align-items: center;
     margin: auto;
     margin-bottom: 30px;
@@ -286,6 +287,7 @@ textarea::placeholder {
     padding: 10px;
     justify-content: space-around;
     align-items: center;
+    width: 80%;
 }
 
 .logintext {
@@ -308,19 +310,6 @@ textarea::placeholder {
     font-size: 20px;
 }
 
-
-
-
-.book {
-    width: 50%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.288);
-}
-
-.theBook {
-    margin-top: 100px;
-    margin-left: 120px;   
-}
 
 footer {
     width: 100%;

@@ -22,7 +22,7 @@ class PostController extends AbstractController
             'lastPage' => count($posts) < self::PAGE_LENGTH
         ];
         
-        return $this->render('./posts.php', $properties);
+        return $this->render('.views/posts.php', $properties);
     }
 
     public function getAll(): string
@@ -30,68 +30,65 @@ class PostController extends AbstractController
         return $this->getAllWithPage(1);
     }
 
-    /*
-    public function get($id): string
-    {
-        $postModel = new PostModel()
-        try {
-            $post = $postModel->get($id);
-        } catch (\Exception $e) {
-            $properties = ['errorMessage' => 'Post not found!'];
-            return $this->render('views/error.php', $properties);
-        
-        $properties = ['post' => $post];
-        
-        return $this->render('views/admin.html', $properties);
-    } */
-
     public function saveNewPost() {
         
-        $newPost = array(
-            'title'    => $_POST['title'],
-            'body'     => $_POST['body'],
-            'category' => $_POST['category'],
-            'tags'     => $_POST['tags']
-        );
-
         $saveNewPost = new PostModel;
-        $post = $saveNewPost->savePost();
+        $posts = $saveNewPost->savePost();
+        $allposts = $saveNewPost->reallyGetAll();
         
-        getAll(); // Kan man köra funktionen så?
-        return $this->render('/views/posts.php', $properties);
+        $this->getAll();
+
+        $properties = [
+            'posts' => $allposts,
+            'currentPage' => 1,
+            'lastPage' => true
+        ];
+
+        return $this->render('views/posts.php', $properties);
     }
 
     public function getPostsByCategory($category) 
     {
         $postModel = new PostModel();
         $posts = $postModel->getByCategory($category);
-    
-        getAll();
+        $this->getAll();
+
+        $properties = [
+            'posts' => $posts,
+            'currentPage' => 1,
+            'lastPage' => true
+        ];
+        return $this->render('views/posts.php', $properties);
     }
 
     public function getPostsByTag($tag)
     {
         $postmodel = new PostModel();
-        $posts = $postModel->getByTag($tag);
-        getAll();
+        $postModel->getByTag($tag);
+        $this->getAll();
+
+        $properties = [
+            'posts' => $posts,
+            'currentPage' => 1,
+            'lastPage' => true
+        ];
+        return $this->render('views/posts.php', $properties);
     }
     
     public function update($id)
     {
         $postModel = new PostModel();
-        $posts = $postModel->updatePost();
+        $postModel->updatePost();
         $this->getAll();
 
-        return $this->render('views/posts.php', $properties);
     }
 
     public function delete($id)
     {
         $postModel = new PostModel();
-        $posts = $postModel->deletePost();
+        $postModel->deletePost();
         $this->getAll();
 
-        return $this->render('views/posts.php', $properties);
     }
 
 }

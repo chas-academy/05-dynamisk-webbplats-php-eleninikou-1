@@ -9,27 +9,7 @@ class UserModel extends AbstractModel
 {
     const CLASSNAME = '\Teorihandbok\Domain\User';
 
-    
-    public function get(int $userId): User
-    {
-        $query = 'SELECT * FROM user WHERE id = :id';
-        $statement = $this->db->prepare($query);
-        $statement->execute(['id' => $Id]);
-
-        $row = $statement->fetch();
-        if (empty($row)) {
-            throw new NotFoundException();
-        }
-        
-        $user = (
-            $row['id'],
-            $row['firstname'],
-            $row['surname'],
-            $row['email']
-        );
-    }
-
-    public function getByEmail(string $email): User
+    public function getByEmail(string $email): array
     {
         $query = 'SELECT * FROM user WHERE email = :user';
         $statement = $this->db->prepare($query);
@@ -40,14 +20,14 @@ class UserModel extends AbstractModel
         if (empty($row)) {
             throw new NotFoundException();
         }
-
-        $user = (
-            $row['id'],
-            $row['firstname'],
-            $row['surname'],
-            $row['email']
-        );
-
+        
+        $user = [
+            'id' => $row['id'],
+            'firstname' => $row['firstname'],
+            'surname' => $row['surname'],
+            'email' => $row['email']
+        ];
+ 
         return $user;
         
     }
