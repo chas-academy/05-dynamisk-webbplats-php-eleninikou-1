@@ -1,6 +1,7 @@
 <?php
 
 namespace Teorihandbok\Controllers;
+
 use Teorihandbok\Models\PostModel;
 
 
@@ -35,7 +36,7 @@ class PostController extends AbstractController
         $saveNewPost = new PostModel;
         $posts = $saveNewPost->savePost();
         $allposts = $saveNewPost->reallyGetAll();
-        
+
         $this->getAll();
 
         $properties = [
@@ -63,8 +64,8 @@ class PostController extends AbstractController
 
     public function getPostsByTag($tag)
     {
-        $postmodel = new PostModel();
-        $postModel->getByTag($tag);
+        $postModel = new PostModel;
+        $posts = $postModel->getByTag($tag);
         $this->getAll();
 
         $properties = [
@@ -75,12 +76,31 @@ class PostController extends AbstractController
         return $this->render('views/posts.php', $properties);
     }
     
-    public function update($id)
+    public function getToUpdate($id)
     {
         $postModel = new PostModel();
-        $postModel->updatePost();
+        $post= $postModel->get($id);
+
+        $properties = [
+            'post' => $post
+        ];
+
+        return $this->render('views/update.php', $properties);
+    }
+
+    public function updatePost($id)
+    {
+        $postModel = new PostModel();
+        $postModel->updatePost($id);
         $this->getAll();
 
+        $properties = [
+            'posts' => $allposts,
+            'currentPage' => 1,
+            'lastPage' => true
+        ];
+
+        return $this->render('views/posts.php', $properties);
     }
 
     public function delete($id)

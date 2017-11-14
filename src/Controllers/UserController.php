@@ -11,7 +11,7 @@ class UserController extends AbstractController
         // This is to prevent info to get displayed in the URL with GET-method. 
         if (!$this->request->isPost()) {
             $params = ['errorMessage' => 'Logga in för att skapa nya inlägg!'];
-            return $this->render('views/layout.php', $params);
+            return $this->render('views/layout.html', $params);
         }
 
         // Request-object gets parameters from URL.
@@ -19,7 +19,7 @@ class UserController extends AbstractController
 
         if (!$params->has('email')) {
             $params = ['errorMessage' => 'Du loggar in med din email!'];
-            return $this->render('views/layout.php', $params);
+            return $this->render('views/layout.html', $params);
         }
 
         // Save email in a new variable. New instance of UserModel 
@@ -34,7 +34,7 @@ class UserController extends AbstractController
         } catch (NotFoundException $e) {
             $this->log->warn('Kunde inte hitta användare med denna email: ' . $email);
             $params = ['errorMessage' => 'Kunde ej hitta email'];
-            return $this->render('views/layout.php', $params);
+            return $this->render('views/layout.html', $params);
         }
 
         // 'user' gets the value of user-id. 
@@ -43,4 +43,6 @@ class UserController extends AbstractController
         // User is now logged in to admin-page with right URL
         $this->redirect('./views/admin.html');
     } 
+
+    // public function logOut()
 }

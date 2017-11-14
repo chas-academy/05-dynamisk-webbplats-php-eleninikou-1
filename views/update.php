@@ -1,26 +1,20 @@
 
-    <!-- Create new post -->
     <section class = "create">
-        <!-- Insert title and body -->  
-        <form class="create-post" action="" method="post">
-            
+        <form class="create-post" action="<?php echo $post->getId(); ?>/updated" method="post"> 
             <div class="post-tags">
                 <section class="post-input">
-                    <h2> Skapa inlägg </h2>
-                    <input type="text"  id="title" name="title" placeholder =" Titel">
-                    <textarea type="text" id="body" name="body" class="textfield" placeholder=" Text"></textarea>
-                    
-                    <div class="arrow">
-                        <button type="submit" class="save">Spara </button>
-                        <span class="arrow-head"></span>
-                        <span class="arrow-arm"></span>
-                    </div>  
+                    <h2> Uppdatera inlägg </h2>
+                    <input type="text"  id="title" name="title" value="<?php echo $post->getTitle(); ?>">
+                    <textarea type="text" id="body" name="body" value="<?php echo $post->getBody(); ?>"></textarea>
+               
+                    <button type="submit" class="save">Spara </button>
+                       
                 </section>
             
                 <section class="right-side">
                 <a href="#" class="close-button"></a>
-                    <a href ="../layout.php" class ="logout"></a>
-                        <!-- Select Tags -->          
+                    <a href ="/posts" class ="logout"></a>
+                            
                         <select multiple class="select-tags" name="tag[]"> 
                             <option value="" disabled selected class="select"> Välj taggar </option>
                             <option value= 1> HTML </option>
