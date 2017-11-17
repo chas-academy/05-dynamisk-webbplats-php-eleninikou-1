@@ -15,16 +15,15 @@
                 <a href="#" class="close-button"></a>
                     <a href ="/posts" class ="logout"></a>
                 
-                        <select multiple class="select-tags" name="tag[]">
+                    <select multiple class="select-tags" name="tag[]">
                         <option value="" disabled selected class="select"> Välj taggar </option>
                             <?php foreach ($allTags as $tags): ?>
                                 <?php foreach ($tags as $tag): ?>
-                                    <?php if ($tags['tag_id'] === $tag['tag_id']): ?> 
-                                    
-                                        <option value="<?php echo $tags['tag_id']; ?>" selected> <?php echo $tags['tag_name']; ?> </option> 
-                                    <?php else: ?>
+                                    <?php if ($tag['tag_id'] === $tags['tag_id']): ?> 
+                                        <option value="<?php echo $tags['tag_id']; ?>" selected> <?php echo $tags['tag_name']; ?> </option>
+                                            <?php else: ?>
                                         <option value="<?php echo $tags['tag_id']; ?>"> <?php echo $tags['tag_name']; ?> </option>
-                                <?php endif; ?>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
                             <?php endforeach; ?>
                         </select>    

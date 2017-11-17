@@ -3,5 +3,11 @@
         "dsn": "mysql:host=127.0.0.1;dbname=teorihandboken",
         "user": "root",
         "password": "root"
+    },
+
+    "db": {
+        "dsn": "mysql:host=teorihandbok-226747.mysql.binero.se;dbname=teorihandboken",
+        "user": "226747_ap90193",
+        "password": "Kerasaki99"
     }
 }
