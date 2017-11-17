@@ -4,7 +4,7 @@ namespace Deployer;
 require 'recipe/common.php';
 
 // Project name
-set('application', 'my_project');
+set('application', 'teorihandbok');
 
 // Project repository
 set('repository', 'https://github.com/chas-academy/05-dynamisk-webbplats-php-eleninikou-1.git');
@@ -22,8 +22,10 @@ set('allow_anonymous_stats', false);
 
 // Hosts
 
-host('project.com')
-    ->set('deploy_path', '~/{{application}}');    
+host('ssh.binero.se')
+    ->set('deploy_path', '~/eleninikou.chas.academy') 
+    ->user('226747_eleninik')
+    ->port(22);   
     
 
 // Tasks
@@ -37,7 +39,6 @@ task('deploy', [
     'deploy:update_code',
     'deploy:shared',
     'deploy:writable',
-    'deploy:vendors',
     'deploy:clear_paths',
     'deploy:symlink',
     'deploy:unlock',
