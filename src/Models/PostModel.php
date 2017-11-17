@@ -63,7 +63,7 @@ class PostModel extends AbstractModel
 
     public function get(int $id)
     {
-        $query = 'SELECT p.id, p.title, p.body, c.category_name, t.tag_name
+        $query = 'SELECT p.id, p.title, p.body, p.category, c.category_name, t.tag_name
         FROM posts p
         LEFT JOIN post_tags pt ON p.id = pt.posts_id
         LEFT JOIN categories c ON c.category_id = p.category
@@ -144,6 +144,27 @@ class PostModel extends AbstractModel
         }
 
     }
+
+    public function getAllCategories(): array
+    {
+        try {
+            
+            $query = 'SELECT * FROM categories';
+
+            $statement = $this->db->prepare($query);            
+            $statement->execute();
+            
+            $allCategories = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            return $allCategories;
+
+        } catch (Exception $e) {       
+            echo $e->getMessage();
+            die();
+        }
+
+    }
+
 
     public function getTagsForPostId(int $id) 
     {
@@ -244,8 +265,9 @@ class PostModel extends AbstractModel
 
     } 
 
-    public function updateTags(int $id)
+    public function updateTags()
     {
+        $postID = $this->db->lastInsertId();
         $tags = $_POST['tag'];
 
         try {
@@ -253,7 +275,7 @@ class PostModel extends AbstractModel
             foreach ($_POST['tag'] as $key => &$value) {
                 $query = "UPDATE post_tags SET (posts_id, tags_id) VALUES (:post, :tag)";
                 $statement = $this->db->prepare($query);
-                $statement->bindValue(':post', $id, PDO::PARAM_INT);
+                $statement->bindValue(':post', $postID, PDO::PARAM_INT);
                 $statement->bindValue(':tag', $value, PDO::PARAM_INT);
                 $statement->execute(); 
             }

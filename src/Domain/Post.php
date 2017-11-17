@@ -45,14 +45,14 @@ class Post {
         $this->tags = $tags;
     }
 
-    public function getCategory(): int
+    public function getCategory(): int 
     {
         return $this->category;
     }
 
     public function setCategory(int $category)
     {
-        $this->Category = $Category;
+        $this->category = $category;
     }
 
 }

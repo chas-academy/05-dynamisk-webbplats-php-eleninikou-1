@@ -80,11 +80,13 @@ class PostController extends AbstractController
         $post = $postModel->get($id);
         $tags = $postModel->getTagsForPostId($id);
         $allTags = $postModel->getAllTags();
+        $allCategories = $postModel->getAllCategories();
 
         $properties = [
             'post' => $post,
             'tags' => $tags,
-            'allTags' => $allTags
+            'allTags' => $allTags,
+            'allCategories' => $allCategories
         ];
 
         return $this->render('views/update.php', $properties);
@@ -95,7 +97,7 @@ class PostController extends AbstractController
     {
         $postModel = new PostModel();
         $postModel->updatePost($id);
-        $allposts = $postModel->getAll();
+        $allposts = $postModel->reallyGetAll();
 
         $properties = [
             'posts' => $allposts,
@@ -103,7 +105,7 @@ class PostController extends AbstractController
             'lastPage' => true
         ];
 
-        return $this->render('/views/posts.php', $properties);
+        return $this->render('views/posts.php', $properties);
     }
 
     public function delete($id)
@@ -115,6 +117,7 @@ class PostController extends AbstractController
         $properties = [
             'posts' => $posts
         ];
+
         return $this->render('views/posts.php', $properties);
        
     }

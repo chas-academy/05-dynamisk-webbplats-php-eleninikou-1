@@ -39,7 +39,7 @@
     }
   },
 
-  "post/:id/delete": {
+  "/:id/delete": {
     "controller": "Post",
     "method": "delete",
       "params": {

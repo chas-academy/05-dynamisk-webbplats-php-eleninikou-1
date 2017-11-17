@@ -1,4 +1,5 @@
 
+   
     <section class = "create">
         <form class="create-post" action="/<?php echo $post->getId(); ?>/updated" method="post"> 
             <div class="post-tags">
@@ -17,24 +18,39 @@
                 
                     <select multiple class="select-tags" name="tag[]">
                         <option value="" disabled selected class="select"> Välj taggar </option>
-                            <?php foreach ($allTags as $tags): ?>
-                                <?php foreach ($tags as $tag): ?>
-                                    <?php if ($tag['tag_id'] === $tags['tag_id']): ?> 
-                                        <option value="<?php echo $tags['tag_id']; ?>" selected> <?php echo $tags['tag_name']; ?> </option>
-                                            <?php else: ?>
-                                        <option value="<?php echo $tags['tag_id']; ?>"> <?php echo $tags['tag_name']; ?> </option>
-                                    <?php endif; ?>
+                            <?php foreach ($allTags as $value): ?>
+                            <?php $i = 0; ?>
+                                    <?php foreach ($tags as $tag): ?>
+
+                                        <?php if ($tag['tag_id'] === $value['tag_id']): ?> 
+                                            <option value="<?php echo $value['tag_id']; ?>" selected><?php echo $value['tag_name']; ?></option>
+                                            <?php break; ?>
+
+                                        <?php elseif ($tag['tag_id'] != $value['tag_id'] && in_array($tag['tag_id'], $tags)): ?>
+                                            <?php break; ?>
+                                        
+                                        <?php else: ?>
+                                        <?php if($i == 0): ?>
+                                            <option value="<?php echo $value['tag_id']; ?>"><?php echo $value['tag_name']; ?></option> 
+                                            <?php $i++; ?>
+                                            
+                                            <?php endif; ?>
+                                        <?php endif; ?>
                                 <?php endforeach; ?>
                             <?php endforeach; ?>
                         </select>    
 
-                    <!-- Select category -->
-                    <select class="select-category" name="category">
-                        <option value= "" disabled selected class="select"> Välj kategori </option>
-                        <option value= 1> Frontend </option>
-                        <option value= 2> Backend </option>
-                        <option value= 3> Övrigt </option>
-                    </select>
+                    <select class="select-categories" name="category">
+                        <option value= "" disabled class="select"> Välj kategori </option>
+                            <?php foreach ($allCategories as $cat): ?>
+                                <?php if ($cat['category_id'] === $post->getCategory()): ?>
+                                    <option value"<?php echo $cat['category_id']; ?>" selected ><?php echo $cat['category_name']; ?></option> 
+                        
+                                <?php else: ?>
+                                    <option value"<?php echo $cat['category_id']; ?>"><?php echo $cat['category_name']; ?></option> 
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                    </select>                    
             </div>  
         </form>
     </section>
