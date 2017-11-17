@@ -41,7 +41,7 @@ class UserController extends AbstractController
         setcookie('user', $row['id']);
 
         // User is now logged in to admin-page with right URL
-        $this->redirect('./views/admin.html');
+        $this->redirect('/views/admin.html');
     } 
 
     // public function logOut()

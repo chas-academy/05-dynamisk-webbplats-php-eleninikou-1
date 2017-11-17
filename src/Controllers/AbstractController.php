@@ -37,17 +37,9 @@ abstract class AbstractController
     // To redirect client to different paths.  
     protected function redirect(string $url) // lägg till array $params = null
     {
+                                
+        header('Location: '.$url);
 
-        // if (isset($params)) {
-        //    $queryparams = http_build_query($params);
-        //    $url = $url . '?' . $queryparams;
-        //}
-
-        ob_start();                          // ob_start will turn output buffering on. While output  
-        header('Location: '.$url);           // buffering is active no output is sent from the script
-        ob_end_flush();                      // (other than headers), instead the output is stored in 
-        die();                               // an internal buffer. ob_en_flush Flush (send) the output
-                                             // buffer and turn off output buffering
     }
 
 }

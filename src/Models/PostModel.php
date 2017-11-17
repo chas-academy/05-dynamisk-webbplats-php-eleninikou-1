@@ -63,7 +63,12 @@ class PostModel extends AbstractModel
 
     public function get(int $id)
     {
-        $query = 'SELECT * FROM posts WHERE id = :id';
+        $query = 'SELECT p.id, p.title, p.body, c.category_name, t.tag_name
+        FROM posts p
+        LEFT JOIN post_tags pt ON p.id = pt.posts_id
+        LEFT JOIN categories c ON c.category_id = p.category
+        LEFT JOIN tags t ON pt.tags_id = t.tag_id WHERE id = :id';
+        
         $statement = $this->db->prepare($query);
         $statement->execute([':id' => $id]);
 
@@ -74,26 +79,29 @@ class PostModel extends AbstractModel
 
     public function reallyGetAll()
     {
-        $query = 'SELECT p.id, p.title, p.body, c.category_name, t.tag_name
+        $query = 'SELECT p.id, p.title, p.body, c.category_name
         FROM posts p
-        LEFT JOIN post_tags pt ON p.id = pt.posts_id
-        LEFT JOIN categories c ON c.category_id = p.category
-        LEFT JOIN tags t ON pt.tags_id = t.tag_id';
+        LEFT JOIN categories c ON c.category_id = p.category';
 
         $statement = $this->db->prepare($query);
         $statement->execute();
-        return $posts = $statement->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME); 
+
+        $posts = $statement->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME); 
+        
+        foreach ($posts as $post) {
+            $post->setTags($this->getTagsForPostId($post->getId()));
+        }
+        
+        return $posts;
     }
 
     public function getAll(int $page, int $pageLength): array
     {
         $start = $pageLength * ($page - 1);
         
-                $query = 'SELECT p.id, p.title, p.body, c.category_name, t.tag_name
+                $query = 'SELECT p.id, p.title, p.body, c.category_name
                 FROM posts p
-                LEFT JOIN post_tags pt ON p.id = pt.posts_id
                 LEFT JOIN categories c ON c.category_id = p.category
-                LEFT JOIN tags t ON pt.tags_id = t.tag_id
                 LIMIT :page, :length';
 
                 $statement = $this->db->prepare($query);
@@ -101,20 +109,22 @@ class PostModel extends AbstractModel
                 $statement->bindParam(':length', $pageLength, PDO::PARAM_INT);
                 $statement->execute();
         
-                return $posts = $statement->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME); 
+                $posts = $statement->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME); 
+
+                foreach ($posts as $post) {
+                    $post->setTags($this->getTagsForPostId($post->getId()));
+                }
+
+                return $posts;
     }
 
     public function getByCategory (int $category): array
     {
         try {
-        
-            $query = 'SELECT p.id, p.title, p.body, p.category, c.category_name, t.tag_name, t.tag_id
-             FROM posts p
-             LEFT JOIN post_tags pt ON p.id = pt.posts_id
-             LEFT JOIN categories c ON c.category_id = p.category
-             LEFT JOIN tags t ON pt.tags_id = t.tag_id
-             WHERE category = :category';
-
+            $query = 'SELECT p.id, p.title, p.body, c.category_name
+            FROM posts p
+            LEFT JOIN categories c ON c.category_id = p.category
+            WHERE category = :category';
 
             $statement = $this->db->prepare($query);
             $statement->bindValue(':category', $category, PDO::PARAM_INT);            
@@ -122,6 +132,10 @@ class PostModel extends AbstractModel
             
             $posts = $statement->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
 
+            foreach ($posts as $post) {
+                $post->setTags($this->getTagsForPostId($post->getId()));
+            }
+            
             return $posts;
 
         } catch (Exception $e) {       
@@ -145,12 +159,28 @@ class PostModel extends AbstractModel
             $statement->bindValue(':id', $id, PDO::PARAM_INT);            
             $statement->execute();
             
-            $tags[] = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-            var_dump($tags);
-            die();
+            $tags = $statement->fetchAll(PDO::FETCH_ASSOC);
 
             return $tags;
+
+        } catch (Exception $e) {       
+            echo $e->getMessage();
+            die();
+        }
+    }
+
+    public function getAllTags(): array
+    {
+        try {
+            
+            $query = 'SELECT * FROM tags';
+
+            $statement = $this->db->prepare($query);            
+            $statement->execute();
+            
+            $allTags = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            return $allTags;
 
         } catch (Exception $e) {       
             echo $e->getMessage();
@@ -240,6 +270,7 @@ class PostModel extends AbstractModel
     {   
         try { 
             $query = "DELETE FROM posts WHERE id = $id";
+            $statement = $this->db->prepare($query);
             $statement->execute(); 
 
         } catch (Exception $e) {  
@@ -247,7 +278,6 @@ class PostModel extends AbstractModel
             echo $e->getMessage();
             die();
         }
-        
     }
 
 

@@ -194,9 +194,9 @@ textarea::placeholder {
     display: flex;
     flex: 1;
     width: 70%;
-    height: 50%;
+    height: 60%;
     margin: auto;
-    margin-top: 80px;
+    margin-top: 60px;
     background-color: rgba(255, 255, 255, 0.733);
 }
 
@@ -230,7 +230,7 @@ textarea::placeholder {
 .searchposts {
     display: flex;
     flex-direction: column;
-    text-align: center;
+    
 }
 
 
@@ -259,12 +259,10 @@ textarea::placeholder {
 .tags {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 200px;
+    justify-content: space-around;
+    height: 220px;
     margin-top: 7px;
-    margin-bottom: 25px;
-    text-align: center;
-    
+    margin-left: 30px;
 }
 
 
@@ -295,12 +293,13 @@ textarea::placeholder {
     flex-direction: column;
 }
 
-#username, #password {
-    width: 100%;
+#password {
+    width: 120%;
     height: 10%;
     font-size: 12px;
     background-color:rgba(255, 255, 255, 0);
     border-bottom: 1px solid black;
+    margin-top: 50px;
 }
 
 #loginbutton {
@@ -313,11 +312,11 @@ textarea::placeholder {
 
 footer {
     width: 100%;
+    position:fixed;
+    bottom:0px;
     display: flex;
     height: 70px;
     background-color: rgba(255, 255, 255, 0.781);
-    position: absolute;
-    bottom: 0px;
     justify-content: center;
 }
 
@@ -329,3 +328,30 @@ footer > h5 {
 
 
 /* POSTS */
+.showPosts {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.815);
+    margin-top: 60px;
+}
+
+.post {
+    width: 20%;
+    margin: auto;
+    height: 200px;
+}
+
+.postButtons {
+    display: flex;
+}
+
+body > section > article > h5 > div > form > button {
+    font-size: 18px;
+}
+.postTags {
+    display: flex;
+}
+
+.taglinks {
+    margin-left: 1px;
+    margin-right: 7px;
+}

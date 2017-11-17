@@ -23,14 +23,13 @@
     "method": "saveNewPost"
   },
 
-  "post/:id/update": {
+  ":id/toUpdate": {
     "controller": "Post",
     "method": "getToUpdate",
       "params": {
       "id": "number"
     }
   },
-
 
   ":id/updated": {
     "controller": "Post",

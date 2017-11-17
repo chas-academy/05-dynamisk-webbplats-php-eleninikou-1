@@ -23,7 +23,7 @@ class PostController extends AbstractController
             'lastPage' => count($posts) < self::PAGE_LENGTH
         ];
         
-        return $this->render('.views/posts.php', $properties);
+        return $this->render('views/posts.php', $properties);
     }
 
     public function getAll(): string
@@ -34,10 +34,7 @@ class PostController extends AbstractController
     public function saveNewPost() {
         
         $saveNewPost = new PostModel;
-        $posts = $saveNewPost->savePost();
         $allposts = $saveNewPost->reallyGetAll();
-
-        $this->getAll();
 
         $properties = [
             'posts' => $allposts,
@@ -45,19 +42,23 @@ class PostController extends AbstractController
             'lastPage' => true
         ];
 
+        $saveNewPost->savePost($properties);
+
         return $this->render('views/posts.php', $properties);
+    
+        
     }
 
     public function getPostsByCategory($category) 
     {
         $postModel = new PostModel();
         $posts = $postModel->getByCategory($category);
-        $this->getAll();
+        
+        //$tags = $postModel->getTagsForPostId();
 
         $properties = [
             'posts' => $posts,
-            'currentPage' => 1,
-            'lastPage' => true
+            //'tags'  => $tags
         ];
         return $this->render('views/posts.php', $properties);
     }
@@ -66,12 +67,9 @@ class PostController extends AbstractController
     {
         $postModel = new PostModel;
         $posts = $postModel->getByTag($tag);
-        $this->getAll();
 
         $properties = [
-            'posts' => $posts,
-            'currentPage' => 1,
-            'lastPage' => true
+            'posts' => $posts
         ];
         return $this->render('views/posts.php', $properties);
     }
@@ -79,20 +77,25 @@ class PostController extends AbstractController
     public function getToUpdate($id)
     {
         $postModel = new PostModel();
-        $post= $postModel->get($id);
+        $post = $postModel->get($id);
+        $tags = $postModel->getTagsForPostId($id);
+        $allTags = $postModel->getAllTags();
 
         $properties = [
-            'post' => $post
+            'post' => $post,
+            'tags' => $tags,
+            'allTags' => $allTags
         ];
 
         return $this->render('views/update.php', $properties);
+
     }
 
     public function updatePost($id)
     {
         $postModel = new PostModel();
         $postModel->updatePost($id);
-        $this->getAll();
+        $allposts = $postModel->getAll();
 
         $properties = [
             'posts' => $allposts,
@@ -100,15 +103,20 @@ class PostController extends AbstractController
             'lastPage' => true
         ];
 
-        return $this->render('views/posts.php', $properties);
+        return $this->render('/views/posts.php', $properties);
     }
 
     public function delete($id)
     {
         $postModel = new PostModel();
-        $postModel->deletePost();
-        $this->getAll();
+        $postModel->deletePost($id);
+        $posts = $postModel->reallyGetAll();
 
+        $properties = [
+            'posts' => $posts
+        ];
+        return $this->render('views/posts.php', $properties);
+       
     }
 
 }
