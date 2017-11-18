@@ -20,13 +20,15 @@
 
   "posts/save" : {
     "controller": "Post",
-    "method": "saveNewPost"
+    "method": "saveNewPost",
+    "login": true
   },
 
   ":id/toUpdate": {
     "controller": "Post",
     "method": "getToUpdate",
-      "params": {
+    "login": true,
+    "params": {
       "id": "number"
     }
   },
@@ -34,17 +36,16 @@
   ":id/updated": {
     "controller": "Post",
     "method": "updatePost",
+    "login": true,
     "params": {
       "id": "number"
     }
   },
 
-  "/:id/delete": {
+  "delete": {
     "controller": "Post",
     "method": "delete",
-      "params": {
-      "id": "number"
-    }
+    "login": true
   },
 
   "login": {

@@ -34,6 +34,7 @@ class PostController extends AbstractController
     public function saveNewPost() {
         
         $saveNewPost = new PostModel;
+        $saveNewPost->savePost();
         $allposts = $saveNewPost->reallyGetAll();
 
         $properties = [
@@ -41,8 +42,6 @@ class PostController extends AbstractController
             'currentPage' => 1,
             'lastPage' => true
         ];
-
-        $saveNewPost->savePost($properties);
 
         return $this->render('views/posts.php', $properties);
     
@@ -63,15 +62,18 @@ class PostController extends AbstractController
         return $this->render('views/posts.php', $properties);
     }
 
-    public function getPostsByTag($tag)
+    public function getPostsByTag($id)
     {
-        $postModel = new PostModel;
-        $posts = $postModel->getByTag($tag);
+       
+            $postModel = new PostModel;
+            $posts = $postModel->getByTag($id);
 
-        $properties = [
-            'posts' => $posts
-        ];
-        return $this->render('views/posts.php', $properties);
+            $properties = [
+                'posts' => $posts
+            ];
+            
+            return $this->render('views/posts.php', $properties);
+
     }
     
     public function getToUpdate($id)
@@ -96,29 +98,18 @@ class PostController extends AbstractController
     public function updatePost($id)
     {
         $postModel = new PostModel();
-        $postModel->updatePost($id);
-        $allposts = $postModel->reallyGetAll();
+        $updated = $postModel->updatePost($_POST['post_id']);
 
-        $properties = [
-            'posts' => $allposts,
-            'currentPage' => 1,
-            'lastPage' => true
-        ];
-
-        return $this->render('views/posts.php', $properties);
+        header('Location: /');
     }
 
-    public function delete($id)
+    public function delete()
     {
+        
         $postModel = new PostModel();
-        $postModel->deletePost($id);
-        $posts = $postModel->reallyGetAll();
-
-        $properties = [
-            'posts' => $posts
-        ];
-
-        return $this->render('views/posts.php', $properties);
+       
+        $postModel->deletePost($_POST['post_id']);
+        header('Location: /');
        
     }
 

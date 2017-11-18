@@ -79,9 +79,10 @@ class PostModel extends AbstractModel
 
     public function reallyGetAll()
     {
-        $query = 'SELECT p.id, p.title, p.body, c.category_name
+        $query = 'SELECT p.id, p.title, p.body, c.category_name, p.category
         FROM posts p
-        LEFT JOIN categories c ON c.category_id = p.category';
+        LEFT JOIN categories c ON c.category_id = p.category
+        ORDER BY p.id DESC';
 
         $statement = $this->db->prepare($query);
         $statement->execute();
@@ -99,10 +100,11 @@ class PostModel extends AbstractModel
     {
         $start = $pageLength * ($page - 1);
         
-                $query = 'SELECT p.id, p.title, p.body, c.category_name
+                $query = 'SELECT p.id, p.title, p.body, c.category_name, p.category
                 FROM posts p
                 LEFT JOIN categories c ON c.category_id = p.category
-                LIMIT :page, :length';
+                LIMIT :page, :length
+                ORDER BY p.id DESC';
 
                 $statement = $this->db->prepare($query);
                 $statement->bindParam(':page', $start, PDO::PARAM_INT);
@@ -121,7 +123,7 @@ class PostModel extends AbstractModel
     public function getByCategory (int $category): array
     {
         try {
-            $query = 'SELECT p.id, p.title, p.body, c.category_name
+            $query = 'SELECT p.id, p.title, p.body, c.category_name, p.category
             FROM posts p
             LEFT JOIN categories c ON c.category_id = p.category
             WHERE category = :category';
@@ -210,7 +212,7 @@ class PostModel extends AbstractModel
     }
 
 
-    public function getByTag(int $tagId): array
+    public function getByTag($id): array
     {
         try {
 
@@ -223,12 +225,18 @@ class PostModel extends AbstractModel
 
 
             $statement = $this->db->prepare($query);
-            $statement->execute([':tags_id' => $tagId]);
-            $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
-            
-             return $posts;
+            $statement->execute([':tags_id' => $id]);
 
-        } catch (Exception $e) {       
+            $posts = $statement->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
+            
+            foreach ($posts as $post) {
+                $post->setTags($this->getTagsForPostId($post->getId()));
+            }
+            
+            return $posts;
+
+        } catch (Exception $e) {  
+
             echo $e->getMessage();
             die();
         }
@@ -245,9 +253,8 @@ class PostModel extends AbstractModel
                 'category' => $_POST['category']
             );
 
-            $query = "UPDATE posts SET (title, body, category) VALUE (:title, :body, :category) WHERE id = $id";
-            //UPDATE posts SET title = "snälla", body = "fungera" WHERE id = 24; -> fungerar.
-            
+            $query = "UPDATE posts SET title = :title, body = :body, category = :category WHERE id = $id";
+                
             $statement = $this->db->prepare($query);
             $statement->bindValue(':title', $newPost['title'], PDO::PARAM_STR); 
             $statement->bindValue(':body', $newPost['body'], PDO::PARAM_STR);
@@ -261,21 +268,20 @@ class PostModel extends AbstractModel
             die();
         }
 
-        $this->updateTags();
+        $this->updateTags($id);
 
     } 
 
-    public function updateTags()
+    public function updateTags($id)
     {
-        $postID = $this->db->lastInsertId();
         $tags = $_POST['tag'];
 
         try {
             // Insert postID and tags
-            foreach ($_POST['tag'] as $key => &$value) {
-                $query = "UPDATE post_tags SET (posts_id, tags_id) VALUES (:post, :tag)";
+            foreach ($_POST['tag'] as $key => &$value) { 
+                $query = "UPDATE post_tags SET tags_id = :tag, posts_id = :post WHERE posts_id = $id";
                 $statement = $this->db->prepare($query);
-                $statement->bindValue(':post', $postID, PDO::PARAM_INT);
+                $statement->bindValue(':post', $id, PDO::PARAM_INT);
                 $statement->bindValue(':tag', $value, PDO::PARAM_INT);
                 $statement->execute(); 
             }
@@ -291,8 +297,9 @@ class PostModel extends AbstractModel
     public function deletePost(int $id)
     {   
         try { 
-            $query = "DELETE FROM posts WHERE id = $id";
+            $query = "DELETE FROM posts WHERE id = :id";
             $statement = $this->db->prepare($query);
+            $statement->bindValue(':id', $id);
             $statement->execute(); 
 
         } catch (Exception $e) {  

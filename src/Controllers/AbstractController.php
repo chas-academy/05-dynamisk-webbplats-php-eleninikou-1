@@ -25,7 +25,6 @@ abstract class AbstractController
 
         ob_start();
         include ($_SERVER['DOCUMENT_ROOT'] . '/templates/header.html');
-        // include $views;
         include $templates;
         include ($_SERVER['DOCUMENT_ROOT'] . '/templates/footer.html');
         
