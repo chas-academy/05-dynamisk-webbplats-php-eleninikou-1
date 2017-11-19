@@ -7,7 +7,7 @@ require 'recipe/common.php';
 set('application', 'teorihandbok');
 
 // Project repository
-set('repository', 'https://github.com/chas-academy/05-dynamisk-webbplats-php-eleninikou-1.git');
+set('repository', 'git@github.com:chas-academy/05-dynamisk-webbplats-php-eleninikou-1.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', true); 

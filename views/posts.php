@@ -1,5 +1,10 @@
 <section class="showPosts">
 
+<div class="back">
+    <a href="/" class="arrow"><i class="fa fa-chevron-circle-left"></i></a>
+    <a href="/" class="arrow"<p> Tillbaka</p></a>
+</div>
+
     <?php foreach ($posts as $post): ?>
         <article class="post">
             <h2 class="title"> <?php echo $post->getTitle();?> </h2>

@@ -1,4 +1,7 @@
-
+<video id="headervideo" class ="video" autoplay controls loop>
+        <source src="./styles/images/hands.mp4" type="video/mp4">
+    </video>
+    
     <!-- Create new post -->
     <section class = "create">
         <!-- Insert title and body -->  

@@ -25,10 +25,7 @@
                     <form action="/logout" method="POST"> 
                         <button type="submit" class ="logout">Logga ut</button>    
                     </form>
-                    <form action="/newpost" method="POST"> 
-                        <button type="submit" class ="logout">Nytt inlägg</button>    
-                    </form>
-
+                    
                 </div>   
 
 
