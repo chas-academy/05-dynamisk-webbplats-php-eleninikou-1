@@ -1,7 +1,7 @@
-
    
+  
     <section class = "create">
-        <form class="create-post" action="/updated" method="post"> 
+        <form class="create-post" action="/update" method="post"> 
             <div class="post-tags">
                 <section class="post-input">
                     <h2> Uppdatera inlägg </h2>
@@ -49,10 +49,10 @@
                         <option value= "" disabled class="select"> Välj kategori </option>
                             <?php foreach ($allCategories as $cat): ?>
                                 <?php if ($cat['category_id'] == $post->getCategory()): ?>
-                                    <option value"<?php echo $cat['category_id']; ?>" selected ><?php echo $cat['category_name']; ?></option> 
+                                    <option value"<?php echo $cat['category_id']; ?>" selected> <?php echo $cat['category_name']; ?></option> 
                         
                                 <?php else: ?>
-                                    <option value"<?php echo $cat['category_id']; ?>"><?php echo $cat['category_name']; ?></option> 
+                                    <option value"<?php echo $cat['category_id']; ?>" > <?php echo $cat['category_name']; ?> </option> 
                                 <?php endif; ?>
                             <?php endforeach; ?>
                     </select>                    

@@ -43,7 +43,7 @@ class PostController extends AbstractController
             'lastPage' => true
         ];
 
-        return $this->render('views/posts.php', $properties);
+        return $this->render('views/adminposts.php', $properties);
     
         
     }
@@ -95,21 +95,32 @@ class PostController extends AbstractController
 
     }
 
-    public function updatePost($id)
+    public function updatePost()
     {
         $postModel = new PostModel();
-        $updated = $postModel->updatePost($_POST['post_id']);
+        $updated = $postModel->updatePost($_POST['post_id'], $_POST['category']);
+        $posts = $postModel->reallyGetAll();
 
-        header('Location: /');
+        $properties = [
+            'posts' => $posts
+        ];
+
+        return $this->render('views/adminposts.php', $properties);
     }
 
     public function delete()
     {
         
         $postModel = new PostModel();
-       
         $postModel->deletePost($_POST['post_id']);
-        header('Location: /');
+        
+        $posts = $postModel->reallyGetAll();
+        
+            $properties = [
+                'posts' => $posts
+            ];
+    
+            return $this->render('views/adminposts.php', $properties);
        
     }
 

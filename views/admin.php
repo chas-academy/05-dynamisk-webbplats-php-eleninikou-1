@@ -7,17 +7,17 @@
             <div class="post-tags">
                 <section class="post-input">
                     <h2> Skapa inlägg </h2>
-                    <input type="text"  id="title" name="title" placeholder =" Titel">
-                    <textarea type="text" id="body" name="body" class="textfield" placeholder=" Text"></textarea>
-                        <button type="submit" class="save">Spara </button>       
+                    <input type="text"  id="title" name="title" placeholder =" [ Titel ]">
+                    <textarea type="text" id="body" name="body" class="textfield" placeholder="[ Text ]"></textarea>      
     </section>
             
                 <section class="right-side">
-                <a href="" class="close-button"></a>
-                    <a href ="" class ="logout"></a>
+                     
+                        <a href ="/logout" class ="adminlogout">Logga ut</a>    
+                    
                         <!-- Select Tags -->          
                         <select multiple class="select-tags" name="tag[]"> 
-                            <option value="" disabled selected class="select"> Välj taggar </option>
+                            <option value="" disabled class="select"> Välj taggar </option>
                             <option value= 1> HTML </option>
                             <option value= 2> CSS </option>
                             <option value= 3> JavaScript </option>
@@ -35,6 +35,8 @@
                         <option value= 2> Backend </option>
                         <option value= 3> Övrigt </option>
                     </select>
+
+                    <button type="submit" class="save">Spara </button> 
             </div>  
         </form>
     </section>

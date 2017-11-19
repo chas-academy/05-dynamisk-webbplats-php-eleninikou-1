@@ -18,6 +18,12 @@
     }
   },
 
+  "newpost": {
+    "controller": "Post",
+    "method": "saveNewPost",
+    "login": true
+  },
+
   "posts/save" : {
     "controller": "Post",
     "method": "saveNewPost",
@@ -33,7 +39,7 @@
     }
   },
 
-  ":id/updated": {
+  "update": {
     "controller": "Post",
     "method": "updatePost",
     "login": true,
@@ -51,6 +57,11 @@
   "login": {
     "controller": "User",
     "method": "login"
+   },
+
+   "logout": {
+     "controller": "User",
+     "method": "logout"
    },
 
   "posts/category/:id": {

@@ -63,7 +63,7 @@ class PostModel extends AbstractModel
 
     public function get(int $id)
     {
-        $query = 'SELECT p.id, p.title, p.body, p.category, c.category_name, t.tag_name
+        $query = 'SELECT p.id, p.title, p.body, p.category, c.category_name, c.category_id, t.tag_name
         FROM posts p
         LEFT JOIN post_tags pt ON p.id = pt.posts_id
         LEFT JOIN categories c ON c.category_id = p.category
@@ -243,22 +243,42 @@ class PostModel extends AbstractModel
 
     }    
 
-    public function updatePost(int $id)
+
+    public function getCategoryId() : int
     {
+        $category = $_POST['category'];
+
+        $query = "SELECT category_id FROM categories WHERE category_name = :category";
+        $statement = $this->db->prepare($query);
+        $statement->bindValue(':category', $category, PDO::PARAM_STR); 
+        $statement->execute();
+
+        $categoryId = (int) $statement->fetch();
+        
+        return $categoryId;
+    
+    }
+
+    public function updatePost()
+    {
+        $postId = ($_POST['post_id']);
 
         try { 
-            $newPost = array(
-                'title'    => $_POST['title'],
-                'body'     => $_POST['body'],
-                'category' => $_POST['category']
-            );
 
-            $query = "UPDATE posts SET title = :title, body = :body, category = :category WHERE id = $id";
+            $updatedPost = array(
+                'title'    => $_POST['title'],
+                'body'     => $_POST['body']
+            );
+            
+           $categoryId = $this->getCategoryId();
+
+
+            $query = "UPDATE posts SET title = :title, body = :body, category = :category WHERE id = $postId";
                 
             $statement = $this->db->prepare($query);
-            $statement->bindValue(':title', $newPost['title'], PDO::PARAM_STR); 
-            $statement->bindValue(':body', $newPost['body'], PDO::PARAM_STR);
-            $statement->bindValue(':category', $newPost['category'], PDO::PARAM_INT);
+            $statement->bindValue(':title', $updatedPost['title'], PDO::PARAM_STR); 
+            $statement->bindValue(':body', $updatedPost['body'], PDO::PARAM_STR);
+            $statement->bindValue(':category', $categoryId, PDO::PARAM_INT);
     
             $statement->execute(); 
 
@@ -268,20 +288,21 @@ class PostModel extends AbstractModel
             die();
         }
 
-        $this->updateTags($id);
+        $this->updateTags();
 
     } 
 
-    public function updateTags($id)
+    public function updateTags()
     {
         $tags = $_POST['tag'];
+        $postId = ($_POST['post_id']);
 
         try {
             // Insert postID and tags
             foreach ($_POST['tag'] as $key => &$value) { 
-                $query = "UPDATE post_tags SET tags_id = :tag, posts_id = :post WHERE posts_id = $id";
+                $query = "UPDATE post_tags SET tags_id = :tag, posts_id = :post WHERE posts_id = $postId";
                 $statement = $this->db->prepare($query);
-                $statement->bindValue(':post', $id, PDO::PARAM_INT);
+                $statement->bindValue(':post', $postId, PDO::PARAM_INT);
                 $statement->bindValue(':tag', $value, PDO::PARAM_INT);
                 $statement->execute(); 
             }
