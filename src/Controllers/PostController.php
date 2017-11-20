@@ -56,14 +56,17 @@ class PostController extends AbstractController
     {
         $postModel = new PostModel();
         $posts = $postModel->getByCategory($category);
-        
-        //$tags = $postModel->getTagsForPostId();
 
         $properties = [
             'posts' => $posts,
-            //'tags'  => $tags
+            
         ];
-        return $this->render('views/posts.php', $properties);
+
+        if (!isset($_COOKIE['user'])) {
+            return $this->render('views/posts.php', $properties);
+        } else {
+            return $this->render('views/adminposts.php', $properties);
+        }
     }
 
     public function getPostsByTag($id)
@@ -76,7 +79,11 @@ class PostController extends AbstractController
                 'posts' => $posts
             ];
             
-            return $this->render('views/posts.php', $properties);
+            if (!isset($_COOKIE['user'])) {
+                return $this->render('views/posts.php', $properties);
+            } else {
+                return $this->render('views/adminposts.php', $properties);
+            }
 
     }
     

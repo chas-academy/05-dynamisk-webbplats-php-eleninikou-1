@@ -15,17 +15,17 @@ class UserModel extends AbstractModel
         $statement = $this->db->prepare($query);
         $statement->execute(['user' => $email]);
 
-        $row = $statement->fetch();
+        $user = $statement->fetch();
 
-        if (empty($row)) {
+        if (empty($user)) {
             throw new NotFoundException();
         }
         
         $user = [
-            'id' => $row['id'],
-            'firstname' => $row['firstname'],
-            'surname' => $row['surname'],
-            'email' => $row['email']
+            'id' => $user['id'],
+            'firstname' => $user['firstname'],
+            'surname' => $user['surname'],
+            'email' => $user['email']
         ];
  
         return $user;
