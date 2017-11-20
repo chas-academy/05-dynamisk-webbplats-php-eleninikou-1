@@ -274,6 +274,7 @@ class PostModel extends AbstractModel
 
            $categoryId = $this->getCategoryId();
 
+
             $query = "UPDATE posts SET title = :title, body = :body, category = :category WHERE id = $postId";
                 
             $statement = $this->db->prepare($query);
