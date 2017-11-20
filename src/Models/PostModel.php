@@ -250,12 +250,14 @@ class PostModel extends AbstractModel
 
         $query = "SELECT category_id FROM categories WHERE category_name = :category";
         $statement = $this->db->prepare($query);
-        $statement->bindValue(':category', $category, PDO::PARAM_STR); 
+        $statement->bindValue(':category', $category); 
         $statement->execute();
 
-        $categoryId = (int) $statement->fetch();
+        $categoryId = $statement->fetch();
         
-        return $categoryId;
+        $catid = (int) $categoryId['category_id'];
+
+        return $catid;
     
     }
 
@@ -269,9 +271,8 @@ class PostModel extends AbstractModel
                 'title'    => $_POST['title'],
                 'body'     => $_POST['body']
             );
-            
-           $categoryId = $this->getCategoryId();
 
+           $categoryId = $this->getCategoryId();
 
             $query = "UPDATE posts SET title = :title, body = :body, category = :category WHERE id = $postId";
                 

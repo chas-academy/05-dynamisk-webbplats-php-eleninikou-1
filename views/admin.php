@@ -1,4 +1,4 @@
-<video id="headervideo" class ="video" autoplay controls loop>
+<video id="video" class ="video" autoplay controls loop>
         <source src="./styles/images/hands.mp4" type="video/mp4">
     </video>
     

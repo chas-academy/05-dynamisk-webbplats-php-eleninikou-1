@@ -1,0 +1,150 @@
+.create {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 35px;
+    margin-bottom: 50px;
+    width: 70%;
+    height: 63%;
+    background-color: rgba(255, 255, 255, 0.774);
+    border: 2px solid  rgb(207, 203, 198);   
+}
+
+.post-input {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.781);
+}
+
+.post-input > h2 {
+    margin-top: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    color: rgb(207, 203, 203);
+}
+
+.adminLogout {
+    border: none;
+    opacity: 0,4;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 28px;
+    background-color: rgba(255, 255, 255, 0.726);
+    color: rgb(192, 115, 79);
+    margin-top: 5px;
+    text-align: center;
+    padding: 15px;
+    width: 110%;
+    margin-left: 17px;
+}
+
+.select-tags {
+    margin-top: 5px;
+    height: 45%;
+    width: 130%;
+    font-size: 15px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.514);
+    text-align: center;
+    align-content: space-around;
+    margin-left: 17px;
+}
+
+.select {
+    font-size: 17px;
+    text-align: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid black;
+    height: 28px;
+    padding-top: 10px;
+}
+
+
+select > option {
+    cursor: pointer;
+}
+
+select > option:hover {
+    color: rgb(172, 165, 165);
+}
+
+.post-tags {
+    display: flex;
+}
+
+.select-category {
+    width: 130%;
+    height: 20%;
+    font-size: 17px;
+    margin-top: 5px;
+    margin-left: 16px;
+    margin-bottom: 5px;
+    text-align: center;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.658);   
+}
+
+.create-post {
+    width: 96%;
+    color: rgb(61, 59, 59);
+    font-size: 20px;
+}
+
+input[type=text] {
+    border: none;
+    padding: 10px;
+    transition: border 0.3s;
+    width: 650px;
+    padding: 10px;
+    margin: 10px 0px 5px 0px;
+    font-size: 20px;
+    box-sizing: border-box;  
+    border-bottom: 1px solid black;
+    background-color: rgba(255, 255, 255, 0);
+    margin-left: 15px;
+    text-align: center;
+    margin-top: 16px;
+}
+
+input[id=text]{
+    height: 250px;
+}
+
+.textfield {
+    margin-left: 15px;
+    border: none;
+    width: 650px; 
+    height: 335px;
+    font-size: 20px;
+    padding: 10px;
+    border-bottom: 1px solid black;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+input::placeholder {
+    color: rgba(61, 60, 60, 0.425); 
+    font-style: italic;
+}
+
+textarea::placeholder {
+    color: rgba(61, 60, 60, 0.425);
+    font-style: italic;
+}
+
+.save {
+    border: none;
+    opacity: 0,4;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 28px;
+    background-color: rgba(255, 255, 255, 0.726);
+    padding: 15px;
+    width: 130%;
+    margin-left: 17px;
+    color: rgb(161, 156, 156);
+    text-align: center;
+}
+
+.save:hover {
+    opacity: 0.7;
+}

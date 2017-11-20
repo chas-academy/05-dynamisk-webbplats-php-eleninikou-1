@@ -1,0 +1,123 @@
+
+.showPosts {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    margin-top: 100px;
+    text-align: center;
+}
+
+.post {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    min-height: 200px;
+}
+
+.title {
+    margin-top: 70px;
+    border-bottom: 3px solid rgba(90, 88, 88, 0.247);
+    text-transform: uppercase;
+}
+
+.body {
+    color: rgb(78, 76, 76);
+    margin-top: 20px;
+    min-height: 300px;
+    text-align: start;
+    width: 100%;
+    word-wrap: break-word;
+    margin-bottom: 15px;
+}
+
+.postButtons {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+body > section > article > div.postButtons > form > button {
+    display: flex;
+    cursor: pointer;
+    width: 80px;
+    height: 40px;
+    opacity: 0.4;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin: 2px;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+body > section > article > div.postButtons > form > button:hover {
+    opacity: 1;
+}
+
+body > section > article > h5 > div > form > button {
+    text-align: center;
+    margin: auto;
+    font-size: 18px;
+    padding: 15px;
+}
+
+.postTags {
+    margin-bottom: 35px;
+}
+
+.postCategory {
+    text-align: center;
+    color: rgb(192, 115, 79);
+}
+
+.taglinks {
+    margin-left: 1px;
+    color: rgb(192, 115, 79);
+    margin-bottom: 35px;
+}
+
+.pages {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.pages > a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 3px;
+}
+
+.pages > a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.previous {
+    background-color: #bebbbb;
+    color: black;
+}
+
+.next {
+    background-color: rgb(192, 115, 79);
+    color: white;
+}
+
+.round {
+    border-radius: 50%;
+}
+
+.back {
+    display: flex;
+    margin-left: 15px;
+    position: absolute;
+    top: 40px;
+    align-items: center;
+}
+
+.arrow {
+    color: black;
+    margin: 3px;
+    font-size: 20px;
+}
