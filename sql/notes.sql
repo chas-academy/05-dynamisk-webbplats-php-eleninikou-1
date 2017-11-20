@@ -12,10 +12,6 @@ CREATE TABLE `categories` (
   PRIMARY KEY (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `categories` (`category_id`, `category_name`) VALUES
-(1,	'Frontend'),
-(2,	'Backend'),
-(3,	'Övrigt');
 
 DROP TABLE IF EXISTS `posts`;
 CREATE TABLE `posts` (
@@ -50,17 +46,6 @@ CREATE TABLE `post_tags` (
   CONSTRAINT `post_tags_ibfk_2` FOREIGN KEY (`tags_id`) REFERENCES `tags` (`tag_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `post_tags` (`posts_id`, `tags_id`) VALUES
-(267,	1),
-(268,	2),
-(270,	1),
-(271,	3),
-(272,	6),
-(273,	6),
-(274,	6),
-(275,	8),
-(276,	7),
-(277,	5);
 
 DROP TABLE IF EXISTS `tags`;
 CREATE TABLE `tags` (
@@ -69,15 +54,6 @@ CREATE TABLE `tags` (
   PRIMARY KEY (`tag_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `tags` (`tag_id`, `tag_name`) VALUES
-(1,	'HTML'),
-(2,	'CSS'),
-(3,	'JavaScript'),
-(4,	'Avancerad JavaScript'),
-(5,	'UX & Design'),
-(6,	'PHP'),
-(7,	'Projektmetodik'),
-(8,	'Programmeringsmetodik');
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
@@ -90,7 +66,5 @@ CREATE TABLE `user` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `user` (`id`, `firstname`, `surname`, `email`, `password`) VALUES
-(1,	'Eleni',	'Nikou',	'eleni.nikou@chasacademy.se',	'');
 
--- 2017-11-19 21:25:30
+-- 2017-11-20 13:06:10
