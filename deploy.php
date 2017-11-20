@@ -23,7 +23,7 @@ set('allow_anonymous_stats', false);
 // Hosts
 
 host('ssh.binero.se')
-    ->set('deploy_path', '~/eleninikou.chas.academy') 
+    ->set('deploy_path', '~/eleninikou.chas.academy/public_html') 
     ->user('226747_eleninik')
     ->port(22);   
     

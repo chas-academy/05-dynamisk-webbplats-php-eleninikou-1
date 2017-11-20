@@ -58,8 +58,6 @@ header {
     justify-content: center;
 }
 
-
-
 .logout:hover {
     opacity: 1;
   }
@@ -107,10 +105,8 @@ header {
 
 .searchposts {
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;   
 }
-
 
 .searchposts > li {
     color: rgb(53, 53, 51);

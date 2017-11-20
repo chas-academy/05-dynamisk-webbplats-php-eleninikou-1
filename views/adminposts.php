@@ -1,22 +1,34 @@
 <nav class="adminSearch">
     <ul class="searchTags">
-        <li># <a href="./posts/tags/2"> CSS</CSS></a></li>
+        <li>#<a href="./posts/tags/2"> CSS</CSS></a></li>
         <li>|</li>
-        <li># <a href="./posts/tags/6"> PHP</a></li>
+        <li>#<a href="./posts/tags/6"> PHP</a></li>
         <li>|</li>
-        <li># <a href="./posts/tags/1"> HTML</HTML></a></li>
+        <li>#<a href="./posts/tags/1"> HTML</HTML></a></li>
         <li>|</li>
-        <li># <a href="./posts/tags/3"> JavaScript</a></li>
+        <li>#<a href="./posts/tags/3"> JavaScript</a></li>
         <li>|</li>
-        <li># <a href="./posts/tags/5"> UX och Design</a></li>
+        <li>#<a href="./posts/tags/5"> UX och Design</a></li>
         <li>|</li>
-        <li># <a href="./posts/tags/7"> Projektmetodik</a></li>
+        <li>#<a href="./posts/tags/7"> Projektmetodik</a></li>
         <li>|</li>
-        <li># <a href="./posts/tags/4"> Avancerad Javascript</a></li>
+        <li>#<a href="./posts/tags/4"> Avancerad Javascript</a></li>
         <li>|</li>
-        <li># <a href="./posts/tags/8"> Programmeringsmetodik</a></li>
+        <li>#<a href="./posts/tags/8"> Programmeringsmetodik</a></li>
     </ul>    
 </nav>
+
+<div class="newOut">
+
+    <form action="/newpost" method="POST"> 
+        <button type="submit" class ="NewLogout">Nytt inlägg</button>
+    </form>
+
+    <form action="/logout" method="POST"> 
+        <button type="submit" class ="NewLogout">Logga ut</button>    
+    </form>
+
+</div>
 
 
 <section class="showPosts">
@@ -40,9 +52,6 @@
                     <form action="/delete" method="POST">
                         <input type ="hidden" name="post_id" value="<?php echo $post->getId(); ?>">
                         <button type="submit">Radera</button>
-                    </form>
-                    <form action="/logout" method="POST"> 
-                        <button type="submit" class ="logout">Logga ut</button>    
                     </form>
                     
                 </div>   

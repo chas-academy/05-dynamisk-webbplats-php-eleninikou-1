@@ -2,6 +2,7 @@
 
 namespace Teorihandbok\Controllers;
 use Teorihandbok\Models\UserModel;
+use Teorihandbok\Models\PostModel;
 
 class UserController extends AbstractController
     {
@@ -40,10 +41,14 @@ class UserController extends AbstractController
         // 'user' gets the value of user-id. 
         setcookie('user', $user['id']);
 
+        $postmodel = new PostModel();
+        $posts = $postmodel->reallyGetAll();
+
         $properties = [
+            'posts' => $posts
         ];
-        // User is now logged in to admin-page with right URL
-        return $this->render('views/admin.php', $properties);
+        // User is now logged in to admin-page 
+        return $this->render('views/adminposts.php', $properties);
     } 
 
     public function logOut()

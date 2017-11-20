@@ -38,14 +38,18 @@ class PostController extends AbstractController
         $allposts = $saveNewPost->reallyGetAll();
 
         $properties = [
-            'posts' => $allposts,
-            'currentPage' => 1,
-            'lastPage' => true
+            'posts' => $allposts
         ];
 
         return $this->render('views/adminposts.php', $properties);
     
         
+    }
+
+    public function toCreate()
+    {
+        $properties = [];
+        return $this->render('views/admin.php', $properties);
     }
 
     public function getPostsByCategory($category) 

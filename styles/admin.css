@@ -159,3 +159,22 @@ textarea::placeholder {
     color: rgb(192, 115, 79);
 }
 
+.newOut {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.NewLogout {
+    display: flex;
+    cursor: pointer;
+    width: 180px;
+    height: 60px;
+    opacity: 0.4;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin: 5px;
+    font-size: 24px;
+    justify-content: center;
+}

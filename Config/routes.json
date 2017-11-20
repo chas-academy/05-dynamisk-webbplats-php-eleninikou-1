@@ -20,7 +20,7 @@
 
   "newpost": {
     "controller": "Post",
-    "method": "saveNewPost",
+    "method": "toCreate",
     "login": true
   },
 
@@ -53,6 +53,7 @@
     "method": "delete",
     "login": true
   },
+
 
   "login": {
     "controller": "User",
