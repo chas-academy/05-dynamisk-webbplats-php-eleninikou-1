@@ -1,3 +1,24 @@
+<nav class="adminSearch">
+    <ul class="searchTags">
+        <li># <a href="./posts/tags/2"> CSS</CSS></a></li>
+        <li>|</li>
+        <li># <a href="./posts/tags/6"> PHP</a></li>
+        <li>|</li>
+        <li># <a href="./posts/tags/1"> HTML</HTML></a></li>
+        <li>|</li>
+        <li># <a href="./posts/tags/3"> JavaScript</a></li>
+        <li>|</li>
+        <li># <a href="./posts/tags/5"> UX och Design</a></li>
+        <li>|</li>
+        <li># <a href="./posts/tags/7"> Projektmetodik</a></li>
+        <li>|</li>
+        <li># <a href="./posts/tags/4"> Avancerad Javascript</a></li>
+        <li>|</li>
+        <li># <a href="./posts/tags/8"> Programmeringsmetodik</a></li>
+    </ul>    
+</nav>
+
+
 <section class="showPosts">
 
     <?php foreach ($posts as $post): ?>
@@ -6,12 +27,10 @@
             <h5> Kategori: <a href="/posts/category/<?php echo $post->getCategory() ?>" class ="postCategory"><?php echo $post->category_name; ?></h5></a>    
            
             <p class="body"> <?php echo $post->getBody(); ?> </p>             
-
-                
                 
                 <div class="postTags">
                     <?php foreach($post->getTags() as $tag): ?>
-                        <h5> #<a href="#" class="taglinks"><?php echo $tag['tag_name']; ?></a></h5>
+                        <h5> #<a href="/posts/tags/<?php echo $tag['tag_id']; ?>" class="taglinks"><?php echo $tag['tag_name']; ?></a></h5>
                     <?php endforeach ?>
                 </div>
                 <div class="postButtons" >

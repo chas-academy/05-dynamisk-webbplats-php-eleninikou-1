@@ -148,3 +148,14 @@ textarea::placeholder {
 .save:hover {
     opacity: 0.7;
 }
+
+.searchTags {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 80px;
+}
+
+.searchTags > li > a {
+    color: rgb(192, 115, 79);
+}
+
