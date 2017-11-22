@@ -1,21 +1,28 @@
 <nav class="adminSearch">
+    <h4> Sök inlägg </h4>
     <ul class="searchTags">
-        <li>#<a href="./posts/tags/2"> CSS</CSS></a></li>
-        <li>|</li>
-        <li>#<a href="./posts/tags/6"> PHP</a></li>
-        <li>|</li>
-        <li>#<a href="./posts/tags/1"> HTML</HTML></a></li>
-        <li>|</li>
-        <li>#<a href="./posts/tags/3"> JavaScript</a></li>
-        <li>|</li>
-        <li>#<a href="./posts/tags/5"> UX och Design</a></li>
-        <li>|</li>
-        <li>#<a href="./posts/tags/7"> Projektmetodik</a></li>
-        <li>|</li>
-        <li>#<a href="./posts/tags/4"> Avancerad Javascript</a></li>
-        <li>|</li>
-        <li>#<a href="./posts/tags/8"> Programmeringsmetodik</a></li>
-    </ul>    
+        <li>#<a href="/posts/tags/2"> CSS</CSS></a></li>
+        
+        <li>#<a href="/posts/tags/6"> PHP</a></li>
+    
+        <li>#<a href="/posts/tags/1"> HTML</HTML></a></li>
+    
+        <li>#<a href="/posts/tags/3"> JavaScript</a></li>
+    
+        <li>#<a href="/posts/tags/5"> UX och Design</a></li>
+    
+        <li>#<a href="/posts/tags/7"> Projektmetodik</a></li>
+    
+        <li>#<a href="/posts/tags/4"> Avancerad Javascript</a></li>
+    
+        <li>#<a href="/posts/tags/8"> Programmeringsmetodik</a></li>
+    
+        <li class ="cat"> > <a href="./posts/category/1">Frontend</a></li>
+        
+        <li> > <a href="./posts/category/2">Backend</a></li>
+       
+        <li> > <a href="./posts/category/3">Annat</a></li>
+    </ul>
 </nav>
 
 <div class="newOut">
@@ -25,7 +32,10 @@
     </form>
 
     <form action="/logout" method="POST"> 
-        <button type="submit" class ="NewLogout">Logga ut</button>    
+        <div class="adminarrow">
+            <a href="/" class="adminarrow"><i class="fa fa-chevron-circle-left"></i></a>
+            <button type="submit" class ="NewLogout">Logga ut</button>    
+        </div>
     </form>
 
 </div>

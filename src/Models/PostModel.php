@@ -52,7 +52,7 @@ class PostModel extends AbstractModel
                 $statement->bindValue(':tag', $value, PDO::PARAM_INT);
                 $statement->execute(); 
             }
-    
+
             
         } catch (Exception $e) {       
             echo $e->getMessage();

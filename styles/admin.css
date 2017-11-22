@@ -149,10 +149,28 @@ textarea::placeholder {
     opacity: 0.7;
 }
 
+.adminsearch {
+    margin-top: 250px;
+    height: 200px;
+    position: absolute;
+    margin-left: 30px;
+}
+
+.adminsearch > h4 {
+    text-transform: uppercase;
+    border-bottom: 3px solid rgba(90, 88, 88, 0.247);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cat {
+    margin-top: 20px;
+}
+
 .searchTags {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
-    margin-top: 80px;
 }
 
 .searchTags > li > a {
@@ -161,20 +179,36 @@ textarea::placeholder {
 
 .newOut {
     display: flex;
+    flex-direction: column;
     width: 100%;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 125px;
+    position: absolute;
+    margin-left: 50px;
 }
 
 .NewLogout {
     display: flex;
+    flex-direction: column;
     cursor: pointer;
-    width: 180px;
-    height: 60px;
-    opacity: 0.4;
+    opacity: 0.6;
     cursor: pointer;
     text-transform: uppercase;
     margin: 5px;
     font-size: 24px;
     justify-content: center;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+}
+
+.NewLogout:hover {
+    border-bottom: 3px solid rgba(90, 88, 88, 0.247);
+}
+
+.adminarrow {
+    font-size: 28px;
+    color: rgb(161, 156, 156);
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
 }
