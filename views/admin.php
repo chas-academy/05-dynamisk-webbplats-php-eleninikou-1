@@ -10,8 +10,8 @@
             <div class="post-tags">
                 <section class="post-input">
                     <h2> Skapa inlägg </h2>
-                    <input type="text"  id="title" name="title" placeholder =" [ Titel ]">
-                    <textarea type="text" id="body" name="body" class="textfield" placeholder="[ Text ]"></textarea>      
+                    <input type="text"  id="title" name="title" placeholder =" Titel ">
+                    <textarea type="text" id="body" name="body" class="textfield" placeholder=" Text "></textarea>      
     </section>
             
                 <section class="right-side">

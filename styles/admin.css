@@ -2,12 +2,11 @@
     display: flex;
     justify-content: space-between;
     margin: auto;
-    margin-top: 35px;
+    margin-top: 55px;
     margin-bottom: 50px;
     width: 70%;
     height: 63%;
-    background-color: rgba(255, 255, 255, 0.774);
-    border: 2px solid  rgb(207, 203, 198);   
+    background-color: rgba(255, 255, 255, 0.774);  
 }
 
 .post-input {
@@ -99,7 +98,7 @@ input[type=text] {
     margin: 10px 0px 5px 0px;
     font-size: 20px;
     box-sizing: border-box;  
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid rgba(180, 178, 178, 0.507);
     background-color: rgba(255, 255, 255, 0);
     margin-left: 15px;
     text-align: center;
@@ -117,7 +116,7 @@ input[id=text]{
     height: 335px;
     font-size: 20px;
     padding: 10px;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid rgba(180, 178, 178, 0.507);
     background-color: rgba(255, 255, 255, 0);
 }
 
