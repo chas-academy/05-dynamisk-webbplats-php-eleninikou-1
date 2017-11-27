@@ -1,0 +1,85 @@
+
+{
+  "": {
+    "controller": "Default",
+    "method": "start"
+  },
+  
+  "posts": {
+    "controller": "Post",
+    "method": "getAll"
+  },
+
+  "posts/:page": {
+    "controller": "Post",
+    "method": "getAllWithPageNumber",
+    "params": {
+      "page": "number"
+    }
+  },
+
+  "newpost": {
+    "controller": "Post",
+    "method": "toCreate",
+    "login": true
+  },
+
+  "posts/save" : {
+    "controller": "Post",
+    "method": "saveNewPost",
+    "login": true
+  },
+
+  ":id/toUpdate": {
+    "controller": "Post",
+    "method": "getToUpdate",
+    "login": true,
+    "params": {
+      "id": "number"
+    }
+  },
+
+  "update": {
+    "controller": "Post",
+    "method": "updatePost",
+    "login": true,
+    "params": {
+      "id": "number"
+    }
+  },
+
+  "delete": {
+    "controller": "Post",
+    "method": "delete",
+    "login": true
+  },
+
+
+  "login": {
+    "controller": "User",
+    "method": "login"
+   },
+
+   "logout": {
+     "controller": "User",
+     "method": "logout"
+   },
+
+  "posts/category/:id": {
+      "controller": "Post",
+      "method": "getPostsByCategory",
+      "params": {
+        "id": "number"
+      }
+   },  
+
+  "posts/tags/:id": {
+    "controller": "Post",
+    "method": "getPostsByTag",
+    "params": {
+      "id": "number"
+    }
+  }
+}
+
+
