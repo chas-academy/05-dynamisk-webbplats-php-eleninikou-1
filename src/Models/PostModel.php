@@ -126,7 +126,8 @@ class PostModel extends AbstractModel
             $query = 'SELECT p.id, p.title, p.body, c.category_name, p.category
             FROM posts p
             LEFT JOIN categories c ON c.category_id = p.category
-            WHERE category = :category';
+            WHERE category = :category
+            ORDER BY p.id DESC';
 
             $statement = $this->db->prepare($query);
             $statement->bindValue(':category', $category, PDO::PARAM_INT);            
@@ -221,7 +222,8 @@ class PostModel extends AbstractModel
              LEFT JOIN post_tags pt ON p.id = pt.posts_id
              LEFT JOIN categories c ON c.category_id = p.category
              LEFT JOIN tags t ON pt.tags_id = t.tag_id
-             WHERE tags_id = :tags_id';
+             WHERE tags_id = :tags_id
+             ORDER BY p.id DESC';
 
 
             $statement = $this->db->prepare($query);
