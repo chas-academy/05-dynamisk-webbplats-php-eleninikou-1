@@ -21,7 +21,7 @@
                         <!-- Select Tags -->          
                         <select multiple class="select-tags" name="tag[]"> 
                             <option value="" disabled class="select"> Välj taggar </option>
-                            <option value= 1> HTML </option>
+                            <option value= 1> HTML  </option>
                             <option value= 2> CSS </option>
                             <option value= 3> JavaScript </option>
                             <option value= 4> Avancerad JavaScript </option>
