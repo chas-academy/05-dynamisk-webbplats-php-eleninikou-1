@@ -14,8 +14,9 @@ set('git_tty', true);
 
 // Shared files/dirs between deploys 
 set('shared_files', [
-    'Config/app.json'
+    'config/app.json'
 ]);
+
 set('shared_dirs', []);
 
 // Writable dirs by web server 
