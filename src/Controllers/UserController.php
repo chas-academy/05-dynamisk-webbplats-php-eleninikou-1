@@ -41,14 +41,7 @@ class UserController extends AbstractController
         // 'user' gets the value of user-id. 
         setcookie('user', $user['id']);
 
-        $postmodel = new PostModel();
-        $posts = $postmodel->reallyGetAll();
-
-        $properties = [
-            'posts' => $posts
-        ];
-        // User is now logged in to admin-page 
-        return $this->render('views/adminposts.php', $properties);
+        return $this->redirect('admin');
     } 
 
     public function logOut()
@@ -57,5 +50,21 @@ class UserController extends AbstractController
 
         setcookie('user', '', time()-500, '/');
         $this->redirect('/', $properties);
+    }
+
+    public function dashboard() {
+
+        if (! isset($_COOKIE['user'])) {
+            return $this->redirect('login');
+        }
+
+        $postmodel = new PostModel();
+        $posts = $postmodel->reallyGetAll();
+
+        $properties = [
+            'posts' => $posts
+        ];
+        // User is now logged in to admin-page 
+        return $this->render('views/adminposts.php', $properties);   
     }
 }

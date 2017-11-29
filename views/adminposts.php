@@ -23,23 +23,16 @@
        
         <li> > <a href="./posts/category/3">Annat</a></li>
     </ul>
-</nav>
-
-<div class="newOut">
 
     <form action="/newpost" method="POST"> 
-        <button type="submit" class ="NewLogout">Nytt inlägg</button>
+            <button type="submit" class ="New"><i class="fa fa-file-text-o"></i>  Nytt inlägg</button>
     </form>
+</nav>
 
-    <form action="/logout" method="POST"> 
-        <div class="adminarrow">
-            <a href="/" class="adminarrow"><i class="fa fa-chevron-circle-left"></i></a>
-            <button type="submit" class ="NewLogout">Logga ut</button>    
-        </div>
-    </form>
 
-</div>
-
+        <form action="/logout" method="POST"> 
+                <button type="submit" class ="Logout">Logga ut</button>    
+        </form>
 
 <section class="showPosts">
 
@@ -57,11 +50,11 @@
                 </div>
                 <div class="postButtons" >
                     <form action="/<?php echo $post->getId(); ?>/toUpdate" method="POST"> 
-                        <button type="submit">Uppdatera</button>
+                        <button type="submit"> <i class="fa fa-pencil"></i> Uppdatera</button>
                     </form>
                     <form action="/delete" method="POST">
                         <input type ="hidden" name="post_id" value="<?php echo $post->getId(); ?>">
-                        <button type="submit">Radera</button>
+                        <button type="submit"><i class="fa fa-trash-o"></i>Radera</button>
                     </form>
                     
                 </div>   
@@ -70,6 +63,7 @@
         </article>      
     <?php endforeach ?>    
 </section>      
+     
 
 <div class="pages">
     <a href="#" class="previous round">&#8249;</a>

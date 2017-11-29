@@ -1,5 +1,5 @@
 <video id="video" class ="video" autoplay controls loop>
-        <source src="../styles/images/hands.mp4" type="video/mp4">
+        <source src="<?php echo ROOT_PATH . 'styles/images/hands.mp4'; ?>" type="video/mp4">
     </video>
     
     <!-- Create new post -->

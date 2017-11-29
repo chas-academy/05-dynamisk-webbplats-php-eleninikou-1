@@ -65,6 +65,11 @@
      "method": "logout"
    },
 
+   "admin": {
+    "controller": "User",
+    "method": "dashboard"
+  },
+
   "posts/category/:id": {
       "controller": "Post",
       "method": "getPostsByCategory",

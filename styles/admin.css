@@ -149,7 +149,7 @@ textarea::placeholder {
 }
 
 .adminsearch {
-    margin-top: 250px;
+    margin-top: 160px;
     height: 200px;
     position: absolute;
     margin-left: 30px;
@@ -176,15 +176,8 @@ textarea::placeholder {
     color: rgb(192, 115, 79);
 }
 
-.newOut {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    margin-top: 100px;
-    position: absolute;
-}
 
-.NewLogout {
+.New, .Logout {
     display: flex;
     flex-direction: column;
     cursor: pointer;
@@ -198,14 +191,20 @@ textarea::placeholder {
     border: none;
 }
 
-.NewLogout:hover {
-    border-bottom: 3px solid rgba(90, 88, 88, 0.247);
+.Logout {
+    display: flex;
+    justify-content: flex-end;
+    width: 20%;
+    margin-right: 30px;
+    margin-top: 10px;
 }
 
-.adminarrow {
-    font-size: 28px;
-    color: rgb(161, 156, 156);
+.New {
     display: flex;
-    align-items: center;
-    margin-left: 5px;
+    flex-direction: row;
+    margin-top: 50px;
+}
+
+.fa-file-text-o {
+    margin-right: 8px;
 }
