@@ -3,6 +3,12 @@
 use Teorihandbok\Core\Router;
 use Teorihandbok\Core\Request;
 
+if ($_SERVER['HTTP_HOST'] === 'teorihandbok.eleninikou.chas.academy') {
+    define('ROOT_PATH', '/05/');
+} else {
+    define('ROOT_PATH', '/');
+}
+
 function autoloader($classname)
 {
     $lastSlash = strpos($classname, '\\') + 1;
