@@ -1,4 +1,5 @@
-<html lang="en">
+
+<html lang="sv">
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,6 @@
 
 <body>
 <header>
-        <h1 id="logo">Teorihandboken</h1>
+        <h1 id="logo"><a href ="/" class="logoLink">Teorihandboken</a></h1>
 </header>
 

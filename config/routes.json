@@ -24,13 +24,13 @@
     "login": true
   },
 
-  "posts/save" : {
+  "save" : {
     "controller": "Post",
     "method": "saveNewPost",
     "login": true
   },
 
-  ":id/toUpdate": {
+  ":id/update": {
     "controller": "Post",
     "method": "getToUpdate",
     "login": true,

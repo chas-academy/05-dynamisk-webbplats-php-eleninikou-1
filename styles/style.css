@@ -26,12 +26,28 @@ header {
     width: 100%;
 }
 
-
 #logo {
     position: absolute;
     color: rgb(49, 45, 45);
     font-size: 100px;
     margin-top: 40px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+}
+
+.welcome {
+    width: 100%;
+    position: absolute;
+    margin-top: 20px;
+    right: 158px;
+    font-size: 28px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logoLink {
+    color:black;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: bold;
 }
@@ -62,17 +78,22 @@ header {
     opacity: 1;
   }
 
+#loginbutton:hover {
+    cursor: pointer;
+    color: rgb(192, 115, 79);
+}
+
 
 /* INDEX */
 
 .index {
     display: flex;
     flex: 1;
-    width: 70%;
-    height: 60%;
+    width: 75%;
+    height: 50%;
     margin: auto;
-    margin-top: 60px;
-    margin-bottom: 60px;
+    margin-top: 90px;
+    margin-bottom: 105px;
     background-color: rgba(255, 255, 255, 0.733);
 }
 
@@ -88,6 +109,10 @@ header {
     background-color: rgba(255, 255, 255, 0.288);
 }
 
+.fa-angle-down {
+    text-align: center;
+}
+
 .search > h2, .create-h2 {
     text-transform: uppercase;
     margin-top: 20px;
@@ -100,7 +125,22 @@ header {
     text-transform: uppercase;
     text-align: center;
     margin-top: 16px;
-    font-size: 22px;
+    font-size: 20px;
+}
+
+.tags {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.taggar {
+    display: flex;
+    justify-content: space-around;
+}
+
+.tags > li > a {
+   line-height: 25px;
 }
 
 .searchposts {
@@ -130,14 +170,6 @@ header {
     margin-top: 10px;
 }
 
-.tags {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 220px;
-    margin-top: 7px;
-    margin-left: 180px;
-}
 
 
 /* LOGGA IN */
@@ -174,12 +206,12 @@ header {
 }
 
 #password {
-    width: 130%;
+    width: 120%;
     height: 10%;
     font-size: 12px;
     background-color:rgba(255, 255, 255, 0);
     border-bottom: 1px solid black;
-    margin-top: 60px;
+    margin-top: 80px;
 }
 
 #loginbutton {

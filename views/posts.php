@@ -1,14 +1,14 @@
 <section class="showPosts">
 
 <div class="back">
-    <a href="/" class="arrow"><i class="fa fa-chevron-circle-left"></i></a>
+    <a href="/" class="arrow"><i class="fa fa-angle-double-left"></i></a>
     <a href="/" class="arrow"<p> Tillbaka</p></a>
 </div>
 
     <?php foreach ($posts as $post): ?>
         <article class="post">
             <h2 class="title"> <?php echo $post->getTitle();?> </h2>
-            <h5> <a href="/posts/category/<?php echo $post->getCategory() ?>" class ="postCategory"><?php echo $post->category_name; ?></h5></a>    
+            <h5> Kategori: <a href="/posts/category/<?php echo $post->getCategory() ?>" class ="postCategory"><?php echo $post->category_name; ?></h5></a>    
            
             <p class="body"> <?php echo $post->getBody(); ?> </p>             
 

@@ -24,9 +24,9 @@ abstract class AbstractController
         extract($params);
 
         ob_start();
-        include ('./templates/header.html');
+        include ('./templates/header.php');
         include $templates;
-        include ('./templates/footer.html');
+        include ('./templates/footer.php');
         
         $renderedView = ob_get_clean();
 

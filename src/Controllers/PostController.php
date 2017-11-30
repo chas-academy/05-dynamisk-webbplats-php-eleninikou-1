@@ -35,15 +35,13 @@ class PostController extends AbstractController
         
         $saveNewPost = new PostModel;
         $saveNewPost->savePost();
-        $allposts = $saveNewPost->reallyGetAll();
+        $allposts = $saveNewPost->reallygetAll();
 
         $properties = [
             'posts' => $allposts
         ];
 
-        return $this->render('views/adminposts.php', $properties);
-    
-        
+        $this->redirect('admin', $properties);   
     }
 
     public function toCreate()
@@ -110,13 +108,14 @@ class PostController extends AbstractController
     {
         $postModel = new PostModel();
         $updated = $postModel->updatePost($_POST['post_id'], $_POST['category']);
-        $posts = $postModel->reallyGetAll();
+        $posts = $postModel->reallygetAll();
 
         $properties = [
             'posts' => $posts
         ];
 
-        return $this->render('views/adminposts.php', $properties);
+        $this->redirect('admin', $properties);
+        
     }
 
     public function delete()
@@ -125,13 +124,13 @@ class PostController extends AbstractController
         $postModel = new PostModel();
         $postModel->deletePost($_POST['post_id']);
         
-        $posts = $postModel->reallyGetAll();
+        $posts = $postModel->reallygetAll();
         
             $properties = [
                 'posts' => $posts
             ];
     
-            return $this->render('views/adminposts.php', $properties);
+            $this->redirect('admin', $properties);
        
     }
 

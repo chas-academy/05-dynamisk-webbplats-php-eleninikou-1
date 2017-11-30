@@ -3,6 +3,7 @@
 namespace Teorihandbok\Controllers;
 use Teorihandbok\Models\UserModel;
 use Teorihandbok\Models\PostModel;
+use Teorihandbok\Exceptions\NotFoundException;
 
 class UserController extends AbstractController
     {
@@ -11,16 +12,16 @@ class UserController extends AbstractController
         // If the request isn't POST-method -> back to homepage.
         // This is to prevent info to get displayed in the URL with GET-method. 
         if (!$this->request->isPost()) {
-            $params = ['errorMessage' => 'Logga in för att skapa nya inlägg!'];
-            return $this->render('views/layout.html', $params);
+            $params = ['errormessage' => 'Du loggar in med din email!'];
+            return $this->render('views/layout.php', $params);
         }
 
         // Request-object gets parameters from URL.
         $params = $this->request->getParams();
 
         if (!$params->has('email')) {
-            $params = ['errorMessage' => 'Du loggar in med din email!'];
-            return $this->render('views/layout.html', $params);
+            $params = ['errormessage' => ''];
+            return $this->render('views/layout.php', $params);
         }
 
         // Save email in a new variable. New instance of UserModel 
@@ -32,24 +33,22 @@ class UserController extends AbstractController
             // Now we can use the method getByEmail in the UserModel. 
             // And throw exception if we have to. 
             $user = $UserModel->getByEmail($email);
-        } catch (NotFoundException $e) {
-            $this->log->warn('Kunde inte hitta användare med denna email: ' . $email);
-            $params = ['errorMessage' => 'Kunde ej hitta email'];
-            return $this->render('views/layout.html', $params);
-        }
+            // 'user' gets the value of user-id. 
+            setcookie('user', $user['id']);
 
-        // 'user' gets the value of user-id. 
-        setcookie('user', $user['id']);
-
-        return $this->redirect('admin');
-    } 
+            return $this->redirect('admin');
+        }   catch (Exception $e) {
+                $params = ['errormessage' => 'Du loggar in med din email!'];
+                return $this->render('views/layout.php', $params);
+        }        
+    }       
 
     public function logOut()
     {
-        $properties =[];
+        $params =[];
 
         setcookie('user', '', time()-500, '/');
-        $this->redirect('/', $properties);
+        $this->redirect('/', $params);
     }
 
     public function dashboard() {
@@ -59,12 +58,12 @@ class UserController extends AbstractController
         }
 
         $postmodel = new PostModel();
-        $posts = $postmodel->reallyGetAll();
+        $posts = $postmodel->reallygetAll();
 
-        $properties = [
+        $params = [
             'posts' => $posts
         ];
         // User is now logged in to admin-page 
-        return $this->render('views/adminposts.php', $properties);   
+        return $this->render('views/adminposts.php', $params);   
     }
 }

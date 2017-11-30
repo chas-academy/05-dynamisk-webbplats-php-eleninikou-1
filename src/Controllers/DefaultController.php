@@ -9,7 +9,7 @@ class DefaultController extends AbstractController
         // Empty beacuse i need to send it in as a parameter render();
         $properties = [];
 
-        return $this->render('./views/layout.html', $properties);
+        return $this->render('./views/layout.php', $properties);
     }
 
 }

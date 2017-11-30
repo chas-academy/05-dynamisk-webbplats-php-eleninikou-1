@@ -18,7 +18,7 @@ class UserModel extends AbstractModel
         $user = $statement->fetch();
 
         if (empty($user)) {
-            throw new NotFoundException();
+            return $errormessage = ['errormessage' => 'Du loggar in med din email!'];
         }
         
         $user = [

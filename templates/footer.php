@@ -1,6 +1,6 @@
  
     <footer>
-    <h5>Chas Academy</h5>
+    <h5>Eleni - Chas Academy</h5>
     </footer>
 </body>
 </html>

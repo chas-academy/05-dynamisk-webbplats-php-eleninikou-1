@@ -1,22 +1,22 @@
 <video id="video" class ="video" autoplay controls loop>
         <source src="<?php echo ROOT_PATH . 'styles/images/hands.mp4'; ?>" type="video/mp4">
-    </video>
+</video>
     
     <!-- Create new post -->
     <section class = "create">
         <!-- Insert title and body -->  
-        <form class="create-post" action="/posts/save" method="post">
+        <form class="create-post" action="save" method="post">
             
             <div class="post-tags">
                 <section class="post-input">
                     <h2> Skapa inlägg </h2>
-                    <input type="text"  id="title" name="title" placeholder =" Titel ">
+                    <input type="text"  id="title" name="title" placeholder=" Titel ">
                     <textarea type="text" id="body" name="body" class="textfield" placeholder=" Text "></textarea>      
     </section>
             
                 <section class="right-side">
                      
-                        <a href ="/logout" class ="adminlogout">Logga ut</a>    
+                        <a href="/logout" class="adminLogout">Logga ut</a>    
                     
                         <!-- Select Tags -->          
                         <select multiple class="select-tags" name="tag[]"> 
