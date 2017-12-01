@@ -24,10 +24,7 @@
     <?php endforeach ?>    
 </section>      
 
-<div class="pages">
-    <a href="#" class="previous round">&#8249;</a>
-    <a href="#" class="next round">&#8250;</a>
-</div> 
+<a href="#top" class="top">Upp <i class="fa fa-angle-double-up"></i></a>
   
 
 

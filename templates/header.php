@@ -16,6 +16,7 @@
 
 <body>
 <header>
+        <a name="top"></a>
         <h1 id="logo"><a href ="/" class="logoLink">Teorihandboken</a></h1>
 </header>
 

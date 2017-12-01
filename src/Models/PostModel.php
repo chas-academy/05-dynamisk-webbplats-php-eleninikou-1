@@ -61,6 +61,7 @@ class PostModel extends AbstractModel
 
     }
 
+
     public function get(int $id)
     {
         $query = 'SELECT p.id, p.title, p.body, p.category, c.category_name, c.category_id, t.tag_name
@@ -310,7 +311,6 @@ class PostModel extends AbstractModel
                 $statement->bindValue(':tag', $value, PDO::PARAM_INT);
                 $statement->execute(); 
             }
-    
             
         } catch (Exception $e) {       
             echo $e->getMessage();

@@ -1,8 +1,6 @@
-<nav class="adminSearch">
-    <form action="/newpost" method="POST"> 
-            <button type="submit" class="New"><i class="fa fa-file-text-o"></i>  Nytt inlägg</button>
-    </form>
+
     <ul class="searchTags">
+       
         <li>#<a href="/posts/tags/2"> CSS</CSS></a></li>
         
         <li>#<a href="/posts/tags/6"> PHP</a></li>
@@ -18,19 +16,12 @@
         <li>#<a href="/posts/tags/4"> Avancerad Javascript</a></li>
     
         <li>#<a href="/posts/tags/8"> Programmeringsmetodik</a></li>
-    
-        <li class ="cat"> > <a href="/posts/category/1">Frontend</a></li>
-        
-        <li> > <a href="/posts/category/2">Backend</a></li>
-       
-        <li> > <a href="/posts/category/3">Annat</a></li>
     </ul>
-</nav>
-
 
         <form action="/logout" method="POST"> 
                 <button type="submit" class="Logout">Logga ut</button>    
         </form>
+
 
 <section class="showPosts">
 
@@ -52,7 +43,10 @@
                     </form>
                     <form action="/delete" method="POST">
                         <input type="hidden" name="post_id" value="<?php echo $post->getId(); ?>">
-                        <button type="submit"><i class="fa fa-trash-o"></i>Radera</button>
+                        <button type="submit"><i class="fa fa-trash-o"></i> Radera</button>
+                    </form>
+                    <form action="/newpost" method="POST"> 
+                        <button type="submit" class="New"><i class="fa fa-file-text-o"></i> Nytt inlägg</button>
                     </form>
                     
                 </div>   
@@ -63,8 +57,5 @@
 </section>      
      
 
-<div class="pages">
-    <a href="#" class="previous round">&#8249;</a>
-    <a href="#" class="next round">&#8250;</a>
-</div>    
+<a href="#top" class="top">Upp! <i class="fa fa-angle-double-up"></i></a>
 
