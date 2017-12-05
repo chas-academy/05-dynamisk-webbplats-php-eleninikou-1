@@ -107,7 +107,7 @@ class PostController extends AbstractController
     public function updatePost()
     {
         $postModel = new PostModel();
-        $updated = $postModel->updatePost($_POST['post_id'], $_POST['category'], $_POST['tag[]']);
+        $updated = $postModel->updatePost($_POST['post_id'], $_POST['category'], $_POST['tag']);
         $posts = $postModel->reallygetAll();
 
         $properties = [

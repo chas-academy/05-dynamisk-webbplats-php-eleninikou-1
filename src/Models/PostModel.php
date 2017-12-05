@@ -61,6 +61,28 @@ class PostModel extends AbstractModel
 
     }
 
+    public function saveNewPost_tag()
+    {
+        $postID = $_POST['post_id'];
+        $tags = $_POST['tag'];
+
+        try {
+            // Insert postID and tags
+            foreach ($_POST['tag'] as $key => &$value) {
+                $query = "INSERT INTO post_tags (posts_id, tags_id) VALUES (:post, :tag)";
+                $statement = $this->db->prepare($query);
+                $statement->bindValue(':post', $postID, PDO::PARAM_INT);
+                $statement->bindValue(':tag', $value, PDO::PARAM_INT);
+                $statement->execute(); 
+            }
+
+            
+        } catch (Exception $e) {       
+            echo $e->getMessage();
+            die();
+        }
+    }
+
 
     public function get(int $id)
     {
@@ -267,9 +289,7 @@ class PostModel extends AbstractModel
     public function updatePost()
     {
         $postId = ($_POST['post_id']);
-
         try { 
-
             $updatedPost = array(
                 'title'    => $_POST['title'],
                 'body'     => $_POST['body']
@@ -293,31 +313,27 @@ class PostModel extends AbstractModel
             die();
         }
 
-        $this->updateTags();
+        $this->deleteTags();
+        $this->saveNewPost_tag();
 
     } 
 
-    public function updateTags()
+    public function deleteTags()
     {
-        $tags = $_POST['tag'];
         $postId = ($_POST['post_id']);
-
         try {
-            // Insert postID and tags
-            foreach ($_POST['tag'] as $key => &$value) { 
-                $query = "UPDATE post_tags SET tags_id = :tag, posts_id = :post WHERE posts_id = $postId";
+            // Delete tags for each post
+                $query = "DELETE FROM post_tags WHERE posts_id = $postId";
+
                 $statement = $this->db->prepare($query);
-                $statement->bindValue(':post', $postId, PDO::PARAM_INT);
-                $statement->bindValue(':tag', $value, PDO::PARAM_INT);
                 $statement->execute(); 
-            }
             
         } catch (Exception $e) {       
             echo $e->getMessage();
             die();
         }
-
     }
+
 
     public function deletePost(int $id)
     {   
