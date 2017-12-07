@@ -37,23 +37,12 @@ class UserController extends AbstractController
             setcookie('user', $user['id']);
 
             return $this->redirect('admin');
+
         }   catch (Exception $e) {
                 $params = ['errormessage' => 'Du loggar in med din email!'];
                 return $this->render('views/layout.php', $params);
         }        
     }       
-
-    public function logout()
-    {
-        $params =[];
-
-        if (isset($_COOKIE[''])) {
-            unset($_COOKIE['user']);
-            setcookie('user', '', time() - 3600, '/'); 
-        }
-
-        $this->redirect('/', $params);
-    }
 
     public function dashboard() {
 
@@ -69,5 +58,19 @@ class UserController extends AbstractController
         ];
         // User is now logged in to admin-page 
         return $this->render('views/adminposts.php', $params);   
+    }
+
+    public function logout()
+    {
+        $params =[];
+
+        //if (isset($_COOKIE['user'])) {
+        //    unset($_COOKIE['user']);
+        //    setcookie($user['id'], '', time() - 3600, '/'); 
+        //}
+        setcookie('user' ,"", time()-3600, '/');
+        unset ($_COOKIE['user']);
+
+        $this->redirect('/', $params);
     }
 }

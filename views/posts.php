@@ -5,7 +5,7 @@
     <a href="/" class="arrow"<p> Tillbaka</p></a>
 </div>
 
-<img src="<?php echo ROOT_PATH .'/styles/images/logo.png'; ?> class="backgroundimage">
+<img src="<?php echo ROOT_PATH .'./styles/images/logo.png';?>" class="backgroundimage">
  
     <?php foreach ($posts as $post): ?>
         <article class="post">

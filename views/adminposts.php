@@ -1,7 +1,7 @@
 
 <a href="logout" class="Logout">Logga ut</a>    
 
-<img src="<?php echo ROOT_PATH .'./styles/images/logo.png'; ?> class="backgroundimage">
+<img src="<?php echo ROOT_PATH .'./styles/images/logo.png'; ?>" class="backgroundimage">
     
     <ul class="searchTags"> 
         <form action="/newpost" method="POST"> 
