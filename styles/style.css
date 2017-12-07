@@ -216,7 +216,8 @@ footer {
 footer > h5 {
     margin-top: 25px;
     font-size: 12px;
-    margin-left: 20px;
+    margin-right: 15px;
+   margin: auto;
 }
 
 

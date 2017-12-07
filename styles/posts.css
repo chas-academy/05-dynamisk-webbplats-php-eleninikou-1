@@ -1,13 +1,50 @@
+body {
+    background-color: rgba(128, 128, 128, 0.082);
+}
+
+.backgroundimage {
+    position: fixed;
+    top: 45px;
+    left: 20px;
+    width: 450px;
+    height: 450px;
+    z-index: -1;
+}
+
+.Logout {
+    display: flex;  
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 24px;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    float: right;
+    margin-right: 158px;
+}
+
+.New {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    margin-bottom: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    float:right;
+    text-transform: uppercase;
+}
 
 .showPosts {
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.788);
-    margin-top: 100px;
+    background-color: rgba(243, 239, 239, 0.116);
+    margin-top: 130px;
     text-align: center;
+    margin-left: 20px;
 }
 
 .post {
-    width: 50%;
+    width: 53%;
     margin: auto;
     text-align: center;
     min-height: 200px;
@@ -15,11 +52,13 @@
 
 .searchTags {
     display: flex;
-    width: 75%;
     margin: auto;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 60px;
+    flex-direction: column;
+    margin-top: 135px;
+    font-size: 17px;
+    position: fixed;
+    width: 250px;
+    align-items: flex-end;
 }
 
 .searchTags > li > a {
@@ -28,13 +67,17 @@
 
 .title {
     margin-top: 70px;
-    border-bottom: 3px solid rgba(90, 88, 88, 0.247);
+    border-bottom: 1px solid rgba(192, 115, 79, 0.459);
     text-transform: uppercase;
+}
+
+article > h5 > a:hover, .postTags > h5 > a:hover {
+    color: rgb(231, 226, 220);
 }
 
 .body {
     color: rgb(78, 76, 76);
-    margin-top: 20px;
+    margin-top: 40px;
     min-height: 300px;
     text-align: start;
     width: 100%;
@@ -44,35 +87,23 @@
 
 .postButtons {
     display: flex;
-    width: 100%;
-    justify-content: center;
+    background-color: rgba(128, 128, 128, 0);
+    cursor: pointer;
+    float: right;
 }
 
-body > section > article > div.postButtons > form > button {
+.postButtons > form > button {
     display: flex;
+    opacity: 0.8;
     cursor: pointer;
-    
-    height: 40px;
-    opacity: 0.6;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-size: 18px;
-    margin-right: 50px;
-    margin-top: 5px;
-    margin-bottom: 30px;
-    justify-content: center;
+    font-size: 28px;
+    margin-right: 10px;
+    background-color: rgba(128, 128, 128, 0);
     border: none;
 }
 
-body > section > article > div.postButtons > form > button:hover {
-    opacity: 1;
-}
-
-body > section > article > h5 > div > form > button {
-    text-align: center;
-    margin: auto;
-    font-size: 18px;
-    padding: 15px;
+.postButtons > form > button:hover {
+    color: rgb(192, 115, 79);
 }
 
 .postTags {
@@ -90,38 +121,6 @@ body > section > article > h5 > div > form > button {
     margin-bottom: 35px;
 }
 
-.pages {
-    margin-top: 0px;
-    display: flex;
-    width: 100%;
-    justify-content: center;
-}
-
-.pages > a {
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 16px;
-    margin: 3px;
-}
-
-.pages > a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-.previous {
-    background-color: #bebbbb;
-    color: black;
-}
-
-.next {
-    background-color: rgb(192, 115, 79);
-    color: white;
-}
-
-.round {
-    border-radius: 50%;
-}
 
 .back {
     display: flex;
@@ -136,4 +135,11 @@ body > section > article > h5 > div > form > button {
     color: black;
     margin: 3px;
     font-size: 20px;
+}
+
+.top {
+    position: fixed;
+    top: 700px;
+    left: 80px;
+    color: rgb(39, 39, 38);
 }
