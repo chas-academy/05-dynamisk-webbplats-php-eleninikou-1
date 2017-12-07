@@ -6,29 +6,27 @@
 
 <section class="index">
     <nav class ="search">
-        <h2>Sök</h2>
+        <h2>Sök inlägg</h2>
+            <a href="./posts">Visa alla</a>
         <ul class="Searchposts">
-            <li class="navmenu">Kategorier</Kategorier></li>
                 <ul class="categories">
-                    <li><a href="./posts/category/1">Frontend</a></li>
-                    <li>|</li>
-                    <li><a href="./posts/category/2">Backend</a></li>
-                    <li>|</li>
+                    <li class="navmenu">kategori:</Kategorier></li>
+                    <li><a href="./posts/category/1">Frontend</a></li> 
+                    <li><a href="./posts/category/2">Backend</a></li>  
                     <li><a href="./posts/category/3">Annat</a></li>
                 </ul>
-            <li class="navmenu">Taggar</Taggar></li>
             <div class="taggar">
                 <section class="tags">
-                    <li># <a href="./posts/tags/1"> HTML</HTML></a></li>
-                    <li># <a href="./posts/tags/2"> CSS</CSS></a></li>
-                    <li># <a href="./posts/tags/3"> JavaScript</a></li>
-                    <li># <a href="./posts/tags/4"> Avancerad Javascript</a></li>
+                    <li><a href="./posts/tags/1"> HTML</HTML></a></li>
+                    <li><a href="./posts/tags/2"> CSS</CSS></a></li>
+                    <li><a href="./posts/tags/3"> JavaScript</a></li>
+                    <li><a href="./posts/tags/4"> Avancerad Javascript</a></li>
                  </section>
-                 <section class="tags">   
-                    <li># <a href="./posts/tags/5"> UX och Design</a></li>
-                    <li># <a href="./posts/tags/6"> PHP</a></li>
-                    <li># <a href="./posts/tags/7"> Projektmetodik</a></li>
-                    <li># <a href="./posts/tags/8"> Programmeringsmetodik</a></li>
+                 <section class="tags2">   
+                    <li><a href="./posts/tags/5"> UX och Design</a></li>
+                    <li><a href="./posts/tags/6"> PHP</a></li>
+                    <li><a href="./posts/tags/7"> Projektmetodik</a></li>
+                    <li><a href="./posts/tags/8"> Programmeringsmetodik</a></li>
                 </section>
             </div>
            <!-- <li class="navmenu"><a> Alla inlägg </a></li> -->
@@ -39,17 +37,17 @@
         <h2 class="create-h2">Skapa inlägg </h2>
         <section class ="user-login">
 
-            <form class="login" action="/login" method="POST">
-                <div class="logintext">    
-                    <input type="text" name="email" id="password"> 
-                    <h5> Email</h5>
+            <form action="/login" method="POST">
+                    <div class="inputbutton">
+                        <input type="text" name="email" id="password" placeholder="email">
+                        <button type="submit" name="login" id="loginbutton" value="LOGGA IN"><i class="fa fa-key"></i></button> 
+                    </div>
+                        <h5>Logga in</h5>
+                <div class="help">
+                    <?php if($params == null): ?>
+                         <?php else: ?> <i class="fa fa-arrow-up"></i> <?php  echo($params['errormessage']); ?>
+                    <?php endif ?>
                 </div>
-                
-                <?php if($params == null): ?>
-                     <button type="submit" name="login" id="loginbutton" value="LOGGA IN"> Logga in </button>
-                     <?php else: ?> <i class="fa fa-arrow-up"></i> <?php  echo($params['errormessage']); ?>
-                    <button type="submit" name="login" id="loginbutton" value="LOGGA IN"> Logga in </button>
-                <?php endif ?>
             </form> 
         </section>
     </section>

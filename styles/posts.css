@@ -13,6 +13,19 @@
     min-height: 200px;
 }
 
+.searchTags {
+    display: flex;
+    width: 75%;
+    margin: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 60px;
+}
+
+.searchTags > li > a {
+    color: rgb(192, 115, 79);
+}
+
 .title {
     margin-top: 70px;
     border-bottom: 3px solid rgba(90, 88, 88, 0.247);
