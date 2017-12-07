@@ -43,17 +43,21 @@ class UserController extends AbstractController
         }        
     }       
 
-    public function logOut()
+    public function logout()
     {
         $params =[];
 
-        setcookie('user', '', time()-500, '/');
+        if (isset($_COOKIE[''])) {
+            unset($_COOKIE['user']);
+            setcookie('user', '', time() - 3600, '/'); 
+        }
+
         $this->redirect('/', $params);
     }
 
     public function dashboard() {
 
-        if (! isset($_COOKIE['user'])) {
+        if (!isset($_COOKIE['user'])) {
             return $this->redirect('login');
         }
 

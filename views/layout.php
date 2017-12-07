@@ -7,7 +7,7 @@
 <section class="index">
     <nav class ="search">
         <h2>Sök inlägg</h2>
-            <a href="./posts">Visa alla</a>
+            <a href="/posts">Visa alla</a>
         <ul class="Searchposts">
                 <ul class="categories">
                     <li class="navmenu">kategori:</Kategorier></li>

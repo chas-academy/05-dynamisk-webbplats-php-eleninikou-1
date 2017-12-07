@@ -1,8 +1,7 @@
-<video id="video" class ="video" autoplay controls loop>
-        <source src="<?php echo ROOT_PATH . 'styles/images/hands.mp4'; ?>" type="video/mp4">
-</video>   
-  
-    <section class="create">
+<img src="/styles/images/logo.png" class="backgroundimage">    
+<div class="back">
+    <a href="/admin" class="adminBack"><p><i class="fa fa-angle-double-left"></i> Tillbaka</p></a>
+</div> 
         <form class="create-post" action="/update" method="post"> 
             <div class="post-tags">
                 <section class="post-input">
@@ -10,20 +9,15 @@
                     <input type="hidden" name="post_id" value="<?php echo $post->getId(); ?>">
                     <input type="text" id="title" name="title" value="<?php echo $post->getTitle(); ?>">
                     <textarea type="text" id="body" name="body" class="textfield" value=""><?php echo $post->getBody(); ?></textarea>        
-    </section>
+                 </section>
             
                 <section class="right-side">
-                
-                    <a href="/admin" class="adminLogout">Tillbaka</a>
-                
                     <select multiple class="select-tags" name="tag[]">
-                        <option value="" disabled selected class="select"> Välj taggar </option>
-                            
-
+                        <option value="" disabled class="select"> Välj taggar </option>
+        
             <!-- Axel I really hope you see this section because 3 people worked on it for 10 hours -->
 
                         <?php foreach ($allTags as $tag): ?>
-
                             <?php $postTags = array(); ?>
 
                                 <?php foreach ($tags as $post_t): ?>
@@ -40,7 +34,7 @@
                                         <?php endif; ?>
                                 <?php endforeach; ?>
                         
-                        </select>    
+                    </select>    
 
             <!-- ********************************************************************************** -->
 
@@ -57,6 +51,7 @@
                     </select>
                     
                     <button type="submit" class="save">Spara </button>                    
+                </section>
             </div>  
         </form>
-    </section>
+   

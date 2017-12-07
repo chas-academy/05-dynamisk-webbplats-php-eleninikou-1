@@ -10,35 +10,25 @@ class PostController extends AbstractController
 {
     const PAGE_LENGTH = 10;
     
-    public function getAllWithPage($page): string
-    {
-        $page = (int)$page;
-        $postModel = new PostModel();
-
-        $posts = $postModel->getAll($page, self::PAGE_LENGTH); 
+    public function getAllPosts() {
+        $allPosts = new PostModel;
+        $allPosts->reallyGetAll();
 
         $properties = [
-            'posts' => $posts,
-            'currentPage' => $page,
-            'lastPage' => count($posts) < self::PAGE_LENGTH
+            'posts' => $allPosts
         ];
-        
-        return $this->render('views/posts.php', $properties);
-    }
 
-    public function getAll(): string
-    {
-        return $this->getAllWithPage(1);
+        return $this->render('views/posts.php', $properties);
     }
 
     public function saveNewPost() {
         
         $saveNewPost = new PostModel;
         $saveNewPost->savePost();
-        $allposts = $saveNewPost->reallygetAll();
+        $allPosts = $saveNewPost->reallygetAll();
 
         $properties = [
-            'posts' => $allposts
+            'posts' => $allPosts
         ];
 
         $this->redirect('admin', $properties);   

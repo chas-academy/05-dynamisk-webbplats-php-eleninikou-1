@@ -7,17 +7,8 @@
   
   "posts": {
     "controller": "Post",
-    "method": "getAll"
+    "method": "getAllPosts"
   },
-
-  "posts/:page": {
-    "controller": "Post",
-    "method": "getAllWithPageNumber",
-    "params": {
-      "page": "number"
-    }
-  },
-
   "newpost": {
     "controller": "Post",
     "method": "toCreate",
@@ -53,7 +44,6 @@
     "method": "delete",
     "login": true
   },
-
 
   "login": {
     "controller": "User",

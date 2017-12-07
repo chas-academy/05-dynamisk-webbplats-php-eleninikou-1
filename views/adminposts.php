@@ -1,15 +1,12 @@
 
-<form action="/logout" method="POST"> 
-    <button type="submit" class="Logout">Logga ut</button>    
-</form>
+<a href="logout" class="Logout">Logga ut</a>    
 
-<img src="./styles/images/logo.png" class="backgroundimage">
+<img src="<?php echo ROOT_PATH .'./styles/images/logo.png'; ?> class="backgroundimage">
     
     <ul class="searchTags"> 
         <form action="/newpost" method="POST"> 
             <button type="submit" class="New"><i class="fa fa-file-text-o"></i> Nytt inlägg</button>
         </form> 
-
         <li><a href="/posts/tags/1"> HTML</HTML></a></li>
         <li><a href="/posts/tags/2"> CSS</CSS></a></li>
         <li><a href="/posts/tags/3"> JavaScript</a></li>
