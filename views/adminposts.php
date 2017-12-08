@@ -1,5 +1,5 @@
 
-<a href="logout" class="Logout">Logga ut</a>    
+<a href="/logout" class="Logout">Logga ut</a>    
 
 <img src="<?php echo ROOT_PATH .'./styles/images/logo.png'; ?>" class="backgroundimage">
     
