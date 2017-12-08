@@ -1,6 +1,6 @@
-<img src="<?php echo ROOT_PATH .'/styles/images/logo.png'; ?>" class="backgroundimage">    
+<img src="<?php echo ROOT_PATH .'./styles/images/logo.png'; ?>" class="backgroundimage">    
 <div class="back">
-    <a href="/admin" class="adminBack"><p><i class="fa fa-angle-double-left"></i> Tillbaka</p></a>
+    <a href="admin" class="adminBack"><p><i class="fa fa-angle-double-left"></i> Tillbaka</p></a>
 </div> 
         <form class="create-post" action="/update" method="post"> 
             <div class="post-tags">

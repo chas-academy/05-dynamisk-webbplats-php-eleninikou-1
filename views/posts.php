@@ -2,7 +2,7 @@
 
 <div class="back">
     <a href="/" class="arrow"><i class="fa fa-angle-double-left"></i></a>
-    <a href="/" class="arrow"<p> Tillbaka</p></a>
+    <a href="/" class="arrow"><p> Tillbaka</p></a>
 </div>
 
 <img src="<?php echo ROOT_PATH .'./styles/images/logo.png';?>" class="backgroundimage">

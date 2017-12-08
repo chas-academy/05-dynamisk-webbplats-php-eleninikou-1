@@ -7,10 +7,9 @@
 <section class="index">
     <nav class ="search">
         <h2>Sök inlägg</h2>
-            <a href="/posts">Visa alla</a>
         <ul class="Searchposts">
                 <ul class="categories">
-                    <li class="navmenu">kategori:</Kategorier></li>
+                    <li class="navmenu">kategorier</Kategorier></li>
                     <li><a href="./posts/category/1">Frontend</a></li> 
                     <li><a href="./posts/category/2">Backend</a></li>  
                     <li><a href="./posts/category/3">Annat</a></li>
@@ -29,7 +28,6 @@
                     <li><a href="./posts/tags/8"> Programmeringsmetodik</a></li>
                 </section>
             </div>
-           <!-- <li class="navmenu"><a> Alla inlägg </a></li> -->
         </ul>
     </nav>
 

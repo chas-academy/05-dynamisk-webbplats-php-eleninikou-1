@@ -1,13 +1,13 @@
 body {
-    background-color: rgba(128, 128, 128, 0.082);
+    background-color: rgba(128, 128, 128, 0.048);
 }
 
 .backgroundimage {
     position: fixed;
-    top: 45px;
-    left: 20px;
-    width: 450px;
-    height: 450px;
+    margin-left: 25%;
+    margin-top: 50px;
+    width: 850px;
+    height: 850px;
     z-index: -1;
 }
 
@@ -20,7 +20,28 @@ body {
     border: none;
     float: right;
     margin-right: 158px;
+    margin-top: 17px;
     color: black;
+}
+
+.Logout:hover {
+    color: rgb(192, 115, 79);
+}
+
+.searchTags {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    margin-top: 160px;
+    font-size: 17px;
+    position: fixed;
+    width: 270px;
+    align-items: flex-end;
+    height: 100vh;
+}
+
+.searchTags > li > a {
+    color: rgb(192, 115, 79);
 }
 
 .New {
@@ -34,6 +55,10 @@ body {
     cursor: pointer;
     float:right;
     text-transform: uppercase;
+}
+
+.New:hover {
+    color: rgb(231, 226, 220);
 }
 
 .showPosts {
@@ -51,25 +76,15 @@ body {
     min-height: 200px;
 }
 
-.searchTags {
-    display: flex;
-    margin: auto;
-    flex-direction: column;
-    margin-top: 135px;
-    font-size: 17px;
-    position: fixed;
-    width: 250px;
-    align-items: flex-end;
-}
-
-.searchTags > li > a {
-    color: rgb(192, 115, 79);
-}
-
 .title {
     margin-top: 70px;
     border-bottom: 1px solid rgba(192, 115, 79, 0.459);
     text-transform: uppercase;
+}
+
+.postCategory {
+    text-align: center;
+    color: rgb(192, 115, 79);
 }
 
 article > h5 > a:hover, .postTags > h5 > a:hover {
@@ -111,17 +126,11 @@ article > h5 > a:hover, .postTags > h5 > a:hover {
     margin-bottom: 35px;
 }
 
-.postCategory {
-    text-align: center;
-    color: rgb(192, 115, 79);
-}
-
 .taglinks {
     margin-left: 1px;
     color: rgb(192, 115, 79);
     margin-bottom: 35px;
 }
-
 
 .back {
     display: flex;

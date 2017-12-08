@@ -5,7 +5,7 @@
     
     <ul class="searchTags"> 
         <form action="/newpost" method="POST"> 
-            <button type="submit" class="New"><i class="fa fa-file-text-o"></i> Nytt inlägg</button>
+            <button type="submit" class="New">Nytt inlägg</button>
         </form> 
         <li><a href="/posts/tags/1"> HTML</HTML></a></li>
         <li><a href="/posts/tags/2"> CSS</CSS></a></li>
@@ -18,7 +18,6 @@
     </ul> 
 
 <section class="showPosts">
-
     <?php foreach ($posts as $post): ?>
         <article class="post">
             <h2 class="title"> <?php echo $post->getTitle();?> </h2>

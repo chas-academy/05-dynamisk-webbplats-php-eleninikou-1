@@ -11,12 +11,10 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Montserrat|Oxygen" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Teorihandboken</title>
-
 </head>
 
 <body>
 <header>
         <a name="top"></a>
-        <h1 id="logo"><a href ="logout" class="logoLink">Teorihandboken</a></h1>
+        <h1 id="logo"><a href="logout"class="logoLink">Teorihandboken</a></h1>
 </header>
-
